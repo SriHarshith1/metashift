@@ -1,0 +1,179 @@
+{
+  "game": "lol",
+  "patch": "26.21",
+  "compared_to": "26.20",
+  "generated_at": "2026-10-23T09:15:00Z",
+  "llm": "ollama:qwen3:14b",
+  "headline": "Azir and Nunu gain strength while Kai'Sa slows down.",
+  "themes": [
+    "Marksman nerfs",
+    "Mage buffs",
+    "Item price cuts"
+  ],
+  "entities": [
+    {
+      "entity": "Azir",
+      "entity_type": "champion",
+      "verdict": "rise",
+      "confidence": "high",
+      "previous": {
+        "win_rate": 47.8,
+        "pick_rate": 3.2,
+        "ban_rate": 1.4,
+        "tier": "B"
+      },
+      "reason": "Three buffs to his damage and turret health land on a champion that was already under the average win rate.",
+      "change_refs": [
+        0,
+        1,
+        2
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Azir.png"
+    },
+    {
+      "entity": "Nunu & Willump",
+      "entity_type": "champion",
+      "verdict": "rise",
+      "confidence": "medium",
+      "previous": null,
+      "reason": "A stronger heal and a new snowball bonus help jungle clear, but no earlier stats exist to confirm the starting point.",
+      "change_refs": [
+        3,
+        4
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Nunu.png"
+    },
+    {
+      "entity": "Bastion Breaker",
+      "entity_type": "item",
+      "verdict": "stable",
+      "confidence": "low",
+      "previous": {
+        "win_rate": null,
+        "pick_rate": null,
+        "ban_rate": null,
+        "tier": null
+      },
+      "reason": "More attack damage at a lower price is a small buff, and the item has little play data.",
+      "change_refs": [
+        7,
+        8
+      ],
+      "icon_url": null
+    },
+    {
+      "entity": "Kai'Sa",
+      "entity_type": "champion",
+      "verdict": "fall",
+      "confidence": "high",
+      "previous": {
+        "win_rate": 51.3,
+        "pick_rate": 11.6,
+        "ban_rate": 7.9,
+        "tier": "S"
+      },
+      "reason": "Lower missile damage and higher mana cost hit a popular marksman that was winning above average.",
+      "change_refs": [
+        5,
+        6
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Kaisa.png"
+    }
+  ],
+  "changes": [
+    {
+      "entity": "Azir",
+      "entity_type": "champion",
+      "target": "Q - Conquering Sands",
+      "stat": "Base damage",
+      "old": "60/80/100/120/140",
+      "new": "70/90/110/130/150",
+      "direction": "buff",
+      "source_quote": "Base damage: 60/80/100/120/140 ⇒ 70/90/110/130/150"
+    },
+    {
+      "entity": "Azir",
+      "entity_type": "champion",
+      "target": "Passive - Shurima's Legacy",
+      "stat": "Turret health",
+      "old": "2500",
+      "new": "3000",
+      "direction": "buff",
+      "source_quote": "Turret health: 2500 ⇒ 3000"
+    },
+    {
+      "entity": "Azir",
+      "entity_type": "champion",
+      "target": "W - Arise!",
+      "stat": "Cooldown",
+      "old": "1.5",
+      "new": "1.25",
+      "direction": "adjust",
+      "source_quote": "Cooldown: 1.5 ⇒ 1.25 seconds"
+    },
+    {
+      "entity": "Nunu & Willump",
+      "entity_type": "champion",
+      "target": "Q - Consume",
+      "stat": "Heal",
+      "old": "60/80/100/120/140",
+      "new": "70/95/120/145/170",
+      "direction": "buff",
+      "source_quote": "Heal: 60/80/100/120/140 ⇒ 70/95/120/145/170"
+    },
+    {
+      "entity": "Nunu & Willump",
+      "entity_type": "champion",
+      "target": "E - Snowball Barrage",
+      "stat": "Snowball bonus damage",
+      "old": null,
+      "new": "45",
+      "direction": "buff",
+      "source_quote": "New: snowballs deal 45 bonus damage to monsters"
+    },
+    {
+      "entity": "Kai'Sa",
+      "entity_type": "champion",
+      "target": "Q - Icathian Rain",
+      "stat": "Damage per missile",
+      "old": "40/55/70/85/100",
+      "new": "35/50/65/80/95",
+      "direction": "nerf",
+      "source_quote": "Damage per missile: 40/55/70/85/100 ⇒ 35/50/65/80/95"
+    },
+    {
+      "entity": "Kai'Sa",
+      "entity_type": "champion",
+      "target": "W - Void Seeker",
+      "stat": "Mana cost",
+      "old": "55/60/65/70/75",
+      "new": "60/65/70/75/80",
+      "direction": "nerf",
+      "source_quote": "Mana cost: 55/60/65/70/75 ⇒ 60/65/70/75/80"
+    },
+    {
+      "entity": "Bastion Breaker",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Attack damage",
+      "old": "40",
+      "new": "45",
+      "direction": "buff",
+      "source_quote": "Attack damage: 40 ⇒ 45"
+    },
+    {
+      "entity": "Bastion Breaker",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Build cost",
+      "old": "3100",
+      "new": "2950",
+      "direction": "buff",
+      "source_quote": "Total cost: 3100 ⇒ 2950"
+    }
+  ],
+  "warnings": [
+    "No stats found for 2 entities.",
+    "Tier list source was last updated for patch 26.19."
+  ]
+}

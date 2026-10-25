@@ -1,0 +1,97 @@
+{
+  "game": "lol",
+  "patch": "26.20",
+  "compared_to": "26.19",
+  "generated_at": "2026-10-09T09:00:00Z",
+  "llm": "ollama:qwen3:14b",
+  "headline": "Small tuning for Kai'Sa, Jinx and Wukong.",
+  "themes": [
+    "Marksman tuning"
+  ],
+  "entities": [
+    {
+      "entity": "Kai'Sa",
+      "entity_type": "champion",
+      "verdict": "rise",
+      "confidence": "medium",
+      "previous": {
+        "win_rate": 49.9,
+        "pick_rate": 10.1,
+        "ban_rate": 5.2,
+        "tier": "A"
+      },
+      "reason": "A small attack speed buff for a champion near the average win rate.",
+      "change_refs": [
+        0
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Kaisa.png"
+    },
+    {
+      "entity": "Jinx",
+      "entity_type": "champion",
+      "verdict": "fall",
+      "confidence": "medium",
+      "previous": {
+        "win_rate": 52.0,
+        "pick_rate": 14.0,
+        "ban_rate": 3.1,
+        "tier": "S"
+      },
+      "reason": "A longer trap cooldown trims the lane power of a champion that wins above average.",
+      "change_refs": [
+        1
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Jinx.png"
+    },
+    {
+      "entity": "Wukong",
+      "entity_type": "champion",
+      "verdict": "stable",
+      "confidence": "low",
+      "previous": {
+        "win_rate": 50.2,
+        "pick_rate": 4.4,
+        "ban_rate": 0.9,
+        "tier": "A"
+      },
+      "reason": "A ten point damage change is too small to move the champion.",
+      "change_refs": [
+        2
+      ],
+      "icon_url": null
+    }
+  ],
+  "changes": [
+    {
+      "entity": "Kai'Sa",
+      "entity_type": "champion",
+      "target": "Passive - Second Skin",
+      "stat": "Bonus attack speed",
+      "old": "4%",
+      "new": "5%",
+      "direction": "buff",
+      "source_quote": "Attack speed per stack: 4% ⇒ 5%"
+    },
+    {
+      "entity": "Jinx",
+      "entity_type": "champion",
+      "target": "W - Zap!",
+      "stat": "Cooldown",
+      "old": "8/7/6/5/4",
+      "new": "9/8/7/6/5",
+      "direction": "nerf",
+      "source_quote": "Cooldown: 8/7/6/5/4 ⇒ 9/8/7/6/5"
+    },
+    {
+      "entity": "Wukong",
+      "entity_type": "champion",
+      "target": "E - Nimbus Strike",
+      "stat": "Damage",
+      "old": "80/110/140/170/200",
+      "new": "90/120/150/180/210",
+      "direction": "buff",
+      "source_quote": "Damage: 80/110/140/170/200 ⇒ 90/120/150/180/210"
+    }
+  ],
+  "warnings": []
+}

@@ -1,0 +1,30 @@
+{
+  "games": {
+    "lol": [
+      {
+        "patch": "26.20",
+        "patch_date": "2026-10-08",
+        "headline": "Small tuning for Kai'Sa, Jinx and Wukong.",
+        "buffs": 2,
+        "nerfs": 1,
+        "llm": "ollama:qwen3:14b"
+      },
+      {
+        "patch": "26.21",
+        "patch_date": "2026-10-22",
+        "headline": "Azir and Nunu gain strength while Kai'Sa slows down.",
+        "buffs": 9,
+        "nerfs": 3,
+        "llm": "ollama:qwen3:14b"
+      },
+      {
+        "patch": "26.19",
+        "patch_date": null,
+        "headline": "Season midpoint cleanup.",
+        "buffs": 5,
+        "nerfs": 4,
+        "llm": "anthropic:claude-sonnet-4"
+      }
+    ]
+  }
+}
