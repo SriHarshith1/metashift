@@ -112,3 +112,16 @@ def test_extract_prompt_mentions_types_and_glossary(root):
     assert "champion, item, rune, system" in prompt
     assert "AD: attack damage." in prompt
     assert "* Q Damage: 40 ⇒ 50" in prompt
+
+
+def test_extract_accepts_readable_quote_for_a_bold_markdown_line(root):
+    raw = "## Champions\n\n### Azir\n\n* **Mana Growth**: 40/Level ⇒ **50/Level**\n"
+    c = change(
+        "Azir", "Mana Growth: 40/Level ⇒ 50/Level", stat="Mana Growth", old="40/Level", new="50/Level"
+    )
+    log = run_extract(ctx(root, FakeLLM([json_of(c)]), raw=raw, entities={"Azir": "champion"}))
+    assert [k.entity for k in read_changes()] == ["Azir"]
+    assert log.warnings == []
+    half = change("Azir", "Mana Growth: 40/Level ⇒ **50/Level**", stat="Mana Growth")
+    run_extract(ctx(root, FakeLLM([json_of(half)]), raw=raw, entities={"Azir": "champion"}))
+    assert [k.entity for k in read_changes()] == ["Azir"]

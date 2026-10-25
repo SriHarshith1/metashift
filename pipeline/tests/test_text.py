@@ -64,3 +64,12 @@ def test_split_sections_hard_splits_a_single_huge_line():
     chunks = split_sections("## H\n" + "z" * 2500, 1000)
     assert all(len(c) <= 1000 for c in chunks)
     assert sum(c.count("z") for c in chunks) == 2500
+
+
+def test_strip_markdown_removes_emphasis_bullets_and_escapes():
+    from metashift.core.text import strip_markdown
+
+    assert strip_markdown("* **Mana Growth**: 40/Level ⇒ **50/Level**") == (
+        "Mana Growth: 40/Level ⇒ 50/Level"
+    )
+    assert strip_markdown("- __a__ \\*b\\* _c_\n+ d") == "a b c d"

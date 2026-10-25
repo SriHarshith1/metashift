@@ -9,9 +9,9 @@ from metashift.core.prompts import extract_prompt
 from metashift.core.stages.context import StageContext
 from metashift.core.text import (
     count_change_lines,
-    normalize_ws,
     resolve_entity,
     split_sections,
+    strip_markdown,
 )
 
 COVERAGE_RATIO = 0.8
@@ -34,7 +34,7 @@ def run_extract(ctx: StageContext) -> StageLog:
     if ctx.llm is None:
         raise MetashiftError("stage 'extract' needs an LLM. Choose one with --llm")
     known = ctx.adapter.entities(ctx.patch)
-    raw_ws = normalize_ws(raw)
+    raw_plain = strip_markdown(raw)
     warnings: list[str] = []
     changes: list[Change] = []
     total_retries = 0
@@ -51,7 +51,7 @@ def run_extract(ctx: StageContext) -> StageLog:
                 change = change.model_copy(
                     update={"entity": resolved, "entity_type": known[resolved]}
                 )
-            if normalize_ws(change.source_quote) not in raw_ws:
+            if strip_markdown(change.source_quote) not in raw_plain:
                 warnings.append(
                     f"quote not found in notes, dropped: {change.entity} {change.stat}"
                 )

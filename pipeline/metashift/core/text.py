@@ -11,6 +11,18 @@ def normalize_ws(s: str) -> str:
     return " ".join(s.split())
 
 
+_BULLET = re.compile(r"^[ \t]*[-*+][ \t]+", re.MULTILINE)
+_ESCAPE = re.compile(r"\\(.)")
+_EMPHASIS = re.compile(r"[*_]")
+
+
+def strip_markdown(s: str) -> str:
+    """Plain, whitespace-normalised text of a markdown fragment, for quote comparison."""
+    s = _BULLET.sub("", s)
+    s = _ESCAPE.sub(r"\1", s)
+    return normalize_ws(_EMPHASIS.sub("", s))
+
+
 def name_key(s: str) -> str:
     return _NON_ALNUM.sub("", s.lower())
 
