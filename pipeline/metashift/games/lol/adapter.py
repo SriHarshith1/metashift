@@ -10,9 +10,10 @@ from metashift.core.models import EntityStats
 from metashift.games.base import StatsUnavailable
 
 DDRAGON = "https://ddragon.leagueoflegends.com"
-NOTES_URL = "https://www.leagueoflegends.com/en-us/news/game-updates/patch-{yy}-{n}-notes/"
-# Verified against the live site: the article body is the element with this id, and the
-# publish date is the first <time datetime> in the page header (div.metadata).
+NOTES_BASE = "https://www.leagueoflegends.com/en-us/news/game-updates/"
+# Verified against the live site (patches 26.3 and 26.21 share the same structure): the
+# article body is the element with this id, and the publish date is the first
+# <time datetime> in the page header (div.metadata).
 ARTICLE_SELECTOR = "#patch-notes-container"
 DATE_SELECTOR = "div.metadata time[datetime]"
 MIN_DDRAGON_MAJOR = 15
@@ -94,11 +95,12 @@ class LolAdapter:
 
     def _notes_urls(self, patch: str) -> list[str]:
         yy, n = patch.split(".")
-        urls = [NOTES_URL.format(yy=yy, n=n)]
+        # Riot's URL scheme changed over time: 26.4+ use a "league-of-legends-" prefix,
+        # 26.1-26.3 do not, and 2025 patches zero-pad the minor number (patch-25-04-notes).
+        slugs = [f"league-of-legends-patch-{yy}-{n}-notes", f"patch-{yy}-{n}-notes"]
         if len(n) == 1:
-            # Riot zero-pads minor numbers for some seasons (patch-25-04-notes).
-            urls.append(NOTES_URL.format(yy=yy, n=f"0{n}"))
-        return urls
+            slugs.append(f"patch-{yy}-0{n}-notes")
+        return [f"{NOTES_BASE}{slug}/" for slug in slugs]
 
     def fetch_notes(self, patch: str) -> str:
         if not re.fullmatch(r"\d+\.\d+", patch):
@@ -112,7 +114,8 @@ class LolAdapter:
                 raise MetashiftError(f"{url} returned HTTP {response.status_code}")
             return response.text
         raise MetashiftError(
-            f"patch notes not found at {urls[0]}. Save the page and pass --notes-file"
+            f"patch notes not found at {' or '.join(urls)}. "
+            "Save the page and pass --notes-file"
         )
 
     def notes_to_markdown(self, html: str) -> str:

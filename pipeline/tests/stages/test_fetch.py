@@ -27,7 +27,7 @@ def test_fetch_writes_raw_md_from_notes_file(root, tmp_path):
     log = run_fetch(StageContext("lol", "26.21", adapter, None, notes_file=html))
     assert "⇒" in (root / "data/lol/26.21/raw.md").read_text(encoding="utf-8")
     assert log.stage == "fetch"
-    assert read_run_log("lol", "26.21").patch_date == date(2026, 2, 3)
+    assert read_run_log("lol", "26.21").patch_date == date(2026, 10, 20)
 
 
 def test_fetch_downloads_when_no_notes_file(root):

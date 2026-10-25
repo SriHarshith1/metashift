@@ -100,33 +100,66 @@ def test_notes_to_markdown_fails_clearly_on_other_layout(adapter):
 
 
 def test_patch_date_reads_publish_date(adapter):
-    assert adapter.patch_date(fixture("patch-notes.html")) == date(2026, 2, 3)
+    assert adapter.patch_date(fixture("patch-notes.html")) == date(2026, 10, 20)
 
 
 def test_patch_date_is_none_without_time_tag(adapter):
     assert adapter.patch_date("<html><body>hi</body></html>") is None
 
 
-def test_fetch_notes_uses_notes_url_pattern():
+BASE = "https://www.leagueoflegends.com/en-us/news/game-updates/"
+
+
+def recording_adapter(ok_slug: str | None) -> tuple[LolAdapter, list[str]]:
     seen: list[str] = []
 
     def handler(request: httpx.Request) -> httpx.Response:
         seen.append(str(request.url))
-        return httpx.Response(200, text="<html>ok</html>")
+        if ok_slug is not None and request.url.path.endswith(f"/{ok_slug}/"):
+            return httpx.Response(200, text=f"page:{ok_slug}")
+        return httpx.Response(404)
 
-    adapter = LolAdapter(http=httpx.Client(transport=httpx.MockTransport(handler)))
-    assert adapter.fetch_notes("26.21") == "<html>ok</html>"
-    assert seen == ["https://www.leagueoflegends.com/en-us/news/game-updates/patch-26-21-notes/"]
+    return LolAdapter(http=httpx.Client(transport=httpx.MockTransport(handler))), seen
+
+
+def test_fetch_notes_tries_prefixed_url_first():
+    adapter, seen = recording_adapter("league-of-legends-patch-26-21-notes")
+    assert adapter.fetch_notes("26.21") == "page:league-of-legends-patch-26-21-notes"
+    assert seen == [BASE + "league-of-legends-patch-26-21-notes/"]
+
+
+def test_fetch_notes_falls_back_to_unprefixed_url():
+    adapter, seen = recording_adapter("patch-26-3-notes")
+    assert adapter.fetch_notes("26.3") == "page:patch-26-3-notes"
+    assert seen == [
+        BASE + "league-of-legends-patch-26-3-notes/",
+        BASE + "patch-26-3-notes/",
+    ]
 
 
 def test_fetch_notes_falls_back_to_zero_padded_url():
-    def handler(request: httpx.Request) -> httpx.Response:
-        if request.url.path.endswith("patch-25-04-notes/"):
-            return httpx.Response(200, text="padded")
-        return httpx.Response(404)
+    adapter, seen = recording_adapter("patch-25-04-notes")
+    assert adapter.fetch_notes("25.4") == "page:patch-25-04-notes"
+    assert seen[-1] == BASE + "patch-25-04-notes/" and len(seen) == 3
 
-    adapter = LolAdapter(http=httpx.Client(transport=httpx.MockTransport(handler)))
-    assert adapter.fetch_notes("25.4") == "padded"
+
+def test_fetch_notes_all_404_lists_urls_and_suggests_notes_file():
+    adapter, seen = recording_adapter(None)
+    with pytest.raises(MetashiftError, match="--notes-file") as err:
+        adapter.fetch_notes("25.4")
+    for url in seen:
+        assert url in str(err.value)
+    assert len(seen) == 3
+
+
+def test_fetch_notes_does_not_zero_pad_two_digit_minor():
+    adapter, seen = recording_adapter(None)
+    with pytest.raises(MetashiftError):
+        adapter.fetch_notes("26.21")
+    assert seen == [
+        BASE + "league-of-legends-patch-26-21-notes/",
+        BASE + "patch-26-21-notes/",
+    ]
 
 
 def test_fetch_stats_is_not_implemented_yet(adapter):
