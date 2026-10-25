@@ -5,3 +5,4 @@ web/dist/
 .pytest_cache/
 .DS_Store
 .superpowers/
+data/**/extract-cache/

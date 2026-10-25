@@ -39,13 +39,30 @@ class FakeLLM:
         return schema.model_validate_json(next(self._responses))
 
 
+def _ollama_timeout() -> float:
+    raw = os.environ.get("METASHIFT_OLLAMA_TIMEOUT")
+    if not raw:
+        return OLLAMA_TIMEOUT_S
+    try:
+        value = float(raw)
+    except ValueError:
+        value = 0
+    if value <= 0:
+        raise MetashiftError(
+            f"METASHIFT_OLLAMA_TIMEOUT must be a positive number of seconds, got '{raw}'"
+        )
+    return int(value) if value == int(value) else value
+
+
 class OllamaClient:
     def __init__(
         self,
         model: str | None = None,
         host: str | None = None,
         transport: httpx.BaseTransport | None = None,
+        timeout: float | None = None,
     ) -> None:
+        self.timeout = timeout if timeout is not None else _ollama_timeout()
         self.model = model or os.environ.get("METASHIFT_OLLAMA_MODEL") or DEFAULT_OLLAMA_MODEL
         self.host = (host or os.environ.get("OLLAMA_HOST") or DEFAULT_OLLAMA_HOST).rstrip("/")
         self.name = f"ollama:{self.model}"
@@ -56,11 +73,12 @@ class OllamaClient:
             "model": self.model,
             "messages": [{"role": "user", "content": prompt}],
             "stream": False,
+            "think": False,
             "format": schema.model_json_schema(),
             "options": {"temperature": 0, "num_ctx": 32768},
         }
         try:
-            with httpx.Client(transport=self._transport, timeout=OLLAMA_TIMEOUT_S) as http:
+            with httpx.Client(transport=self._transport, timeout=self.timeout) as http:
                 response = http.post(f"{self.host}/api/chat", json=payload)
                 response.raise_for_status()
         except httpx.ConnectError as err:
@@ -73,7 +91,8 @@ class OllamaClient:
             ) from err
         except httpx.TimeoutException as err:
             raise MetashiftError(
-                f"Ollama did not answer within {OLLAMA_TIMEOUT_S} s at {self.host}"
+                f"Ollama timed out after {self.timeout:g}s on {self.model}. "
+                "Raise METASHIFT_OLLAMA_TIMEOUT or use a smaller model"
             ) from err
         content = response.json()["message"]["content"]
         return schema.model_validate_json(content)

@@ -1,4 +1,7 @@
+import hashlib
+import sys
 import time
+from pathlib import Path
 
 from metashift.core.errors import MetashiftError
 from metashift.core.io import record_stage, write_model
@@ -15,6 +18,20 @@ from metashift.core.text import (
 )
 
 COVERAGE_RATIO = 0.8
+CACHE_DIR = "extract-cache"
+
+
+def _cache_path(ctx: StageContext, chunk: str) -> Path:
+    assert ctx.llm is not None
+    digest = hashlib.sha256((ctx.llm.name + chunk).encode("utf-8")).hexdigest()[:16]
+    return ctx.dir / CACHE_DIR / f"{digest}.json"
+
+
+def _cached_draft(path: Path) -> ExtractDraft | None:
+    try:
+        return ExtractDraft.model_validate_json(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):  # missing or broken: ask the model again
+        return None
 
 
 def _read_raw(ctx: StageContext) -> str:
@@ -38,10 +55,18 @@ def run_extract(ctx: StageContext) -> StageLog:
     warnings: list[str] = []
     changes: list[Change] = []
     total_retries = 0
-    for chunk in split_sections(raw):
-        prompt = extract_prompt(chunk, ctx.adapter.glossary, ctx.adapter.entity_types)
-        draft, retries, _ = complete_with_retry(ctx.llm, prompt, ExtractDraft)
-        total_retries += retries
+    chunks = split_sections(raw)
+    for number, chunk in enumerate(chunks, start=1):
+        cache = _cache_path(ctx, chunk)
+        draft = _cached_draft(cache)
+        if draft is not None:
+            print(f"extract chunk {number}/{len(chunks)} (cached)", file=sys.stderr, flush=True)
+        else:
+            print(f"extract chunk {number}/{len(chunks)}", file=sys.stderr, flush=True)
+            prompt = extract_prompt(chunk, ctx.adapter.glossary, ctx.adapter.entity_types)
+            draft, retries, _ = complete_with_retry(ctx.llm, prompt, ExtractDraft)
+            total_retries += retries
+            write_model(cache, draft)
         for change in draft.changes:
             if change.entity_type != "system":
                 resolved = resolve_entity(change.entity, known)

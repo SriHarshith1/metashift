@@ -125,3 +125,52 @@ def test_extract_accepts_readable_quote_for_a_bold_markdown_line(root):
     half = change("Azir", "Mana Growth: 40/Level ⇒ **50/Level**", stat="Mana Growth")
     run_extract(ctx(root, FakeLLM([json_of(half)]), raw=raw, entities={"Azir": "champion"}))
     assert [k.entity for k in read_changes()] == ["Azir"]
+
+
+def two_chunks(monkeypatch):
+    import metashift.core.stages.extract as extract_mod
+
+    monkeypatch.setattr(extract_mod, "split_sections", lambda md: ["part one ⇒", "part two ⇒"])
+
+
+def test_extract_caches_finished_chunks_so_a_rerun_skips_them(root, monkeypatch):
+    two_chunks(monkeypatch)
+    first = change("Ahri", "Q Damage: 40 ⇒ 50")
+    second = change("Kai'Sa", "W Cooldown: 20 → 18", stat="W Cooldown")
+    failing = FakeLLM([json_of(first), "nope", "nope", "nope"])
+    with pytest.raises(MetashiftError, match="invalid JSON"):
+        run_extract(ctx(root, failing))
+    assert len(list((root / "data/lol/26.21/extract-cache").glob("*.json"))) == 1
+    assert not (root / "data/lol/26.21/changes.json").exists()
+
+    rerun = FakeLLM([json_of(second)])
+    log = run_extract(ctx(root, rerun))
+    assert len(rerun.prompts) == 1 and "part two" in rerun.prompts[0]
+    assert [c.entity for c in read_changes()] == ["Ahri", "Kai'Sa"]
+    assert log.retries == 0
+
+    again = FakeLLM([])
+    run_extract(ctx(root, again))
+    assert again.prompts == []
+    assert [c.entity for c in read_changes()] == ["Ahri", "Kai'Sa"]
+
+
+def test_extract_cache_is_per_llm_name_and_ignores_broken_files(root, monkeypatch):
+    two_chunks(monkeypatch)
+    one = change("Ahri", "Q Damage: 40 ⇒ 50")
+    run_extract(ctx(root, FakeLLM([json_of(one), json_of()], name="a")))
+    other = FakeLLM([json_of(one), json_of()], name="b")
+    run_extract(ctx(root, other))
+    assert len(other.prompts) == 2  # a different model never reuses the cache
+    for f in (root / "data/lol/26.21/extract-cache").glob("*.json"):
+        f.write_text("{broken", encoding="utf-8")
+    redo = FakeLLM([json_of(one), json_of()], name="a")
+    run_extract(ctx(root, redo))
+    assert len(redo.prompts) == 2
+
+
+def test_extract_prints_chunk_progress_to_stderr(root, monkeypatch, capsys):
+    two_chunks(monkeypatch)
+    run_extract(ctx(root, FakeLLM([json_of(), json_of()])))
+    err = capsys.readouterr().err
+    assert "extract chunk 1/2" in err and "extract chunk 2/2" in err

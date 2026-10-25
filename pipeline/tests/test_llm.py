@@ -94,6 +94,32 @@ def test_ollama_sends_schema_and_parses_content():
     assert body["messages"] == [{"role": "user", "content": "P"}]
     assert body["stream"] is False
     assert body["options"] == {"temperature": 0, "num_ctx": 32768}
+    assert body["think"] is False
+
+
+def test_ollama_timeout_becomes_a_clear_error_with_the_env_hint(monkeypatch):
+    monkeypatch.setenv("METASHIFT_OLLAMA_TIMEOUT", "5")
+    seen = {}
+
+    def slow(request: httpx.Request) -> httpx.Response:
+        seen["timeout"] = request.extensions["timeout"]
+        raise httpx.ReadTimeout("slow", request=request)
+
+    llm = OllamaClient(model="m", host="http://x", transport=httpx.MockTransport(slow))
+    with pytest.raises(MetashiftError) as err:
+        llm.complete_json("P", ExtractDraft)
+    assert str(err.value) == (
+        "Ollama timed out after 5s on m. Raise METASHIFT_OLLAMA_TIMEOUT or use a smaller model"
+    )
+    assert seen["timeout"]["read"] == 5
+
+
+def test_ollama_timeout_defaults_to_600_and_rejects_bad_env(monkeypatch):
+    monkeypatch.delenv("METASHIFT_OLLAMA_TIMEOUT", raising=False)
+    assert OllamaClient().timeout == 600
+    monkeypatch.setenv("METASHIFT_OLLAMA_TIMEOUT", "soon")
+    with pytest.raises(MetashiftError, match="METASHIFT_OLLAMA_TIMEOUT"):
+        OllamaClient()
 
 
 def test_ollama_reads_defaults_from_env(monkeypatch):
