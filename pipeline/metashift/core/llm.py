@@ -1,0 +1,160 @@
+import os
+from collections.abc import Callable
+from typing import Literal, Protocol, TypeVar
+
+import anthropic
+import httpx
+from pydantic import BaseModel, ValidationError
+
+from metashift.core.errors import MetashiftError
+
+T = TypeVar("T", bound=BaseModel)
+
+DEFAULT_OLLAMA_MODEL = "qwen3:14b"
+DEFAULT_OLLAMA_HOST = "http://localhost:11434"
+DEFAULT_CLAUDE_MODEL = "claude-sonnet-5-5"
+OLLAMA_TIMEOUT_S = 600
+
+
+class LLM(Protocol):
+    name: str
+
+    def complete_json(self, prompt: str, schema: type[T]) -> T:
+        """Return a validated `schema` instance.
+
+        Raises pydantic.ValidationError (or ValueError for non-JSON) on bad output.
+        """
+        ...
+
+
+class FakeLLM:
+    def __init__(self, responses: list[str], name: str = "fake") -> None:
+        self.name = name
+        self._responses = iter(responses)
+        self.prompts: list[str] = []
+
+    def complete_json(self, prompt: str, schema: type[T]) -> T:
+        self.prompts.append(prompt)
+        return schema.model_validate_json(next(self._responses))
+
+
+class OllamaClient:
+    def __init__(
+        self,
+        model: str | None = None,
+        host: str | None = None,
+        transport: httpx.BaseTransport | None = None,
+    ) -> None:
+        self.model = model or os.environ.get("METASHIFT_OLLAMA_MODEL") or DEFAULT_OLLAMA_MODEL
+        self.host = (host or os.environ.get("OLLAMA_HOST") or DEFAULT_OLLAMA_HOST).rstrip("/")
+        self.name = f"ollama:{self.model}"
+        self._transport = transport
+
+    def complete_json(self, prompt: str, schema: type[T]) -> T:
+        payload = {
+            "model": self.model,
+            "messages": [{"role": "user", "content": prompt}],
+            "stream": False,
+            "format": schema.model_json_schema(),
+            "options": {"temperature": 0, "num_ctx": 32768},
+        }
+        try:
+            with httpx.Client(transport=self._transport, timeout=OLLAMA_TIMEOUT_S) as http:
+                response = http.post(f"{self.host}/api/chat", json=payload)
+                response.raise_for_status()
+        except httpx.ConnectError as err:
+            raise MetashiftError(
+                f"Ollama is not reachable at {self.host}. Start it with: ollama serve"
+            ) from err
+        except httpx.HTTPStatusError as err:
+            raise MetashiftError(
+                f"Ollama returned HTTP {err.response.status_code}: {err.response.text[:200]}"
+            ) from err
+        except httpx.TimeoutException as err:
+            raise MetashiftError(
+                f"Ollama did not answer within {OLLAMA_TIMEOUT_S} s at {self.host}"
+            ) from err
+        content = response.json()["message"]["content"]
+        return schema.model_validate_json(content)
+
+
+class ClaudeClient:
+    def __init__(
+        self,
+        model: str | None = None,
+        client: anthropic.Anthropic | None = None,
+    ) -> None:
+        self.model = model or os.environ.get("METASHIFT_CLAUDE_MODEL") or DEFAULT_CLAUDE_MODEL
+        self.name = f"claude:{self.model}"
+        if client is None:
+            if not os.environ.get("ANTHROPIC_API_KEY"):
+                raise MetashiftError("ANTHROPIC_API_KEY is not set")
+            client = anthropic.Anthropic()
+        self._client = client
+
+    def complete_json(self, prompt: str, schema: type[T]) -> T:
+        try:
+            message = self._client.messages.create(
+                model=self.model,
+                max_tokens=8192,
+                tools=[
+                    {
+                        "name": "emit",
+                        "description": "Return the result",
+                        "input_schema": schema.model_json_schema(),
+                    }
+                ],
+                tool_choice={"type": "tool", "name": "emit"},
+                messages=[{"role": "user", "content": prompt}],
+            )
+        except anthropic.APIError as err:
+            raise MetashiftError(f"Claude API error: {err}") from err
+        for block in message.content:
+            if block.type == "tool_use":
+                return schema.model_validate(block.input)
+        raise ValueError("Claude returned no tool_use block")
+
+
+def make_llm(kind: Literal["ollama", "claude"]) -> LLM:
+    if kind == "ollama":
+        return OllamaClient()
+    if kind == "claude":
+        return ClaudeClient()
+    raise MetashiftError(f"unknown LLM kind: {kind}")
+
+
+def complete_with_retry(
+    llm: LLM,
+    prompt: str,
+    schema: type[T],
+    check: Callable[[T], list[str]] | None = None,
+    max_retries: int = 2,
+) -> tuple[T, int, list[str]]:
+    retries = 0
+    current = prompt
+    while True:
+        try:
+            result = llm.complete_json(current, schema)
+        except (ValidationError, ValueError) as err:
+            if retries >= max_retries:
+                raise MetashiftError(
+                    f"{llm.name} returned invalid JSON after {max_retries} retries: {err}"
+                ) from err
+            retries += 1
+            current = (
+                prompt
+                + "\n\nYour previous answer was invalid:\n"
+                + str(err)
+                + "\nReturn corrected JSON only."
+            )
+            continue
+        problems = check(result) if check else []
+        if not problems or retries >= max_retries:
+            return result, retries, problems
+        retries += 1
+        current = (
+            prompt
+            + "\n\nYour previous answer was invalid:\n"
+            + "\n".join(problems)
+            + "\nReturn corrected JSON only."
+        )
