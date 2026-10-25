@@ -16,14 +16,6 @@
         "buffs": 9,
         "nerfs": 3,
         "llm": "ollama:qwen3:14b"
-      },
-      {
-        "patch": "26.19",
-        "patch_date": null,
-        "headline": "Season midpoint cleanup.",
-        "buffs": 5,
-        "nerfs": 4,
-        "llm": "anthropic:claude-sonnet-4"
       }
     ]
   }

@@ -1,3 +1,5 @@
+import type { PreviousStats } from "./types/generated";
+
 const DASH = "—";
 
 /** "40 → 45". A missing side shows a dash, never the word null. */
@@ -19,4 +21,12 @@ export function comparePatchesDesc(a: string, b: string): number {
     if (diff !== 0 && !Number.isNaN(diff)) return diff;
   }
   return b.localeCompare(a);
+}
+
+/** "tier S · 51.3% win rate", or "no stats" when there is nothing to show. */
+export function formatPrevious(previous: PreviousStats | null | undefined): string {
+  if (!previous || (previous.tier === null && previous.win_rate === null)) return "no stats";
+  const tier = previous.tier === null ? "no tier" : `tier ${previous.tier}`;
+  const win = previous.win_rate === null ? "no win rate" : `${formatRate(previous.win_rate)} win rate`;
+  return `${tier} · ${win}`;
 }

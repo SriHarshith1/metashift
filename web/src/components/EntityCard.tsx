@@ -1,5 +1,5 @@
 import { useId, useState } from "react";
-import { formatChange, formatRate } from "../format";
+import { formatChange, formatPrevious } from "../format";
 import type { Change, EntityVerdict } from "../types/generated";
 import { VERDICT_BY_KIND } from "../verdict";
 
@@ -11,13 +11,6 @@ type Props = {
 };
 
 const DIRECTION_MARK = { buff: "▲", nerf: "▼", adjust: "●" } as const;
-
-function previousText(previous: EntityVerdict["previous"]): string {
-  if (!previous || (previous.tier === null && previous.win_rate === null)) return "no stats";
-  const tier = previous.tier === null ? "no tier" : `tier ${previous.tier}`;
-  const win = previous.win_rate === null ? "no win rate" : `${formatRate(previous.win_rate)} win rate`;
-  return `${tier} · ${win}`;
-}
 
 export default function EntityCard({ verdict, changes, game = "lol" }: Props) {
   const [open, setOpen] = useState(false);
@@ -44,7 +37,7 @@ export default function EntityCard({ verdict, changes, game = "lol" }: Props) {
       <dl className="card-facts">
         <div>
           <dt>Previous patch</dt>
-          <dd>{previousText(verdict.previous)}</dd>
+          <dd>{formatPrevious(verdict.previous)}</dd>
         </div>
         <div>
           <dt>Confidence</dt>

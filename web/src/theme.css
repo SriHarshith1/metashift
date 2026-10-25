@@ -187,7 +187,7 @@ select {
 }
 
 .footer {
-  padding: 20px var(--gutter);
+  padding: 20px 0;
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 0.8rem;
@@ -196,6 +196,7 @@ select {
 .footer p {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 var(--gutter);
 }
 
 .status {
@@ -641,5 +642,101 @@ select {
   .patch-link,
   .card-toggle {
     transition: border-color 0.15s ease;
+  }
+}
+
+/* Entity history */
+.crumb {
+  margin: 0 0 8px;
+  font-size: 0.85rem;
+}
+
+.history-sub {
+  margin: 4px 0 20px;
+  color: var(--muted);
+  text-transform: capitalize;
+}
+
+.history-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.history-row {
+  --col: var(--muted);
+  --col-bg: var(--surface-2);
+  display: grid;
+  grid-template-columns: 8rem 1fr 14rem;
+  gap: 8px 20px;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--col);
+  border-radius: var(--radius);
+}
+
+.history-row[data-verdict="rise"] {
+  --col: var(--rise);
+  --col-bg: var(--rise-bg);
+}
+
+.history-row[data-verdict="stable"] {
+  --col: var(--stable);
+  --col-bg: var(--stable-bg);
+}
+
+.history-row[data-verdict="fall"] {
+  --col: var(--fall);
+  --col-bg: var(--fall-bg);
+}
+
+.history-patch {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.history-changes {
+  display: grid;
+  gap: 4px;
+  font-size: 0.9rem;
+}
+
+.history-changes p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.history-changes [data-direction="buff"] .change-values {
+  color: var(--rise);
+}
+
+.history-changes [data-direction="nerf"] .change-values {
+  color: var(--fall);
+}
+
+.history-changes .change-values {
+  font: 600 0.9rem var(--font-data);
+}
+
+.history-verdict {
+  display: grid;
+  gap: 2px;
+  justify-items: start;
+  font-size: 0.85rem;
+}
+
+.history-prev {
+  color: var(--muted);
+  font-family: var(--font-data);
+  font-size: 0.78rem;
+}
+
+@media (max-width: 639px) {
+  .history-row {
+    grid-template-columns: 1fr;
   }
 }
