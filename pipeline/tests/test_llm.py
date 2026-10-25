@@ -129,11 +129,28 @@ def test_claude_forces_tool_use_and_validates_input():
     assert llm.complete_json("P", ExtractDraft) == ExtractDraft(changes=[])
     kw = calls[0]
     assert kw["model"] == "claude-x"
-    assert kw["max_tokens"] == 8192
+    assert kw["max_tokens"] == 16000
     assert kw["tool_choice"] == {"type": "tool", "name": "emit"}
     assert kw["tools"][0]["name"] == "emit"
     assert kw["tools"][0]["input_schema"] == ExtractDraft.model_json_schema()
     assert kw["messages"] == [{"role": "user", "content": "P"}]
+
+
+def test_claude_truncated_output_fails_at_once_without_retry():
+    calls = []
+
+    class FakeMessages:
+        def create(self, **kwargs):
+            calls.append(kwargs)
+            return SimpleNamespace(
+                stop_reason="max_tokens",
+                content=[SimpleNamespace(type="tool_use", name="emit", input={})],
+            )
+
+    llm = ClaudeClient(model="claude-x", client=SimpleNamespace(messages=FakeMessages()))
+    with pytest.raises(MetashiftError, match=r"Claude output was cut off at max_tokens \(16000\)"):
+        complete_with_retry(llm, "P", ExtractDraft)
+    assert len(calls) == 1
 
 
 def test_make_llm_selects_client(monkeypatch):

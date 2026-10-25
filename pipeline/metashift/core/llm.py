@@ -14,6 +14,7 @@ DEFAULT_OLLAMA_MODEL = "qwen3:14b"
 DEFAULT_OLLAMA_HOST = "http://localhost:11434"
 DEFAULT_CLAUDE_MODEL = "claude-sonnet-5-5"
 OLLAMA_TIMEOUT_S = 600
+CLAUDE_MAX_TOKENS = 16000
 
 
 class LLM(Protocol):
@@ -96,7 +97,7 @@ class ClaudeClient:
         try:
             message = self._client.messages.create(
                 model=self.model,
-                max_tokens=8192,
+                max_tokens=CLAUDE_MAX_TOKENS,
                 tools=[
                     {
                         "name": "emit",
@@ -109,6 +110,10 @@ class ClaudeClient:
             )
         except anthropic.APIError as err:
             raise MetashiftError(f"Claude API error: {err}") from err
+        if getattr(message, "stop_reason", None) == "max_tokens":
+            raise MetashiftError(
+                f"Claude output was cut off at max_tokens ({CLAUDE_MAX_TOKENS})"
+            )
         for block in message.content:
             if block.type == "tool_use":
                 return schema.model_validate(block.input)
