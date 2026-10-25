@@ -98,3 +98,7 @@ def split_sections(md: str, max_chars: int = 6000) -> list[str]:
         else:
             units.extend(_split_long_section(section, max_chars))
     return _pack(units, max_chars, "\n\n")
+
+
+def patch_sort_key(patch: str) -> tuple[int, ...]:
+    return tuple(int(p) for p in patch.split("."))
