@@ -162,8 +162,8 @@ def test_fetch_notes_does_not_zero_pad_two_digit_minor():
     ]
 
 
-def test_fetch_stats_is_not_implemented_yet(adapter):
-    with pytest.raises(StatsUnavailable):
+def test_fetch_stats_is_unavailable_and_points_to_stats_md(adapter):
+    with pytest.raises(StatsUnavailable, match="lolalytics not used: see STATS.md"):
         adapter.fetch_stats("26.21")
 
 

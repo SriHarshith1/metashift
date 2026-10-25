@@ -179,4 +179,5 @@ class LolAdapter:
     # --- stats --------------------------------------------------------------------
 
     def fetch_stats(self, patch: str) -> list[EntityStats]:
-        raise StatsUnavailable("not implemented")
+        # lolalytics is not used (permission unclear, no stable endpoint): see STATS.md.
+        raise StatsUnavailable("lolalytics not used: see STATS.md")
