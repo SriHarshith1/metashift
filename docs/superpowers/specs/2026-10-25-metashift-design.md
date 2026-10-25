@@ -67,7 +67,7 @@ Each stage reads the files of earlier stages and writes one file to
 
 | # | Stage | Input | Output | LLM |
 |---|---|---|---|---|
-| 1 | fetch | patch notes URL or `--notes-file` | `raw.md` | no |
+| 1 | fetch | patch notes URL or `--notes-file`; keeps only meta sections (`select_sections`) | `raw.md` | no |
 | 2 | extract | `raw.md`, adapter entity list | `changes.json` | yes |
 | 3 | baseline | previous patch stats, last 5 `changes.json` | `baseline.json` | no |
 | 4 | analyze | `changes.json`, `baseline.json` | `report.json` | yes |
@@ -87,6 +87,7 @@ class GameAdapter(Protocol):
     def list_patches(self) -> list[str]: ...    # newest first
     def fetch_notes(self, patch: str) -> str: ...        # returns HTML
     def notes_to_markdown(self, html: str) -> str: ...
+    def select_sections(self, markdown: str) -> tuple[str, list[str]]: ...  # kept, dropped titles
     def entities(self, patch: str) -> dict[str, str]: ...  # name -> entity_type
     def fetch_stats(self, patch: str) -> list[EntityStats]: ...
 ```
@@ -95,6 +96,10 @@ class GameAdapter(Protocol):
 
 - Notes: official patch notes page on leagueoflegends.com.
 - Entities and icons: Riot Data Dragon (free, no API key).
+- Sections (amended 2026-10-25): only Summoner's Rift sections count toward the meta.
+  `select_sections` keeps the H2 sections `Mid-Patch Updates`, `Champions`, `Items`,
+  `Runes`, `Systems` and any title starting with `Summoner's Rift`. Mode sections
+  (Arena, ARAM, Classic, …) are dropped, and fetch adds one warning that names them.
 - Stats: a scraper for lolalytics (all ranks, all roles combined). Its terms are checked
   before the scraper is written. Fallback: `data/lol/<patch>/stats.csv`
   with columns `entity,win_rate,pick_rate,ban_rate,tier` (`tier` may be empty).
@@ -202,7 +207,8 @@ and on read. TypeScript types for the web app are generated from the same models
 ```
 
 - `verdict`: `rise` | `fall` | `stable`. `confidence`: `low` | `medium` | `high`.
-- `change_refs`: indexes into `changes`. The report embeds a copy of the change rows
+- `change_refs`: indexes into `changes`, set by code to every row of that entity
+  (amended 2026-10-25: the LLM no longer supplies them). The report embeds a copy of the change rows
   so the published file is self-contained for the web app.
 - `previous` is copied from the baseline by code, not written by the LLM.
 - `warnings`: collected from all stages (see §6).
