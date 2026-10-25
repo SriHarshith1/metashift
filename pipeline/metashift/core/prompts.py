@@ -1,3 +1,6 @@
+from metashift.core.models import BaselineEntity, BaselineFile, Change
+
+
 def extract_prompt(chunk: str, glossary: str, entity_types: list[str]) -> str:
     types = ", ".join(entity_types)
     return f"""You extract structured balance changes from game patch notes.
@@ -24,3 +27,70 @@ Patch notes excerpt:
 ---
 {chunk}
 ---"""
+
+
+def _rate(label: str, value: float | None) -> str:
+    return f"{label} {value}%" if value is not None else f"{label} unknown"
+
+
+def _stats_line(entity: BaselineEntity | None) -> str:
+    if entity is None or all(
+        v is None for v in (entity.win_rate, entity.pick_rate, entity.ban_rate, entity.tier)
+    ):
+        return "no stats available"
+    parts = [
+        _rate("win rate", entity.win_rate),
+        _rate("pick rate", entity.pick_rate),
+        _rate("ban rate", entity.ban_rate),
+    ]
+    if entity.tier:
+        parts.append(f"tier {entity.tier}")
+    return ", ".join(parts)
+
+
+def analyze_prompt(changes: list[Change], baseline: BaselineFile, glossary: str) -> str:
+    numbered = "\n".join(
+        f"[{i}] {c.entity} — {c.target} {c.stat}: {c.old if c.old is not None else '(none)'}"
+        f" → {c.new if c.new is not None else '(removed)'} ({c.direction})"
+        for i, c in enumerate(changes)
+    )
+    entity_names = list(dict.fromkeys(c.entity for c in changes))
+    blocks: list[str] = []
+    for name in entity_names:
+        entity = baseline.entities.get(name)
+        lines = [f"{name}", f"  stats before this patch: {_stats_line(entity)}"]
+        if entity is not None and entity.history:
+            lines.append("  recent changes:")
+            lines.extend(
+                f"    {h.patch}: {h.direction} ({h.summary})" for h in entity.history
+            )
+        else:
+            lines.append("  recent changes: none in the last 5 patches")
+        blocks.append("\n".join(lines))
+    compared = baseline.stats_patch or "none"
+    return f"""You analyze how a game patch shifts the balance of the game.
+
+Glossary:
+{glossary}
+
+Changes in this patch, numbered by index:
+{numbered}
+
+Stats come from patch {compared}, the patch before this one. Per changed entity:
+{chr(10).join(blocks)}
+
+Return JSON with these keys:
+- headline: one sentence that sums up the shift of the patch.
+- themes: 2 to 4 short phrases for the main themes of the patch.
+- entities: ONE verdict per changed entity listed above, and no other entity. Each verdict has:
+  - entity: the name exactly as written above.
+  - verdict: "rise" when the entity should get stronger, "fall" when weaker, "stable" when the meta position stays the same.
+  - confidence: "low", "medium" or "high".
+  - reason: a short explanation that cites the change, the stats and the trend of earlier patches.
+  - change_refs: the indexes of the changes (the numbers in square brackets) that support the verdict.
+
+Rules:
+- Use only the data above. Do not invent numbers.
+- A near-50% win rate together with a small change usually means "stable".
+- A verdict must fit the changes: do not say "rise" when every change is a nerf, or "fall" when every change is a buff.
+"""
