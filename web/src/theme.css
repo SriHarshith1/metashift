@@ -289,3 +289,357 @@ select {
     text-align: left;
   }
 }
+
+/* Report header */
+.report-head {
+  margin-bottom: 20px;
+}
+
+.report-title {
+  font-size: clamp(1.7rem, 5vw, 2.6rem);
+  text-transform: uppercase;
+}
+
+.report-headline {
+  max-width: 60ch;
+  margin: 8px 0 12px;
+  font-size: 1.15rem;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chips li {
+  padding: 3px 10px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+.report-meta {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font: 0.78rem var(--font-data);
+}
+
+.warnings {
+  margin-bottom: 20px;
+  padding: 10px 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--signal);
+  border-radius: var(--radius);
+}
+
+.warnings summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.warnings ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+  color: var(--muted);
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.filters label {
+  display: grid;
+  gap: 2px;
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.filters select {
+  min-height: 40px;
+  min-width: 150px;
+  padding: 0 10px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--ink);
+  font-size: 0.95rem;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* Board: three columns on wide screens, tabs below 640px */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.tabs {
+  display: none;
+}
+
+.column {
+  display: grid;
+  gap: 12px;
+  padding: 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-top: 5px solid var(--col);
+  border-radius: var(--radius);
+}
+
+.column[data-verdict="rise"],
+.tab[data-verdict="rise"],
+.card[data-verdict="rise"] {
+  --col: var(--rise);
+  --col-bg: var(--rise-bg);
+}
+
+.column[data-verdict="stable"],
+.tab[data-verdict="stable"],
+.card[data-verdict="stable"] {
+  --col: var(--stable);
+  --col-bg: var(--stable-bg);
+}
+
+.column[data-verdict="fall"],
+.tab[data-verdict="fall"],
+.card[data-verdict="fall"] {
+  --col: var(--fall);
+  --col-bg: var(--fall-bg);
+}
+
+.column-head {
+  color: var(--col);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.column-empty {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 639px) {
+  .board {
+    display: block;
+  }
+  .tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .tab {
+    min-height: 44px;
+    padding: 0 6px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-bottom: 4px solid var(--col);
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .tab[aria-selected="true"] {
+    background: var(--col-bg);
+    color: var(--col);
+  }
+  .tab-count {
+    font-family: var(--font-data);
+  }
+  .column[data-active="false"] {
+    display: none;
+  }
+}
+
+/* Cards */
+.card {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--col);
+  border-radius: var(--radius);
+}
+
+.card-head {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.card-icon {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+}
+
+.card-title {
+  min-width: 0;
+}
+
+.card-title h3 {
+  font-size: 1.3rem;
+  overflow-wrap: anywhere;
+}
+
+.card-title a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.card-sub {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  margin: 2px 0 0;
+  font-size: 0.8rem;
+}
+
+.verdict-badge {
+  padding: 0 8px;
+  background: var(--col-bg);
+  border-radius: 999px;
+  color: var(--col);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.card-type {
+  color: var(--muted);
+  text-transform: capitalize;
+}
+
+.card-facts {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  font-size: 0.82rem;
+}
+
+.card-facts > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card-facts dt {
+  color: var(--muted);
+}
+
+.card-facts dd {
+  margin: 0;
+  font-family: var(--font-data);
+  text-align: right;
+}
+
+.confidence::before {
+  content: "";
+  display: inline-block;
+  width: 0.55em;
+  height: 0.55em;
+  margin-right: 0.45em;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+}
+
+.confidence[data-level="medium"]::before {
+  background: linear-gradient(90deg, currentColor 50%, transparent 50%);
+}
+
+.confidence[data-level="high"]::before {
+  background: currentColor;
+}
+
+.card-reason {
+  margin: 0;
+}
+
+.card-toggle {
+  justify-self: start;
+  min-height: 40px;
+  padding: 0 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.change-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.change-list li {
+  padding: 8px 10px;
+  background: var(--surface-2);
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+}
+
+.change-what {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 8px;
+  margin: 0;
+}
+
+.change-target {
+  font-weight: 600;
+}
+
+.change-stat {
+  color: var(--muted);
+}
+
+.change-values {
+  margin: 2px 0;
+  font: 600 0.9rem var(--font-data);
+  overflow-wrap: anywhere;
+}
+
+.change-list li[data-direction="buff"] .change-values {
+  color: var(--rise);
+}
+
+.change-list li[data-direction="nerf"] .change-values {
+  color: var(--fall);
+}
+
+.change-list blockquote {
+  margin: 4px 0 0;
+  padding-left: 10px;
+  border-left: 2px solid var(--line);
+  color: var(--muted);
+  font-size: 0.8rem;
+  overflow-wrap: anywhere;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .patch-link,
+  .card-toggle {
+    transition: border-color 0.15s ease;
+  }
+}
