@@ -55,6 +55,9 @@ class StubAdapter:
     def notes_to_markdown(self, html: str) -> str:
         return self.notes_md if self.notes_md is not None else html
 
+    def select_sections(self, markdown: str) -> tuple[str, list[str]]:
+        return markdown, []
+
     def patch_date(self, html: str) -> date | None:
         return self.published
 

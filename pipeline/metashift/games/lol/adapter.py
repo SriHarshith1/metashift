@@ -26,6 +26,11 @@ AH: ability haste (replaces CDR). MR: magic resist. HP: health points. CC: crowd
 scaling of a stat with AD, AP or HP (for example "60% AP").
 In a change line "A ⇒ B" means the value changed from A to B."""
 
+# Only Summoner's Rift sections count: other modes (ARAM, Arena, Classic, URF, ...) reuse
+# champion names with different numbers and would pollute the Summoner's Rift report.
+KEPT_SECTIONS = {"mid-patch updates", "champions", "items", "runes", "systems"}
+KEPT_SECTION_PREFIX = "summoner's rift"
+
 _VERSION_RE = re.compile(r"^(\d+)\.(\d+)(?:\.\d+)*$")
 
 
@@ -127,6 +132,27 @@ class LolAdapter:
         md = markdownify(str(body), heading_style="ATX", strip=["img", "a"])
         md = re.sub(r"[ \t]+\n", "\n", md)
         return re.sub(r"\n{3,}", "\n\n", md).strip() + "\n"
+
+    def select_sections(self, markdown: str) -> tuple[str, list[str]]:
+        sections: list[tuple[str | None, list[str]]] = [(None, [])]
+        for line in markdown.splitlines(keepends=True):
+            if line.startswith("## "):
+                sections.append((line[3:].strip(), [line]))
+            else:
+                sections[-1][1].append(line)
+        kept: list[str] = []
+        dropped: list[str] = []
+        for title, lines in sections:
+            if title is None:
+                if "".join(lines).strip():
+                    kept.extend(lines)  # text before the first "##" heading
+                continue
+            key = title.replace("\u2019", "'").lower()
+            if key in KEPT_SECTIONS or key.startswith(KEPT_SECTION_PREFIX):
+                kept.extend(lines)
+            else:
+                dropped.append(title)
+        return "".join(kept), dropped
 
     def patch_date(self, html: str) -> date | None:
         soup = BeautifulSoup(html, "html.parser")

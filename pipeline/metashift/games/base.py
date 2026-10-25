@@ -23,6 +23,10 @@ class GameAdapter(Protocol):
 
     def notes_to_markdown(self, html: str) -> str: ...
 
+    def select_sections(self, markdown: str) -> tuple[str, list[str]]:
+        """Keep the sections that are in scope. Returns (kept markdown, dropped titles)."""
+        ...
+
     def patch_date(self, html: str) -> date | None: ...
 
     def entities(self, patch: str) -> dict[str, str]:

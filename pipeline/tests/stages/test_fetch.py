@@ -60,3 +60,23 @@ def test_fetch_warns_when_publish_date_missing(root):
 def test_context_dir_is_the_patch_dir(root):
     ctx = StageContext("lol", "26.21", StubAdapter(), None)
     assert ctx.dir == root / "data" / "lol" / "26.21"
+
+
+def test_fetch_writes_only_kept_sections_and_warns_once(root):
+    class Selecting(StubAdapter):
+        def select_sections(self, markdown):
+            return "## Champions\n* a: 1 ⇒ 2\n", ["Arena", "Classic"]
+
+    log = run_fetch(StageContext("lol", "26.21", Selecting(notes_md="ignored"), None))
+    assert (root / "data/lol/26.21/raw.md").read_text(encoding="utf-8") == "## Champions\n* a: 1 ⇒ 2\n"
+    assert log.warnings == ["skipped sections: Arena, Classic", "publish date not found in patch notes"]
+
+
+def test_fetch_real_notes_skip_other_modes(root, tmp_path):
+    html = tmp_path / "p.html"
+    html.write_text(FIXTURE_HTML, encoding="utf-8")
+    log = run_fetch(StageContext("lol", "26.21", LolAdapter(http=client(404)), None, notes_file=html))
+    raw = (root / "data/lol/26.21/raw.md").read_text(encoding="utf-8")
+    assert "## Arena" not in raw and "### Azir" in raw
+    [warning] = [w for w in log.warnings if w.startswith("skipped sections:")]
+    assert "Arena" in warning and "Classic" in warning and "ARAM: Mayhem" in warning

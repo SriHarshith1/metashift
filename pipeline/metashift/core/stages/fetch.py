@@ -18,7 +18,9 @@ def run_fetch(ctx: StageContext) -> StageLog:
             raise MetashiftError(f"cannot read notes file {ctx.notes_file}: {err}") from err
     else:
         html = ctx.adapter.fetch_notes(ctx.patch)
-    markdown = ctx.adapter.notes_to_markdown(html)
+    markdown, dropped = ctx.adapter.select_sections(ctx.adapter.notes_to_markdown(html))
+    if dropped:
+        warnings.append(f"skipped sections: {', '.join(dropped)}")
     write_text(ctx.dir / "raw.md", markdown)
     published = ctx.adapter.patch_date(html)
     if published is None:

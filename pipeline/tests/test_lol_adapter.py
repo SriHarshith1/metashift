@@ -94,6 +94,33 @@ def test_notes_to_markdown_keeps_change_lines(adapter):
     assert "⇒" in md and "<div" not in md
 
 
+def test_select_sections_keeps_summoners_rift_sections_of_the_real_notes(adapter):
+    md = adapter.notes_to_markdown(fixture("patch-notes.html"))
+    kept, dropped = adapter.select_sections(md)
+    for title in ("## Arena", "## Classic", "## ARAM"):
+        assert title not in kept
+    assert "### Azir" in kept and "### Bastion Breaker" in kept
+    assert "## Champions" in kept and "## Items" in kept and "## Mid-Patch Updates" in kept
+    assert {"Arena", "Classic", "ARAM: Mayhem"} <= set(dropped)
+    assert "Bugfixes & QoL Changes" in dropped and "Patch Highlights" in dropped
+    assert "Champions" not in dropped
+
+
+def test_select_sections_accepts_summoners_rift_prefix_and_curly_apostrophe(adapter):
+    md = (
+        "## Summoner’s Rift Updates\n\n* a: 1 ⇒ 2\n\n## RUNES\n\n* b: 1 ⇒ 2\n\n"
+        "## Systems\n\n* c: 1 ⇒ 2\n\n## URF\n\n* d: 1 ⇒ 2\n"
+    )
+    kept, dropped = adapter.select_sections(md)
+    assert "a: 1" in kept and "b: 1" in kept and "c: 1" in kept and "d: 1" not in kept
+    assert dropped == ["URF"]
+
+
+def test_select_sections_keeps_everything_when_nothing_is_dropped(adapter):
+    md = "## Champions\n\n* a: 1 ⇒ 2\n"
+    assert adapter.select_sections(md) == (md, [])
+
+
 def test_notes_to_markdown_fails_clearly_on_other_layout(adapter):
     with pytest.raises(MetashiftError, match="layout changed"):
         adapter.notes_to_markdown("<html><body>hi</body></html>")
