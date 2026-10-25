@@ -2,13 +2,14 @@
   "game": "lol",
   "patch": "26.21",
   "compared_to": "26.20",
-  "generated_at": "2026-10-25T11:23:03.286773Z",
+  "generated_at": "2026-10-25T13:34:18.946281Z",
   "llm": "ollama:gemma4:31b-cloud",
-  "headline": "This patch focuses on diversifying ADC power levels and adjusting tank/bruiser utility while refining several mage kits.",
+  "headline": "A mixed patch focusing on adjusting marksman power and refining utility for tanks and mages, while significantly curbing Lee Sin and Locke.",
   "themes": [
-    "ADC redistribution",
-    "Mana and resource tuning",
-    "Itemization shifts for lethality and AP"
+    "Marksman redistribution",
+    "Utility and reliability buffs",
+    "Lethality item tuning",
+    "Resource and cooldown adjustments"
   ],
   "entities": [
     {
@@ -17,7 +18,7 @@
       "verdict": "rise",
       "confidence": "medium",
       "previous": null,
-      "reason": "Significant buffs to Passive bonus AD/AP (1.1 to 1.4 per 10% AS) and Q minimum damage (230 to 250), alongside increased Q scaling and channel damage.",
+      "reason": "Passive bonus AD/AP on kill increased from 1.1 to 1.4 per 10% AS, and Q max damage scaling increased significantly (up to 136% bonus AD).",
       "change_refs": [
         0,
         1,
@@ -28,19 +29,23 @@
         43,
         44
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Varus.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Varus.png",
+      "impact": "Increased snowball potential and higher burst damage from Q, improving his late-game carry capacity.",
+      "build_shift": "Higher bonus AD scaling on Q and AP scaling on W may encourage more hybrid or high-AD builds."
     },
     {
       "entity": "Azir",
       "entity_type": "champion",
       "verdict": "rise",
-      "confidence": "medium",
+      "confidence": "low",
       "previous": null,
-      "reason": "Buff to base mana growth from 40 to 50 per level.",
+      "reason": "Base Mana Growth increased from 40 to 50 per level.",
       "change_refs": [
         2
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Azir.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Azir.png",
+      "impact": "Improved sustain in lane and during long team fights due to higher mana pools.",
+      "build_shift": null
     },
     {
       "entity": "Caitlyn",
@@ -48,12 +53,14 @@
       "verdict": "stable",
       "confidence": "medium",
       "previous": null,
-      "reason": "Nerfs to Headshot scaling (1% to 0.8% per Crit Chance/Damage) are offset by buffs to Q base damage (up to 210 to 230).",
+      "reason": "Headshot damage scaling with crit is nerfed (1% to 0.8%), but Q base damage is buffed across all ranks.",
       "change_refs": [
         3,
         4
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Caitlyn.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Caitlyn.png",
+      "impact": "Early game poke is stronger, but her late-game critical strike burst is reduced.",
+      "build_shift": "The nerf to crit scaling may make lethality builds more attractive compared to full crit."
     },
     {
       "entity": "Darius",
@@ -61,24 +68,28 @@
       "verdict": "rise",
       "confidence": "medium",
       "previous": null,
-      "reason": "Buff to Q cooldown at max rank, reducing it from 5s to 4s.",
+      "reason": "Q cooldown at max rank reduced from 5s to 4s.",
       "change_refs": [
         5
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Darius.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Darius.png",
+      "impact": "Higher frequency of healing and damage in skirmishes, improving his sustain and pressure.",
+      "build_shift": null
     },
     {
       "entity": "Jinx",
       "entity_type": "champion",
       "verdict": "fall",
-      "confidence": "high",
+      "confidence": "medium",
       "previous": null,
-      "reason": "Nerfs to base AD growth (3.25 to 3/Level) and base health (630 to 610).",
+      "reason": "Base AD growth reduced from 3.25 to 3/Level and base health reduced by 20.",
       "change_refs": [
         6,
         7
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Jinx.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Jinx.png",
+      "impact": "Slightly weaker laning phase and reduced survivability against burst.",
+      "build_shift": null
     },
     {
       "entity": "Lee Sin",
@@ -86,21 +97,23 @@
       "verdict": "fall",
       "confidence": "high",
       "previous": null,
-      "reason": "Nerfs to W cooldown (7s to 8s) and R base damage (up to 625 to 550).",
+      "reason": "W cooldown increased from 7s to 8s, and R base damage reduced (e.g., 625 to 550 at max rank).",
       "change_refs": [
         8,
         9,
         10
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/LeeSin.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/LeeSin.png",
+      "impact": "Reduced mobility and lower burst damage on his ultimate, weakening his assassination and playmaking potential.",
+      "build_shift": null
     },
     {
       "entity": "Locke",
       "entity_type": "champion",
       "verdict": "fall",
-      "confidence": "medium",
+      "confidence": "high",
       "previous": null,
-      "reason": "Multiple nerfs to mana growth (70 to 60), W mana cost (up to 70 to 80), and W grey health store (40 to 20), despite a buff to E damage.",
+      "reason": "Mana growth nerfed, W mana cost increased, and W grey health store reduced (40-200 to 20-200).",
       "change_refs": [
         11,
         12,
@@ -109,33 +122,39 @@
         15,
         16
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Locke.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Locke.png",
+      "impact": "Significant loss in sustain and durability during W active, making him more vulnerable while diving.",
+      "build_shift": "Increased AP scaling on W and E may push him toward more AP-heavy builds to compensate for lost base stats."
     },
     {
       "entity": "Miss Fortune",
       "entity_type": "champion",
       "verdict": "rise",
-      "confidence": "high",
+      "confidence": "medium",
       "previous": null,
-      "reason": "Buffs to E base damage (up to 190 to 210) and R critical strike damage (130% to 145% base).",
+      "reason": "E base damage increased and R critical strike damage increased from 130% to 145% (+0.3% to +0.45% per 1% bonus crit).",
       "change_refs": [
         17,
         18
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/MissFortune.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/MissFortune.png",
+      "impact": "Stronger area-of-effect poke and significantly higher teamfight damage during her ultimate.",
+      "build_shift": "The buff to R crit scaling increases the value of bonus critical strike damage items."
     },
     {
       "entity": "Nidalee",
       "entity_type": "champion",
       "verdict": "fall",
-      "confidence": "high",
+      "confidence": "medium",
       "previous": null,
-      "reason": "Nerfs to W base damage (up to 190 to 170) and E attack speed (up to 70% to 60%).",
+      "reason": "W Pounce base damage reduced and E attack speed bonus reduced (e.g., 70% to 60% at max rank).",
       "change_refs": [
         19,
         20
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Nidalee.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Nidalee.png",
+      "impact": "Lower burst damage on jumps and reduced DPS during her cougar form.",
+      "build_shift": null
     },
     {
       "entity": "Nunu & Willump",
@@ -143,24 +162,28 @@
       "verdict": "rise",
       "confidence": "medium",
       "previous": null,
-      "reason": "Buff to R maximum damage (up to 1275 to 1450).",
+      "reason": "R maximum damage increased (e.g., 1275 to 1450 at max rank).",
       "change_refs": [
         21
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Nunu.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Nunu.png",
+      "impact": "Increased burst potential in teamfights, making his ultimate a more lethal threat.",
+      "build_shift": null
     },
     {
       "entity": "Orianna",
       "entity_type": "champion",
       "verdict": "rise",
-      "confidence": "medium",
+      "confidence": "low",
       "previous": null,
-      "reason": "Buffs to AP ratios on Q (55% to 60%) and W (80% to 85%).",
+      "reason": "AP ratios on Q (55% to 60%) and W (80% to 85%) increased.",
       "change_refs": [
         22,
         23
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Orianna.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Orianna.png",
+      "impact": "Slightly higher damage output in both poke and area control.",
+      "build_shift": null
     },
     {
       "entity": "Qiyana",
@@ -168,24 +191,28 @@
       "verdict": "fall",
       "confidence": "medium",
       "previous": null,
-      "reason": "Nerf to Q base damage (up to 200 to 190).",
+      "reason": "Q base damage reduced by 10 across all ranks.",
       "change_refs": [
         24
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Qiyana.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Qiyana.png",
+      "impact": "Reduced early-to-mid game burst damage, making her trades slightly less oppressive.",
+      "build_shift": null
     },
     {
       "entity": "Rammus",
       "entity_type": "champion",
       "verdict": "fall",
-      "confidence": "high",
+      "confidence": "medium",
       "previous": null,
-      "reason": "Nerfs to W bonus Armor (up to 60% to 50%) and Magic Resistance (up to 60% to 50%).",
+      "reason": "W bonus Armor and MR scaling reduced from 60% to 50%.",
       "change_refs": [
         25,
         26
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Rammus.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Rammus.png",
+      "impact": "Lower overall tankiness when using his defensive curl, reducing his effectiveness against heavy attackers.",
+      "build_shift": null
     },
     {
       "entity": "Ryze",
@@ -193,13 +220,15 @@
       "verdict": "rise",
       "confidence": "medium",
       "previous": null,
-      "reason": "Buffs to Q move speed (up to 44% to 50%) and W AP ratio (60% to 70%), offsetting a slight early Q damage adjust.",
+      "reason": "Q move speed buffed and W AP ratio increased from 60% to 70%.",
       "change_refs": [
         27,
         28,
         29
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Ryze.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Ryze.png",
+      "impact": "Better mobility and higher burst damage on his root, improving his skirmishing.",
+      "build_shift": null
     },
     {
       "entity": "Sion",
@@ -207,12 +236,14 @@
       "verdict": "rise",
       "confidence": "medium",
       "previous": null,
-      "reason": "Buffs to base health growth (87 to 95/Level) and R damage increase (up to 166.67% to 200%).",
+      "reason": "Base health growth increased from 87 to 95/Level and R damage increase buffed to 200%.",
       "change_refs": [
         30,
         31
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Sion.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Sion.png",
+      "impact": "Higher overall durability and significantly more damage on his ultimate charge.",
+      "build_shift": null
     },
     {
       "entity": "Taliyah",
@@ -220,12 +251,14 @@
       "verdict": "rise",
       "confidence": "medium",
       "previous": null,
-      "reason": "Buffs to E base damage (up to 240 to 250), E AP ratio (60% to 70%), and E detonation damage.",
+      "reason": "E base damage and AP ratio increased (60% to 70% AP).",
       "change_refs": [
         32,
         33
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Taliyah.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Taliyah.png",
+      "impact": "Stronger zone control and higher damage from her minefield detonations.",
+      "build_shift": null
     },
     {
       "entity": "Taric",
@@ -233,13 +266,15 @@
       "verdict": "rise",
       "confidence": "medium",
       "previous": null,
-      "reason": "Quality of life buffs allowing Q, E, and R to fire while allies are untargetable.",
+      "reason": "Q, E, and R can now successfully fire even when allies are untargetable.",
       "change_refs": [
         34,
         35,
         36
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Taric.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Taric.png",
+      "impact": "Improved reliability of his kit in complex teamfights, ensuring his saves and stuns aren't wasted.",
+      "build_shift": null
     },
     {
       "entity": "Tristana",
@@ -247,11 +282,13 @@
       "verdict": "fall",
       "confidence": "medium",
       "previous": null,
-      "reason": "Nerf to Q attack speed at early and mid ranks (60/75/90/105% to 40/60/80/100%).",
+      "reason": "Q attack speed bonus reduced in early ranks (e.g., 60% to 40% at rank 1).",
       "change_refs": [
         37
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Tristana.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Tristana.png",
+      "impact": "Weaker early-game burst and trading power during her Q active.",
+      "build_shift": null
     },
     {
       "entity": "Twisted Fate",
@@ -259,23 +296,27 @@
       "verdict": "rise",
       "confidence": "low",
       "previous": null,
-      "reason": "Buff to R now revealing untargetable units.",
+      "reason": "R now reveals untargetable units.",
       "change_refs": [
         38
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/TwistedFate.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/TwistedFate.png",
+      "impact": "Better utility and information gathering, allowing him to track targets through stealth or untargetability.",
+      "build_shift": null
     },
     {
       "entity": "Vel'Koz",
       "entity_type": "champion",
       "verdict": "rise",
-      "confidence": "medium",
+      "confidence": "low",
       "previous": null,
-      "reason": "Buff to Passive base damage (up to 180 to 205) and AP ratio (60% to 65%).",
+      "reason": "Passive damage increased (180 to 205 base, 60% to 65% AP).",
       "change_refs": [
         45
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Velkoz.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Velkoz.png",
+      "impact": "Slightly higher true damage burst from his passive detonation.",
+      "build_shift": null
     },
     {
       "entity": "Viktor",
@@ -283,12 +324,14 @@
       "verdict": "fall",
       "confidence": "medium",
       "previous": null,
-      "reason": "Nerfs to base move speed (335 to 330) and Q shield base (up to 140 to 130) and AP ratio (25% to 20%).",
+      "reason": "Base move speed reduced from 335 to 330 and Q shield reduced (40-140 to 30-130).",
       "change_refs": [
         46,
         47
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Viktor.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Viktor.png",
+      "impact": "Reduced mobility and lower survivability during trades due to a weaker shield.",
+      "build_shift": null
     },
     {
       "entity": "Wukong",
@@ -296,12 +339,14 @@
       "verdict": "stable",
       "confidence": "medium",
       "previous": null,
-      "reason": "Buff to base health regeneration (3.5 to 5.5) is balanced by a nerf to Passive armor per stack (6 to 4.5 at early levels).",
+      "reason": "Base health regen buffed, but passive armor per stack reduced (6-10 to 4.5-10).",
       "change_refs": [
         48,
         49
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/MonkeyKing.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/MonkeyKing.png",
+      "impact": "Better sustain outside of combat, but slightly less tanky during extended fights.",
+      "build_shift": null
     },
     {
       "entity": "Xin Zhao",
@@ -309,50 +354,58 @@
       "verdict": "rise",
       "confidence": "medium",
       "previous": null,
-      "reason": "Buffs to Q bonus AD ratio (40% to 45%) and E attack speed scaling (1% per 5% to 1% per 4% bonus AS).",
+      "reason": "Q bonus AD ratio increased to 45% and E attack speed scaling improved (5% to 4% bonus AS required).",
       "change_refs": [
         50,
         51
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/XinZhao.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/XinZhao.png",
+      "impact": "Higher damage on his Q and faster attack speed ramp-up, improving his dueling.",
+      "build_shift": null
     },
     {
       "entity": "Yone",
       "entity_type": "champion",
       "verdict": "fall",
-      "confidence": "medium",
+      "confidence": "low",
       "previous": null,
-      "reason": "Nerf to Q AD ratio (110% to 105%).",
+      "reason": "Q AD ratio reduced from 110% to 105%.",
       "change_refs": [
         52
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Yone.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Yone.png",
+      "impact": "Slightly lower damage on his primary poke and engage tool.",
+      "build_shift": null
     },
     {
       "entity": "Zyra",
       "entity_type": "champion",
       "verdict": "rise",
-      "confidence": "medium",
+      "confidence": "low",
       "previous": null,
-      "reason": "Buff to W seed ammo cooldown (up to 12s to 11.5s at mid ranks).",
+      "reason": "W seed ammo cooldown reduced (e.g., 18s to 16s at rank 1).",
       "change_refs": [
         53
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Zyra.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Zyra.png",
+      "impact": "More frequent plant placement, improving her zone control and DPS.",
+      "build_shift": null
     },
     {
       "entity": "Bastionbreaker",
       "entity_type": "item",
-      "verdict": "fall",
+      "verdict": "stable",
       "confidence": "medium",
       "previous": null,
-      "reason": "Nerfs to Lethality (22 to 18) and Shaped Charge base damage, despite Sabotage becoming infinite.",
+      "reason": "Lethality and Shaped Charge damage nerfed, but Sabotage duration is now infinite.",
       "change_refs": [
         54,
         55,
         56
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/item/2520.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/item/2520.png",
+      "impact": "Lower immediate burst damage, but significantly higher value for objective taking over the course of a game.",
+      "build_shift": "The infinite Sabotage makes it a more consistent choice for siege-heavy games."
     },
     {
       "entity": "Dawncore",
@@ -360,23 +413,27 @@
       "verdict": "rise",
       "confidence": "medium",
       "previous": null,
-      "reason": "Buff to AP per 100% base mana regeneration (10 to 15).",
+      "reason": "AP per 100% Base Mana Regeneration increased from 10 to 15.",
       "change_refs": [
         57
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/item/226621.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/item/326621.png",
+      "impact": "Higher AP output for mana-heavy mages, increasing their scaling.",
+      "build_shift": "Increases the value of mana regeneration stats on champions who build this item."
     },
     {
       "entity": "Gluttonous Greaves",
       "entity_type": "item",
       "verdict": "fall",
-      "confidence": "high",
+      "confidence": "medium",
       "previous": null,
-      "reason": "Increase in total cost from 1000g to 1100g.",
+      "reason": "Total cost increased from 1000g to 1100g.",
       "change_refs": [
         58
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/item/223008.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/item/3008.png",
+      "impact": "Slightly slower early game power spike due to increased cost.",
+      "build_shift": null
     },
     {
       "entity": "Hubris",
@@ -384,12 +441,14 @@
       "verdict": "stable",
       "confidence": "medium",
       "previous": null,
-      "reason": "Adjustments to base AD and stack AD splitting between Melee and Ranged users.",
+      "reason": "Base and stack AD adjusted to differentiate between Melee (15 base / 3 stack) and Ranged (10 base / 2 stack).",
       "change_refs": [
         59,
         60
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/item/126697.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/item/6697.png",
+      "impact": "Ranged champions gain less AD from the item, while melee champions maintain or slightly increase their power.",
+      "build_shift": "Melee assassins/fighters may prioritize this more than ranged marksmen now."
     }
   ],
   "changes": [
@@ -1006,5 +1065,71 @@
   ],
   "warnings": [
     "skipped sections: Patch Highlights, Replay Download Limits, ARAM: Mayhem, Classic, Arena, Mythic Shop Update, Minimum System Requirements, Bugfixes & QoL Changes, Upcoming Skins & Chromas"
+  ],
+  "ripples": [
+    {
+      "title": "Mana-heavy mages gain",
+      "explanation": "Dawncore's AP buff and Azir's mana growth increase the power of mages with high mana pools.",
+      "entities": [
+        {
+          "entity": "Dawncore",
+          "entity_type": "item",
+          "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/item/326621.png"
+        },
+        {
+          "entity": "Azir",
+          "entity_type": "champion",
+          "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Azir.png"
+        },
+        {
+          "entity": "Ryze",
+          "entity_type": "champion",
+          "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Ryze.png"
+        }
+      ]
+    },
+    {
+      "title": "Lethality shift for Marksmen",
+      "explanation": "Caitlyn's crit nerf and Hubris's ranged AD nerf may push marksmen toward different lethality paths or items.",
+      "entities": [
+        {
+          "entity": "Caitlyn",
+          "entity_type": "champion",
+          "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Caitlyn.png"
+        },
+        {
+          "entity": "Hubris",
+          "entity_type": "item",
+          "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/item/6697.png"
+        }
+      ]
+    },
+    {
+      "title": "Jungle power shift",
+      "explanation": "Lee Sin's significant nerfs to cooldowns and burst damage open the door for other fighters like Xin Zhao to dominate the jungle.",
+      "entities": [
+        {
+          "entity": "Lee Sin",
+          "entity_type": "champion",
+          "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/LeeSin.png"
+        },
+        {
+          "entity": "Xin Zhao",
+          "entity_type": "champion",
+          "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/XinZhao.png"
+        }
+      ]
+    },
+    {
+      "title": "Objective control buff",
+      "explanation": "Bastionbreaker's infinite Sabotage duration makes it much stronger for taking towers and epic monsters throughout the game.",
+      "entities": [
+        {
+          "entity": "Bastionbreaker",
+          "entity_type": "item",
+          "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/item/2520.png"
+        }
+      ]
+    }
   ]
 }

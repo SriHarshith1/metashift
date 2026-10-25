@@ -4,7 +4,7 @@
       {
         "patch": "26.21",
         "patch_date": "2026-10-20",
-        "headline": "This patch focuses on diversifying ADC power levels and adjusting tank/bruiser utility while refining several mage kits.",
+        "headline": "A mixed patch focusing on adjusting marksman power and refining utility for tanks and mages, while significantly curbing Lee Sin and Locke.",
         "buffs": 29,
         "nerfs": 22,
         "llm": "ollama:gemma4:31b-cloud"
@@ -12,7 +12,7 @@
       {
         "patch": "26.20",
         "patch_date": "2026-10-06",
-        "headline": "A diverse patch focusing on strengthening several mid-to-late game carries and tanks while curbing the power of Yunara and specific ADC items.",
+        "headline": "A diverse patch focusing on strengthening several mid-to-late game carries and tanks while trimming the power of specific marksman tools.",
         "buffs": 19,
         "nerfs": 14,
         "llm": "ollama:gemma4:31b-cloud"
@@ -20,7 +20,7 @@
       {
         "patch": "26.19",
         "patch_date": "2026-09-22",
-        "headline": "A widespread series of buffs to diverse roles, paired with targeted nerfs to specific powerhouses like Nasus and Ryze.",
+        "headline": "A widespread buffing cycle for diverse roles, paired with targeted nerfs to high-impact utility and scaling champions.",
         "buffs": 29,
         "nerfs": 8,
         "llm": "ollama:gemma4:31b-cloud"
@@ -28,7 +28,7 @@
       {
         "patch": "26.18",
         "patch_date": "2026-09-09",
-        "headline": "The patch focuses on shifting AP carries toward higher scaling while curbing the dominance of certain utility and burst champions.",
+        "headline": "The patch shifts power toward AP assassins and on-hit fighters while curbing the dominance of control mages and high-mobility marksmen.",
         "buffs": 13,
         "nerfs": 14,
         "llm": "ollama:gemma4:31b-cloud"
@@ -36,7 +36,7 @@
       {
         "patch": "26.17",
         "patch_date": "2026-08-25",
-        "headline": "This patch focuses on empowering several carry champions while curbing the dominance of Vayne and high-sustain bruisers.",
+        "headline": "The patch focuses on empowering high-mobility skirmishers and mages while curbing the dominance of late-game hyper-carries and sustain tanks.",
         "buffs": 14,
         "nerfs": 15,
         "llm": "ollama:gemma4:31b-cloud"
@@ -44,7 +44,7 @@
       {
         "patch": "26.16",
         "patch_date": "2026-08-11",
-        "headline": "This patch focuses on strengthening several skirmishers and AD items while adjusting jungle and support economy and scaling.",
+        "headline": "This patch provides significant buffs to several fighters and mages while adjusting the efficiency of sustain and jungle clearing.",
         "buffs": 28,
         "nerfs": 10,
         "llm": "ollama:gemma4:31b-cloud"

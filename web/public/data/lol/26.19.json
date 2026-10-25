@@ -2,13 +2,13 @@
   "game": "lol",
   "patch": "26.19",
   "compared_to": "26.18",
-  "generated_at": "2026-10-25T11:22:51.415418Z",
+  "generated_at": "2026-10-25T13:33:13.252627Z",
   "llm": "ollama:gemma4:31b-cloud",
-  "headline": "A widespread series of buffs to diverse roles, paired with targeted nerfs to specific powerhouses like Nasus and Ryze.",
+  "headline": "A widespread buffing cycle for diverse roles, paired with targeted nerfs to high-impact utility and scaling champions.",
   "themes": [
-    "General champion power creep",
-    "Top lane mobility and sustain buffs",
-    "Targeted scaling nerfs"
+    "General power creep for fighters and marksmen",
+    "Reduced utility for top-lane control",
+    "Scaling adjustments for mages"
   ],
   "entities": [
     {
@@ -17,12 +17,14 @@
       "verdict": "rise",
       "confidence": "high",
       "previous": null,
-      "reason": "Received buffs to W cooldown (20-12s to 18-12s) and E health heal ratio (1.1% to 1.3% per 100 bonus health).",
+      "reason": "W cooldown is reduced (e.g., 20s to 18s at rank 1) and E heal ratio increased from 1.1% to 1.3% per 100 bonus health.",
       "change_refs": [
         0,
         1
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Aatrox.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Aatrox.png",
+      "impact": "Increased sustain and more frequent crowd control improve his survival and fight duration.",
+      "build_shift": "Higher bonus health items now provide more value due to the E heal buff."
     },
     {
       "entity": "Aphelios",
@@ -30,7 +32,7 @@
       "verdict": "rise",
       "confidence": "high",
       "previous": null,
-      "reason": "Significant buffs across multiple weapons, including Calibrum base damage, Severum healing, Gravitum slow decay, Infernum cooldown, and Crescendum damage.",
+      "reason": "Buffs across multiple weapons: Calibrum base damage increased, Severum healing increased (up to 20%), Gravitum slow decay improved to 15%, and Infernum cooldown reduced by 1s.",
       "change_refs": [
         2,
         3,
@@ -38,20 +40,24 @@
         5,
         6
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Aphelios.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Aphelios.png",
+      "impact": "Overall increase in damage output, sustain, and utility across all weapon rotations.",
+      "build_shift": null
     },
     {
       "entity": "Aurora",
       "entity_type": "champion",
       "verdict": "rise",
-      "confidence": "high",
+      "confidence": "medium",
       "previous": null,
-      "reason": "Buffs to E base damage (70-230 to 80-240) and R rift duration (1.75-3.25s to 2.25-3.25s).",
+      "reason": "E base damage increased by 10 across all ranks and R rift duration increased at early ranks (1.75s to 2.25s).",
       "change_refs": [
         7,
         8
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Aurora.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Aurora.png",
+      "impact": "Stronger poke in lane and improved zoning/trapping capability in team fights.",
+      "build_shift": null
     },
     {
       "entity": "Draven",
@@ -59,24 +65,28 @@
       "verdict": "rise",
       "confidence": "medium",
       "previous": null,
-      "reason": "Small increase to base Attack Damage from 62 to 64.",
+      "reason": "Base Attack Damage increased from 62 to 64.",
       "change_refs": [
         9
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Draven.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Draven.png",
+      "impact": "Slightly stronger early game laning and burst potential.",
+      "build_shift": null
     },
     {
       "entity": "Elise",
       "entity_type": "champion",
       "verdict": "rise",
-      "confidence": "high",
+      "confidence": "medium",
       "previous": null,
-      "reason": "Buffs to passive on-hit magic damage (12-42 to 14-44) and W bonus attack speed (60-120% to 70-130%).",
+      "reason": "Passive on-hit magic damage increased by 2 and W bonus attack speed increased by 10% across all ranks.",
       "change_refs": [
         10,
         11
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Elise.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Elise.png",
+      "impact": "Improved jungle clear and higher burst damage in spider form.",
+      "build_shift": null
     },
     {
       "entity": "Fiora",
@@ -84,14 +94,16 @@
       "verdict": "rise",
       "confidence": "high",
       "previous": null,
-      "reason": "Buffs to health growth (99 to 105) and significant increases to R heal range and healing values.",
+      "reason": "Health growth increased (99 to 105) and R heal range (550 to 600) and scaling (300% to 350% bonus AD) increased.",
       "change_refs": [
         12,
         13,
         14,
         15
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Fiora.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Fiora.png",
+      "impact": "Better survival in lane and significantly higher sustain during ultimate-driven duels.",
+      "build_shift": "Increased AD scaling on R makes high-AD builds even more potent for healing."
     },
     {
       "entity": "Kha'Zix",
@@ -99,13 +111,15 @@
       "verdict": "rise",
       "confidence": "high",
       "previous": null,
-      "reason": "Buffs to passive damage (17-136 to 22-141), W evolved slow duration (2s to 2.25s), and E evolved range bonus (+200 to +300).",
+      "reason": "Passive damage increased (17-136 to 22-141), W evolved slow duration increased to 2.25s, and E evolved range bonus increased to +300.",
       "change_refs": [
         16,
         17,
         18
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Khazix.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Khazix.png",
+      "impact": "Higher burst damage and significantly improved mobility and engagement range.",
+      "build_shift": null
     },
     {
       "entity": "Lillia",
@@ -113,25 +127,29 @@
       "verdict": "rise",
       "confidence": "medium",
       "previous": null,
-      "reason": "Buffs to base armor (22 to 24) and R sleep duration (2s to 2.5s).",
+      "reason": "Base armor increased to 24 and R sleep duration increased from 2s to 2.5s.",
       "change_refs": [
         19,
         20
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Lillia.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Lillia.png",
+      "impact": "Slightly better early survival and more impactful team fight CC.",
+      "build_shift": null
     },
     {
       "entity": "Lucian",
       "entity_type": "champion",
-      "verdict": "rise",
+      "verdict": "stable",
       "confidence": "medium",
       "previous": null,
-      "reason": "Despite a nerf to passive on-hit damage (15+20% AD to 5+15% AD), he received a significant buff to Q base damage (80-220 to 90-250).",
+      "reason": "Passive on-hit damage nerfed (15+20% AD to 5+15% AD), but Q base damage increased by 10-30 across ranks.",
       "change_refs": [
         21,
         22
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Lucian.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Lucian.png",
+      "impact": "Loss of passive proc damage is offset by higher base ability damage, shifting his power from autos to spells.",
+      "build_shift": null
     },
     {
       "entity": "Master Yi",
@@ -139,11 +157,13 @@
       "verdict": "rise",
       "confidence": "high",
       "previous": null,
-      "reason": "Buff to Q cooldown refund on hit, changing from a scaling value to a flat 1 second.",
+      "reason": "Q cooldown refund on hit changed from a scaling value to a flat 1 second.",
       "change_refs": [
         23
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/MasterYi.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/MasterYi.png",
+      "impact": "More consistent and potentially faster Q resets, increasing his mobility and DPS in fights.",
+      "build_shift": "Reduced reliance on Ability Haste for Q resets."
     },
     {
       "entity": "Nasus",
@@ -151,11 +171,13 @@
       "verdict": "fall",
       "confidence": "high",
       "previous": null,
-      "reason": "Nerf to Q bonus damage across all ranks (40-120 to 30-110).",
+      "reason": "Q bonus damage reduced by 10 across all ranks (40-120 to 30-110).",
       "change_refs": [
         24
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Nasus.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Nasus.png",
+      "impact": "Slower damage scaling and lower burst per hit, weakening his late-game dominance.",
+      "build_shift": null
     },
     {
       "entity": "Nocturne",
@@ -163,11 +185,13 @@
       "verdict": "fall",
       "confidence": "high",
       "previous": null,
-      "reason": "Significant increase to R cooldown (140-90s to 160-100s).",
+      "reason": "R cooldown increased by 20 seconds across all ranks (140/115/90 to 160/130/100).",
       "change_refs": [
         25
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Nocturne.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Nocturne.png",
+      "impact": "Reduced frequency of global pressure and engage potential.",
+      "build_shift": null
     },
     {
       "entity": "Poppy",
@@ -175,11 +199,13 @@
       "verdict": "fall",
       "confidence": "medium",
       "previous": null,
-      "reason": "Nerf to Q maximum health cap for minions and monsters (85-225 to 70-210).",
+      "reason": "Q maximum health cap for minions/monsters reduced by 15 across all ranks.",
       "change_refs": [
         26
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Poppy.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Poppy.png",
+      "impact": "Slower jungle clear and slightly less efficient wave clear.",
+      "build_shift": null
     },
     {
       "entity": "Rumble",
@@ -187,12 +213,14 @@
       "verdict": "stable",
       "confidence": "medium",
       "previous": null,
-      "reason": "Mixed changes: nerf to passive overheat attack speed (50-130% to 30-100%) but a buff to passive monster cap (65-150 to 90-175).",
+      "reason": "Passive overheat AS nerfed (50-130% to 30-100%), but passive monster cap buffed (65-150 to 90-175).",
       "change_refs": [
         27,
         28
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Rumble.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Rumble.png",
+      "impact": "Lower burst damage during overheat, but improved jungle clearing speed.",
+      "build_shift": null
     },
     {
       "entity": "Ryze",
@@ -200,13 +228,15 @@
       "verdict": "fall",
       "confidence": "high",
       "previous": null,
-      "reason": "Despite a small armor growth buff, he received nerfs to Q bonus damage (25-100% to 15-90%) and increased E mana costs.",
+      "reason": "Q bonus damage reduced (e.g., 100% to 90% at max rank) and E mana cost increased by 5 across all ranks.",
       "change_refs": [
         29,
         30,
         31
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Ryze.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Ryze.png",
+      "impact": "Lower burst damage and higher resource consumption, reducing his sustain in long fights.",
+      "build_shift": null
     },
     {
       "entity": "Vi",
@@ -214,12 +244,14 @@
       "verdict": "fall",
       "confidence": "medium",
       "previous": null,
-      "reason": "Nerf to passive shield (12% to 10% Max HP) and a slight reduction in early base AD.",
+      "reason": "Passive shield reduced from 12% to 10% Max HP and base AD adjusted (63+3.5 to 61+3.9).",
       "change_refs": [
         32,
         33
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Vi.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Vi.png",
+      "impact": "Reduced burst survival and slightly lower early-game damage.",
+      "build_shift": null
     },
     {
       "entity": "Volibear",
@@ -227,12 +259,14 @@
       "verdict": "rise",
       "confidence": "high",
       "previous": null,
-      "reason": "Buffs to passive attack speed per stack (3% to 4% per 100 AP) and addition of 20% bonus AD to passive on-hit damage.",
+      "reason": "Passive AS per stack AP ratio increased (3% to 4% per 100 AP) and Passive on-hit damage now gains 20% bonus AD.",
       "change_refs": [
         34,
         35
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Volibear.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Volibear.png",
+      "impact": "Increased damage output and attack speed, especially when building hybrid or AP items.",
+      "build_shift": "Hybrid builds (AD/AP) become more viable due to the new bonus AD scaling on the passive."
     },
     {
       "entity": "Teleport Cooldown",
@@ -240,12 +274,14 @@
       "verdict": "rise",
       "confidence": "high",
       "previous": null,
-      "reason": "Cooldowns reduced for both the free teleport (420s to 390s) and upgraded Unleashed Teleport (330-240s to 300-210s).",
+      "reason": "Free Teleport cooldown reduced to 390s and upgraded Unleashed Teleport cooldown reduced (330-240 to 300-210).",
       "change_refs": [
         36,
         37
       ],
-      "icon_url": null
+      "icon_url": null,
+      "impact": "Top laners can impact the map more frequently and return to lane faster.",
+      "build_shift": null
     }
   ],
   "changes": [
@@ -634,6 +670,46 @@
     "skipped sections: Patch Highlights, Team Voice, Classic, ARAM: Mayhem, Arena, Bugfixes & QoL Changes, Upcoming Skins & Chromas",
     "unknown entity 'World Atlas and Runic Compass' dropped",
     "unknown entity 'World Atlas and Runic Compass' dropped",
-    "no stats for Teleport Cooldown"
+    "no stats for Teleport Cooldown",
+    "ripple 'Top lane map presence increases': unknown entity 'Teleport Cooldown' dropped"
+  ],
+  "ripples": [
+    {
+      "title": "Top lane map presence increases",
+      "explanation": "The reduction in Teleport cooldowns allows top laners to join skirmishes more often.",
+      "entities": []
+    },
+    {
+      "title": "Assassin jungle viability rises",
+      "explanation": "Buffs to Kha'Zix and Elise increase the lethality and clear speed of jungle assassins.",
+      "entities": [
+        {
+          "entity": "Kha'Zix",
+          "entity_type": "champion",
+          "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Khazix.png"
+        },
+        {
+          "entity": "Elise",
+          "entity_type": "champion",
+          "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Elise.png"
+        }
+      ]
+    },
+    {
+      "title": "Tanky fighters gain sustain",
+      "explanation": "Aatrox and Fiora both received significant healing buffs, making them harder to poke down.",
+      "entities": [
+        {
+          "entity": "Aatrox",
+          "entity_type": "champion",
+          "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Aatrox.png"
+        },
+        {
+          "entity": "Fiora",
+          "entity_type": "champion",
+          "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Fiora.png"
+        }
+      ]
+    }
   ]
 }

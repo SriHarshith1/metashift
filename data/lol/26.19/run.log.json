@@ -34,14 +34,16 @@
     {
       "stage": "analyze",
       "llm": "ollama:gemma4:31b-cloud",
-      "duration_s": 6.617751292000321,
+      "duration_s": 28.633540875001927,
       "retries": 0,
-      "warnings": []
+      "warnings": [
+        "ripple 'Top lane map presence increases': unknown entity 'Teleport Cooldown' dropped"
+      ]
     },
     {
       "stage": "publish",
       "llm": null,
-      "duration_s": 0.0025884160004352452,
+      "duration_s": 0.005196916998102097,
       "retries": 0,
       "warnings": []
     }

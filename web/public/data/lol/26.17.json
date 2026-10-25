@@ -2,14 +2,14 @@
   "game": "lol",
   "patch": "26.17",
   "compared_to": "26.16",
-  "generated_at": "2026-10-25T11:40:13.546386Z",
+  "generated_at": "2026-10-25T13:32:24.976743Z",
   "llm": "ollama:gemma4:31b-cloud",
-  "headline": "This patch focuses on empowering several carry champions while curbing the dominance of Vayne and high-sustain bruisers.",
+  "headline": "The patch focuses on empowering high-mobility skirmishers and mages while curbing the dominance of late-game hyper-carries and sustain tanks.",
   "themes": [
-    "Carry empowerment",
-    "Vayne sustainability and damage nerf",
-    "Bruiser item and sustain reduction",
-    "AP scaling adjustments"
+    "Skirmisher power creep",
+    "Hyper-carry scaling nerfs",
+    "Itemization shift for bruisers",
+    "Resource and cooldown optimization"
   ],
   "entities": [
     {
@@ -18,12 +18,14 @@
       "verdict": "rise",
       "confidence": "high",
       "previous": null,
-      "reason": "Received buffs to Q mana cost (35-55 ⇒ 30-50) and W cooldown (22-16s ⇒ 22-14s).",
+      "reason": "Q mana cost reduced (35-55 ⇒ 30-50) and W cooldown reduced (22-16s ⇒ 22-14s).",
       "change_refs": [
         0,
         1
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/AurelionSol.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/AurelionSol.png",
+      "impact": "Improved sustain and mobility allow for more frequent engagements and longer-duration damage in team fights.",
+      "build_shift": null
     },
     {
       "entity": "Cho'Gath",
@@ -31,11 +33,13 @@
       "verdict": "rise",
       "confidence": "medium",
       "previous": null,
-      "reason": "Base damage on E increased by 10 across all ranks (20-100 ⇒ 30-110).",
+      "reason": "E base damage increased by 10 across all ranks (20-100 ⇒ 30-110).",
       "change_refs": [
         2
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Chogath.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Chogath.png",
+      "impact": "Increases early to mid-game trade potential and overall damage output during attacks.",
+      "build_shift": null
     },
     {
       "entity": "Graves",
@@ -43,12 +47,14 @@
       "verdict": "fall",
       "confidence": "high",
       "previous": null,
-      "reason": "Significant nerfs to Q bonus AD ratios on both initial damage (65% ⇒ 55%) and return damage (up to 115% ⇒ 105%).",
+      "reason": "Q initial bonus AD ratio decreased (65% ⇒ 55%) and return bonus AD ratios decreased (55-115% ⇒ 45-105%).",
       "change_refs": [
         3,
         4
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Graves.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Graves.png",
+      "impact": "Significant reduction in burst damage and poke potential from his primary ability.",
+      "build_shift": null
     },
     {
       "entity": "Irelia",
@@ -56,13 +62,15 @@
       "verdict": "rise",
       "confidence": "high",
       "previous": null,
-      "reason": "Buffs to Q AD ratio (70% ⇒ 80%), W AP ratio (7% ⇒ 8%), and R AP ratio (70% ⇒ 100%).",
+      "reason": "Q AD ratio increased (70% ⇒ 80%), W AP ratio for damage reduction increased (7% ⇒ 8%), and R AP ratio increased (70% ⇒ 100%).",
       "change_refs": [
         5,
         6,
         7
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Irelia.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Irelia.png",
+      "impact": "Higher burst damage and improved survival against magic damage, making her a more potent threat in team fights.",
+      "build_shift": "Increased AP ratios on W and R may encourage hybrid builds or more AP-heavy items."
     },
     {
       "entity": "LeBlanc",
@@ -70,14 +78,16 @@
       "verdict": "rise",
       "confidence": "medium",
       "previous": null,
-      "reason": "Buffs to W and RW AP ratios (80% ⇒ 90%) and base AS ratio (0.4 ⇒ 0.625), despite a slight nerf to AS growth.",
+      "reason": "W and RW AP ratios increased (80% ⇒ 90%), and base AS ratio increased (0.4 ⇒ 0.625) despite a nerf to AS growth (2.35% ⇒ 1.5%).",
       "change_refs": [
         8,
         9,
         10,
         11
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Leblanc.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Leblanc.png",
+      "impact": "Higher burst damage from her primary combo and better early-game auto-attack pressure.",
+      "build_shift": null
     },
     {
       "entity": "Nasus",
@@ -85,11 +95,13 @@
       "verdict": "fall",
       "confidence": "medium",
       "previous": null,
-      "reason": "Passive life steal reduced (12/18/24% ⇒ 10/15/20%) following a previous Q stack adjustment in 26.16.",
+      "reason": "Passive Life Steal reduced (12/18/24% ⇒ 10/15/20%).",
       "change_refs": [
         12
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Nasus.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Nasus.png",
+      "impact": "Reduced sustain in extended fights, making him more vulnerable to poke and burst.",
+      "build_shift": null
     },
     {
       "entity": "Nocturne",
@@ -97,25 +109,29 @@
       "verdict": "fall",
       "confidence": "medium",
       "previous": null,
-      "reason": "Base stats reduced: Armor (38 ⇒ 36) and Health (655 ⇒ 640).",
+      "reason": "Base Armor reduced (38 ⇒ 36) and Base Health reduced (655 ⇒ 640).",
       "change_refs": [
         13,
         14
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Nocturne.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Nocturne.png",
+      "impact": "Lowered early-game durability, making him more susceptible to being burst down during his dive.",
+      "build_shift": null
     },
     {
       "entity": "Qiyana",
       "entity_type": "champion",
-      "verdict": "rise",
+      "verdict": "stable",
       "confidence": "medium",
       "previous": null,
-      "reason": "Q damage and bonus AD ratio increased (70-190 + 85% ⇒ 80-200 + 90%), outweighing the monster damage nerf.",
+      "reason": "Q base damage and AD ratio increased (70-190 + 85% ⇒ 80-200 + 90%), but monster damage modifier decreased (175% ⇒ 160%).",
       "change_refs": [
         15,
         16
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Qiyana.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Qiyana.png",
+      "impact": "Stronger champion combat and burst, offset by slower jungle clearing speed.",
+      "build_shift": null
     },
     {
       "entity": "Thresh",
@@ -123,11 +139,13 @@
       "verdict": "fall",
       "confidence": "medium",
       "previous": null,
-      "reason": "E active damage reduced (75-255 ⇒ 65-245) and AP ratio lowered (70% ⇒ 60%).",
+      "reason": "E base damage reduced (75-255 ⇒ 65-245) and AP ratio reduced (70% ⇒ 60%).",
       "change_refs": [
         17
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Thresh.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Thresh.png",
+      "impact": "Reduced damage output on his CC ability, slightly lowering his kill pressure in the early game.",
+      "build_shift": null
     },
     {
       "entity": "Trundle",
@@ -135,11 +153,13 @@
       "verdict": "rise",
       "confidence": "high",
       "previous": null,
-      "reason": "W attack speed increased across most ranks (30/45/60/75/90% ⇒ 30/50/70/90/110%).",
+      "reason": "W Attack Speed bonus increased (30-90% ⇒ 30-110%).",
       "change_refs": [
         18
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Trundle.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Trundle.png",
+      "impact": "Significantly higher damage output and shredding potential while standing in his Frozen Domain.",
+      "build_shift": null
     },
     {
       "entity": "Vayne",
@@ -147,7 +167,7 @@
       "verdict": "fall",
       "confidence": "high",
       "previous": null,
-      "reason": "Significant nerfs to W true damage (10% ⇒ 10% max, but lower early ranks) and minimum damage, plus increased Q mana costs.",
+      "reason": "Q mana cost increased (30 ⇒ 46-30), W max HP true damage reduced (6-10% ⇒ 4-10%), and W minimum damage reduced (50-110 ⇒ 40-100).",
       "change_refs": [
         19,
         20,
@@ -156,7 +176,9 @@
         23,
         24
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Vayne.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Vayne.png",
+      "impact": "Reduced early-game tank shredding and higher resource dependency, weakening her laning and mid-game power.",
+      "build_shift": null
     },
     {
       "entity": "Xerath",
@@ -164,12 +186,14 @@
       "verdict": "fall",
       "confidence": "medium",
       "previous": null,
-      "reason": "Base health reduced (596 ⇒ 575) and Q base damage decreased (75-235 ⇒ 70-230).",
+      "reason": "Base Health reduced (596 ⇒ 575) and Q base damage reduced (75-235 ⇒ 70-230).",
       "change_refs": [
         25,
         26
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Xerath.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Xerath.png",
+      "impact": "Lowered survival and slightly reduced poke damage in the laning phase.",
+      "build_shift": null
     },
     {
       "entity": "Yasuo",
@@ -177,11 +201,13 @@
       "verdict": "rise",
       "confidence": "medium",
       "previous": null,
-      "reason": "Passive critical strike damage reduction improved (-10% ⇒ -5%).",
+      "reason": "Passive Critical Strike Damage Reduction improved (-10% ⇒ -5%).",
       "change_refs": [
         27
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Yasuo.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Yasuo.png",
+      "impact": "Increases his overall damage output when landing critical strikes.",
+      "build_shift": null
     },
     {
       "entity": "Yone",
@@ -189,11 +215,13 @@
       "verdict": "rise",
       "confidence": "medium",
       "previous": null,
-      "reason": "Passive critical strike damage reduction improved (-10% ⇒ -5%).",
+      "reason": "Passive Critical Strike Damage Reduction improved (-10% ⇒ -5%).",
       "change_refs": [
         28
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Yone.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Yone.png",
+      "impact": "Increases his overall damage output when landing critical strikes.",
+      "build_shift": null
     },
     {
       "entity": "Stormrazor",
@@ -201,11 +229,13 @@
       "verdict": "rise",
       "confidence": "medium",
       "previous": null,
-      "reason": "Item attack speed increased (20% ⇒ 25%).",
+      "reason": "Item Attack Speed increased (20% ⇒ 25%).",
       "change_refs": [
         29
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/item/223095.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/item/3095.png",
+      "impact": "Provides more consistent DPS for champions relying on Energized procs.",
+      "build_shift": null
     },
     {
       "entity": "Sundered Sky",
@@ -213,12 +243,14 @@
       "verdict": "fall",
       "confidence": "high",
       "previous": null,
-      "reason": "Health reduced (450 ⇒ 400) and AD reduced (45 ⇒ 40) following a previous adjustment in 26.16.",
+      "reason": "Item Health reduced (450 ⇒ 400) and Attack Damage reduced (45 ⇒ 40).",
       "change_refs": [
         30,
         31
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/item/226610.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/item/6610.png",
+      "impact": "Reduced effectiveness as a core bruiser item, lowering both survival and burst damage.",
+      "build_shift": "Bruisers may look for alternative items to replace the lost stats."
     }
   ],
   "changes": [
@@ -546,5 +578,55 @@
   "warnings": [
     "skipped sections: Patch Highlights, Classic, ARAM: Mayhem, Arena, Updated System Requirements, Bugfixes & QoL Changes, Upcoming Skins & Chromas",
     "no stats for patch 26.16: stats skipped. To add them, create data/lol/26.17/stats.csv with columns entity,win_rate,pick_rate,ban_rate,tier"
+  ],
+  "ripples": [
+    {
+      "title": "Wind-brothers synergy",
+      "explanation": "Both Yasuo and Yone receive a buff to their critical strike damage, increasing the overall threat of the wind-style playstyle.",
+      "entities": [
+        {
+          "entity": "Yasuo",
+          "entity_type": "champion",
+          "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Yasuo.png"
+        },
+        {
+          "entity": "Yone",
+          "entity_type": "champion",
+          "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Yone.png"
+        }
+      ]
+    },
+    {
+      "title": "Bruiser power shift",
+      "explanation": "The nerf to Sundered Sky reduces the general tankiness of bruisers, while Stormrazor's buff favors more aggressive, attack-speed based builds.",
+      "entities": [
+        {
+          "entity": "Sundered Sky",
+          "entity_type": "item",
+          "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/item/6610.png"
+        },
+        {
+          "entity": "Stormrazor",
+          "entity_type": "item",
+          "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/item/3095.png"
+        }
+      ]
+    },
+    {
+      "title": "Tank-shredding slowdown",
+      "explanation": "Vayne's W nerf reduces the efficiency of max HP true damage, potentially making high-HP tanks more viable in the mid-game.",
+      "entities": [
+        {
+          "entity": "Vayne",
+          "entity_type": "champion",
+          "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Vayne.png"
+        },
+        {
+          "entity": "Cho'Gath",
+          "entity_type": "champion",
+          "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Chogath.png"
+        }
+      ]
+    }
   ]
 }

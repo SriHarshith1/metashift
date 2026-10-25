@@ -29,14 +29,14 @@
     {
       "stage": "analyze",
       "llm": "ollama:gemma4:31b-cloud",
-      "duration_s": 4.401946624999255,
+      "duration_s": 24.834715958000743,
       "retries": 0,
       "warnings": []
     },
     {
       "stage": "publish",
       "llm": null,
-      "duration_s": 0.0027554590014915448,
+      "duration_s": 0.007929791001515696,
       "retries": 0,
       "warnings": []
     }

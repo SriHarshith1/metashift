@@ -31,14 +31,16 @@
     {
       "stage": "analyze",
       "llm": "ollama:gemma4:31b-cloud",
-      "duration_s": 7.657545584001127,
+      "duration_s": 27.555446791000577,
       "retries": 0,
-      "warnings": []
+      "warnings": [
+        "ripple 'AP Junglers gain clear speed': unknown entity 'JUNGLE PETS' dropped"
+      ]
     },
     {
       "stage": "publish",
       "llm": null,
-      "duration_s": 0.00432350000119186,
+      "duration_s": 0.0073114160004479345,
       "retries": 0,
       "warnings": []
     }

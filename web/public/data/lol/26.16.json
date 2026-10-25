@@ -2,13 +2,14 @@
   "game": "lol",
   "patch": "26.16",
   "compared_to": "26.15",
-  "generated_at": "2026-10-25T11:39:46.923853Z",
+  "generated_at": "2026-10-25T13:31:56.376736Z",
   "llm": "ollama:gemma4:31b-cloud",
-  "headline": "This patch focuses on strengthening several skirmishers and AD items while adjusting jungle and support economy and scaling.",
+  "headline": "This patch provides significant buffs to several fighters and mages while adjusting the efficiency of sustain and jungle clearing.",
   "themes": [
-    "Skirmisher and Bruiser buffs",
-    "AD Itemization shifts",
-    "Jungle and Support systemic adjustments"
+    "Fighter sustain and durability",
+    "AP burst and poke buffs",
+    "Attack speed and itemization shifts",
+    "Support role quest restrictions"
   ],
   "entities": [
     {
@@ -17,11 +18,13 @@
       "verdict": "rise",
       "confidence": "high",
       "previous": null,
-      "reason": "Q base damage increased across all ranks by 15.",
+      "reason": "Q base damage increased by 15 across all ranks (e.g., 60 ⇒ 75 at rank 1).",
       "change_refs": [
         0
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Azir.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Azir.png",
+      "impact": "Increases his early to mid-game poke and waveclear damage output.",
+      "build_shift": null
     },
     {
       "entity": "Bel'Veth",
@@ -29,12 +32,14 @@
       "verdict": "fall",
       "confidence": "medium",
       "previous": null,
-      "reason": "Health growth decreased from 110 to 105 and R attack speed scaling adjusted downward at higher ranks.",
+      "reason": "Health growth decreased from 110 to 105 and R attack speed scaling adjusted (e.g., 25% ⇒ 20% at rank 3).",
       "change_refs": [
         1,
         2
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Belveth.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Belveth.png",
+      "impact": "Reduces her overall survivability and late-game DPS in her True Form.",
+      "build_shift": null
     },
     {
       "entity": "Camille",
@@ -42,7 +47,7 @@
       "verdict": "rise",
       "confidence": "high",
       "previous": null,
-      "reason": "Significant buffs to mana, passive cooldown, W cooldown, and W outer cone bonus damage.",
+      "reason": "Buffs to mana (339 ⇒ 375), W cooldown (15s ⇒ 12s), and W outer cone damage (6% ⇒ 7% base).",
       "change_refs": [
         3,
         4,
@@ -50,7 +55,9 @@
         6,
         7
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Camille.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Camille.png",
+      "impact": "Improves her laning sustain and burst potential through more frequent and harder-hitting W casts.",
+      "build_shift": null
     },
     {
       "entity": "Gwen",
@@ -58,11 +65,13 @@
       "verdict": "rise",
       "confidence": "high",
       "previous": null,
-      "reason": "Passive healing increased from 50% to 67% post-mitigation with higher caps and AP scaling.",
+      "reason": "Passive healing increased from 50% to 67% post-mitigation and AP scaling increased from 6.5% to 7%.",
       "change_refs": [
         8
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Gwen.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Gwen.png",
+      "impact": "Significantly increases her survival and dueling capability in extended fights.",
+      "build_shift": null
     },
     {
       "entity": "Kennen",
@@ -70,13 +79,15 @@
       "verdict": "rise",
       "confidence": "high",
       "previous": null,
-      "reason": "R received buffs to bonus resistances, base damage, and maximum damage scaling.",
+      "reason": "R bonus resistances increased (20/40/60 ⇒ 25/50/75) and R damage/scaling increased (110 + 22.5% AP ⇒ 120 + 25% AP).",
       "change_refs": [
         9,
         10,
         11
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Kennen.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Kennen.png",
+      "impact": "Increases his team fight impact by making his ultimate more lethal and harder to punish.",
+      "build_shift": null
     },
     {
       "entity": "Nasus",
@@ -84,11 +95,13 @@
       "verdict": "stable",
       "confidence": "medium",
       "previous": null,
-      "reason": "Q stack gain on champions/large minions adjusted from 3 to 4, but the bonus increase reduced from 12 to 10.",
+      "reason": "Q stack gain on champions/large targets adjusted from 3 (up to 12) to 4 (up to 10).",
       "change_refs": [
         12
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Nasus.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Nasus.png",
+      "impact": "Faster early stacking but a lower ceiling for single-hit stack gains; neutralizes overall power.",
+      "build_shift": null
     },
     {
       "entity": "Poppy",
@@ -96,7 +109,7 @@
       "verdict": "rise",
       "confidence": "medium",
       "previous": null,
-      "reason": "Despite a base AD nerf, she gains significant buffs to mana, health regen, W resistances, and Q monster cap.",
+      "reason": "Buffs to mana, W resistances (12% ⇒ 16%), and Q monster cap, despite a nerf to base AD and Q bonus AD scaling.",
       "change_refs": [
         13,
         14,
@@ -106,7 +119,9 @@
         18,
         19
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Poppy.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Poppy.png",
+      "impact": "Shifts her toward a more durable tank role with better jungle clearing, though her early burst is slightly lower.",
+      "build_shift": null
     },
     {
       "entity": "Berserker's Greaves",
@@ -114,12 +129,14 @@
       "verdict": "rise",
       "confidence": "high",
       "previous": null,
-      "reason": "Attack speed increased by 5% for both standard and T3 versions.",
+      "reason": "Attack speed increased from 25% to 30% (T3 40% ⇒ 45%).",
       "change_refs": [
         20,
         21
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/item/223006.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/item/3006.png",
+      "impact": "Increases the DPS of all attack-speed reliant champions, especially in the early game.",
+      "build_shift": null
     },
     {
       "entity": "Black Cleaver",
@@ -132,7 +149,9 @@
         22,
         23
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/item/223071.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/item/3071.png",
+      "impact": "Slightly increases the burst and sustained damage of fighters who build it.",
+      "build_shift": null
     },
     {
       "entity": "Eclipse",
@@ -140,12 +159,14 @@
       "verdict": "rise",
       "confidence": "medium",
       "previous": null,
-      "reason": "Maximum health damage increased for both melee and ranged, outweighing a small nerf to the shield base.",
+      "reason": "Damage increased (6% Melee ⇒ 8% Melee) while shield base value slightly decreased (160 ⇒ 150 Melee).",
       "change_refs": [
         24,
         25
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/item/226692.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/item/6692.png",
+      "impact": "Increases damage output against tanks while slightly reducing burst survivability.",
+      "build_shift": null
     },
     {
       "entity": "Runaan's Hurricane",
@@ -153,12 +174,14 @@
       "verdict": "rise",
       "confidence": "high",
       "previous": null,
-      "reason": "Buffs to both move speed (4% to 5%) and bolt damage (55% to 65% AD).",
+      "reason": "Move speed increased (4% ⇒ 5%) and bolt damage increased (55% ⇒ 65% AD).",
       "change_refs": [
         26,
         27
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/item/223085.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/item/3085.png",
+      "impact": "Increases the late-game team fight damage and kiting ability of marksmen.",
+      "build_shift": null
     },
     {
       "entity": "Sterak's Gage",
@@ -166,11 +189,13 @@
       "verdict": "rise",
       "confidence": "medium",
       "previous": null,
-      "reason": "Bonus attack damage increased from 45% to 50% of base AD.",
+      "reason": "Bonus AD increased from 45% to 50% of base AD.",
       "change_refs": [
         28
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/item/223053.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/item/3053.png",
+      "impact": "Increases the damage output of bruisers during their shield window.",
+      "build_shift": null
     },
     {
       "entity": "Sundered Sky",
@@ -178,13 +203,15 @@
       "verdict": "stable",
       "confidence": "medium",
       "previous": null,
-      "reason": "Buff to health (400 to 450) is offset by nerfs to healing ratios and missing health scaling.",
+      "reason": "Health increased (400 ⇒ 450) and recipe simplified, but healing reduced (6% ⇒ 4% missing health).",
       "change_refs": [
         29,
         30,
         31
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/item/226610.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/item/6610.png",
+      "impact": "Trades some sustain for more raw durability and a faster build path.",
+      "build_shift": null
     },
     {
       "entity": "Sunfire Cape",
@@ -192,13 +219,15 @@
       "verdict": "stable",
       "confidence": "medium",
       "previous": null,
-      "reason": "Increased bonus health damage (1% to 1.5%) is countered by a higher recipe cost and lower minion/monster modifiers.",
+      "reason": "Damage scaling increased (1% ⇒ 1.5% bonus HP) but cost increased (600g ⇒ 700g) and minion/monster damage reduced.",
       "change_refs": [
         32,
         33,
         34
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/item/773068.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/item/773068.png",
+      "impact": "Stronger against champions in fights, but slower to build and weaker for waveclear.",
+      "build_shift": null
     },
     {
       "entity": "Chainlaced Crushers",
@@ -206,11 +235,13 @@
       "verdict": "fall",
       "confidence": "high",
       "previous": null,
-      "reason": "Magic resistance decreased from 30 to 25.",
+      "reason": "Magic Resistance decreased from 30 to 25.",
       "change_refs": [
         35
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/item/3173.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/item/3173.png",
+      "impact": "Reduces the overall tankiness of users against magic damage.",
+      "build_shift": null
     },
     {
       "entity": "Spellslinger's Shoes",
@@ -222,19 +253,23 @@
       "change_refs": [
         36
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/item/3175.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/item/3175.png",
+      "impact": "Increases early game magic damage penetration for mages.",
+      "build_shift": null
     },
     {
       "entity": "Tiamat",
       "entity_type": "item",
       "verdict": "rise",
-      "confidence": "high",
+      "confidence": "medium",
       "previous": null,
       "reason": "Attack damage increased from 20 to 25.",
       "change_refs": [
         37
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/item/3077.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/item/3077.png",
+      "impact": "Slightly improves early jungle clear and trading for melee champions.",
+      "build_shift": null
     },
     {
       "entity": "Fleet Footwork",
@@ -242,11 +277,13 @@
       "verdict": "rise",
       "confidence": "high",
       "previous": null,
-      "reason": "Base healing values increased from 10-130 to 15-160.",
+      "reason": "Base healing increased from 10-130 to 15-160.",
       "change_refs": [
         38
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/FleetFootwork/FleetFootwork.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/FleetFootwork/FleetFootwork.png",
+      "impact": "Improves laning sustain for both melee and ranged champions.",
+      "build_shift": null
     },
     {
       "entity": "Hail of Blades",
@@ -254,12 +291,14 @@
       "verdict": "stable",
       "confidence": "medium",
       "previous": null,
-      "reason": "Melee attack speed nerf is balanced by increased bonus AD and AP scaling for true damage.",
+      "reason": "Melee attack speed nerfed (120% ⇒ 90%) but bonus AD scaling increased (8% ⇒ 12%).",
       "change_refs": [
         39,
         40
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Domination/HailOfBlades/HailOfBlades.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Domination/HailOfBlades/HailOfBlades.png",
+      "impact": "Shifts the rune from raw speed to higher scaling damage per hit.",
+      "build_shift": null
     },
     {
       "entity": "ADC champions",
@@ -267,11 +306,13 @@
       "verdict": "stable",
       "confidence": "medium",
       "previous": null,
-      "reason": "Base MR adjusted to be higher early (30 to 33) but lower late (1.3 to 1.1 per level).",
+      "reason": "Base MR adjusted from 30 + 1.3/level to 33 + 1.1/level.",
       "change_refs": [
         41
       ],
-      "icon_url": null
+      "icon_url": null,
+      "impact": "Increases early game survivability against mages but reduces late game MR growth.",
+      "build_shift": null
     },
     {
       "entity": "Tristana",
@@ -283,7 +324,9 @@
       "change_refs": [
         42
       ],
-      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Tristana.png"
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Tristana.png",
+      "impact": "Similar to general ADCs, she is slightly tankier early but softer late.",
+      "build_shift": null
     },
     {
       "entity": "JUNGLE PETS",
@@ -291,11 +334,13 @@
       "verdict": "rise",
       "confidence": "high",
       "previous": null,
-      "reason": "Increased scaling for AP, Armor, MR, and Health.",
+      "reason": "Increased scaling for AP (12% ⇒ 16%), Armor (20% ⇒ 25%), MR (20% ⇒ 25%), and Health (3% ⇒ 4%).",
       "change_refs": [
         43
       ],
-      "icon_url": null
+      "icon_url": null,
+      "impact": "Speeds up jungle clearing for all junglers, especially those with AP or tank builds.",
+      "build_shift": null
     },
     {
       "entity": "SUPPORT ROLE QUEST",
@@ -303,13 +348,15 @@
       "verdict": "fall",
       "confidence": "medium",
       "previous": null,
-      "reason": "Increased gold/XP penalties for farming outside bot lane and reduced gold from champion/turret damage.",
+      "reason": "Increased gold/exp penalty outside bot lane (-25% ⇒ -33%) and extended penalty duration (level 3 ⇒ level 5).",
       "change_refs": [
         44,
         45,
         46
       ],
-      "icon_url": null
+      "icon_url": null,
+      "impact": "Strongly discourages supports from roaming or farming in other lanes early game.",
+      "build_shift": null
     }
   ],
   "changes": [
@@ -786,6 +833,62 @@
   ],
   "warnings": [
     "skipped sections: Patch Highlights, Classic, ARAM: Mayhem, Arena, Bugfixes & QoL Changes, Upcoming Skins & Chromas",
-    "no stats for patch 26.15: stats skipped. To add them, create data/lol/26.16/stats.csv with columns entity,win_rate,pick_rate,ban_rate,tier"
+    "no stats for patch 26.15: stats skipped. To add them, create data/lol/26.16/stats.csv with columns entity,win_rate,pick_rate,ban_rate,tier",
+    "ripple 'AP Junglers gain clear speed': unknown entity 'JUNGLE PETS' dropped"
+  ],
+  "ripples": [
+    {
+      "title": "AP Junglers gain clear speed",
+      "explanation": "The buff to JUNGLE PETS AP scaling (12% to 16%) makes AP-based junglers clear camps faster.",
+      "entities": []
+    },
+    {
+      "title": "Melee Attackers' DPS increase",
+      "explanation": "The combination of Berserker's Greaves AS buff and Eclipse damage buff increases melee DPS.",
+      "entities": [
+        {
+          "entity": "Berserker's Greaves",
+          "entity_type": "item",
+          "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/item/3006.png"
+        },
+        {
+          "entity": "Eclipse",
+          "entity_type": "item",
+          "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/item/6692.png"
+        }
+      ]
+    },
+    {
+      "title": "Support roaming restricted",
+      "explanation": "The increased penalty and duration of the SUPPORT ROLE QUEST makes early roaming more costly.",
+      "entities": [
+        {
+          "entity": "Support Quest",
+          "entity_type": "item",
+          "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/item/1203.png"
+        }
+      ]
+    },
+    {
+      "title": "Tanky Bruisers' power spike",
+      "explanation": "Buffs to Black Cleaver, Sterak's Gage, and Sunfire Cape (vs champions) benefit the bruiser archetype.",
+      "entities": [
+        {
+          "entity": "Black Cleaver",
+          "entity_type": "item",
+          "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/item/3071.png"
+        },
+        {
+          "entity": "Sterak's Gage",
+          "entity_type": "item",
+          "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/item/3053.png"
+        },
+        {
+          "entity": "Sunfire Cape",
+          "entity_type": "item",
+          "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.16.1/img/item/773068.png"
+        }
+      ]
+    }
   ]
 }
