@@ -86,8 +86,7 @@ Return JSON with these keys:
   - entity: the name exactly as written above.
   - verdict: "rise" when the entity should get stronger, "fall" when weaker, "stable" when the meta position stays the same.
   - confidence: "low", "medium" or "high".
-  - reason: a short explanation that cites the change, the stats and the trend of earlier patches.
-  - change_refs: the indexes of the changes (the numbers in square brackets) that support the verdict.
+  - reason: a short explanation that cites the change, the stats and the trend of earlier patches. Refer to the changes by their stat and values; do not give change indexes.
 
 Rules:
 - Use only the data above. Do not invent numbers.

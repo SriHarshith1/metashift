@@ -69,7 +69,7 @@ def run_analyze(ctx: StageContext) -> StageLog:
                 confidence=verdict.confidence,
                 previous=previous,
                 reason=verdict.reason,
-                change_refs=[r for r in verdict.change_refs if 0 <= r < len(changes)],
+                change_refs=[i for i, c in enumerate(changes) if c.entity == verdict.entity],
                 icon_url=ctx.adapter.icon_url(ctx.patch, verdict.entity),
             )
         )

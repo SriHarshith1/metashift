@@ -121,7 +121,6 @@ class VerdictDraft(BaseModel):
     verdict: Verdict
     confidence: Confidence
     reason: str
-    change_refs: list[int]
 
 
 class AnalysisDraft(BaseModel):

@@ -6,17 +6,13 @@ def _changed_entities(changes: list[Change]) -> list[str]:
 
 
 def retry_problems(draft: AnalysisDraft, changes: list[Change]) -> list[str]:
-    """Problems worth another LLM attempt: missing verdicts and bad change indexes."""
-    changed = _changed_entities(changes)
+    """Problems worth another LLM attempt: a changed entity without a verdict."""
     have = {v.entity for v in draft.entities}
-    problems = [f"missing verdict for {entity}" for entity in changed if entity not in have]
-    for verdict in draft.entities:
-        if verdict.entity not in changed:
-            continue  # dropped later, so it is not worth a retry
-        for ref in verdict.change_refs:
-            if not 0 <= ref < len(changes):
-                problems.append(f"{verdict.entity}: change_ref {ref} out of range")
-    return problems
+    return [
+        f"missing verdict for {entity}"
+        for entity in _changed_entities(changes)
+        if entity not in have
+    ]
 
 
 def consistency_warnings(draft: AnalysisDraft, changes: list[Change]) -> list[str]:

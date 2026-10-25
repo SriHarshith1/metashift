@@ -39,7 +39,7 @@ ANALYZE_JSON = AnalysisDraft(
     themes=["mid lane"],
     entities=[
         VerdictDraft(
-            entity="Ahri", verdict="rise", confidence="high", reason="buff", change_refs=[0]
+            entity="Ahri", verdict="rise", confidence="high", reason="buff"
         )
     ],
 ).model_dump_json()
@@ -83,7 +83,7 @@ def test_run_all_stages_writes_report_and_index(root, stubs):
 
 
 def test_run_prints_retries_and_warnings(root, stubs, monkeypatch):
-    bad = ANALYZE_JSON.replace('"change_refs":[0]', '"change_refs":[0,9]')
+    bad = AnalysisDraft(headline="h", themes=[], entities=[]).model_dump_json()
     monkeypatch.setattr(
         cli, "make_llm", lambda kind: FakeLLM([EXTRACT_JSON, bad, bad, bad], name="fake")
     )
@@ -91,7 +91,7 @@ def test_run_prints_retries_and_warnings(root, stubs, monkeypatch):
     assert result.exit_code == 0, result.output
     assert "✓ analyze" in result.stdout and "2 retries" in result.stdout
     assert "1 warning" in result.stdout
-    assert "Ahri: change_ref 9 out of range" in result.stdout
+    assert "missing verdict for Ahri" in result.stdout
 
 
 def test_run_passes_llm_choice(root, stubs):

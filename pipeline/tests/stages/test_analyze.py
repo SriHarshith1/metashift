@@ -1,3 +1,5 @@
+import json
+
 import pytest
 
 from metashift.core.errors import MetashiftError
@@ -38,9 +40,9 @@ def make_change(entity, direction, stat="Damage"):
 CHANGES = [make_change("Ahri", "buff"), make_change("Kai'Sa", "nerf")]
 
 
-def v(entity, verdict, refs):
+def v(entity, verdict):
     return VerdictDraft(
-        entity=entity, verdict=verdict, confidence="high", reason=f"{entity} reason", change_refs=refs
+        entity=entity, verdict=verdict, confidence="high", reason=f"{entity} reason"
     )
 
 
@@ -50,8 +52,8 @@ def draft_json(*verdicts, headline="Ahri up, Kai'Sa down"):
     ).model_dump_json()
 
 
-GOOD = draft_json(v("Ahri", "rise", [0]), v("Kai'Sa", "fall", [1]))
-MISSING_KAISA = draft_json(v("Ahri", "rise", [0]))
+GOOD = draft_json(v("Ahri", "rise"), v("Kai'Sa", "fall"))
+MISSING_KAISA = draft_json(v("Ahri", "rise"))
 
 
 @pytest.fixture
@@ -147,20 +149,40 @@ def test_analyze_rerun_does_not_duplicate_its_own_warnings(inputs):
 
 
 def test_analyze_drops_verdicts_for_unchanged_entities(inputs):
-    bad = draft_json(v("Ahri", "rise", [0]), v("Kai'Sa", "fall", [1]), v("Garen", "rise", [0]))
+    bad = draft_json(v("Ahri", "rise"), v("Kai'Sa", "fall"), v("Garen", "rise"))
     run_analyze(ctx(FakeLLM([bad])))
     r = read_report()
     assert [e.entity for e in r.entities] == ["Ahri", "Kai'Sa"]
     assert "verdict for unchanged entity Garen dropped" in r.warnings
 
 
-def test_analyze_adds_consistency_warnings_and_drops_bad_refs(inputs):
-    odd = draft_json(v("Ahri", "rise", [0, 7]), v("Kai'Sa", "rise", [1]))
-    run_analyze(ctx(FakeLLM([odd] * 3)))
+def test_analyze_adds_consistency_warnings(inputs):
+    odd = draft_json(v("Ahri", "rise"), v("Kai'Sa", "rise"))
+    run_analyze(ctx(FakeLLM([odd])))
+    assert "Kai'Sa: verdict rise but all changes are nerfs" in read_report().warnings
+
+
+def test_analyze_change_refs_are_code_owned_all_rows_of_the_entity(inputs):
+    changes = [
+        make_change("Ahri", "buff"),
+        make_change("Kai'Sa", "nerf"),
+        make_change("Ahri", "nerf", stat="Cooldown"),
+    ]
+    write_model(
+        patch_dir("lol", "26.21") / "changes.json",
+        ChangesFile(game="lol", patch="26.21", changes=changes),
+    )
+    run_analyze(ctx(FakeLLM([GOOD])))
     r = read_report()
-    assert "Kai'Sa: verdict rise but all changes are nerfs" in r.warnings
-    assert "Ahri: change_ref 7 out of range" in r.warnings
-    assert r.entities[0].change_refs == [0]
+    assert [(e.entity, e.change_refs) for e in r.entities] == [("Ahri", [0, 2]), ("Kai'Sa", [1])]
+
+
+def test_analyze_ignores_change_refs_the_model_still_sends(inputs):
+    raw = json.loads(GOOD)
+    for e in raw["entities"]:
+        e["change_refs"] = [9]
+    run_analyze(ctx(FakeLLM([json.dumps(raw)])))
+    assert [e.change_refs for e in read_report().entities] == [[0], [1]]
 
 
 def test_analyze_without_extract_or_baseline_names_the_stage(root):
