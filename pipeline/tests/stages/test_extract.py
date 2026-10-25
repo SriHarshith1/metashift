@@ -174,3 +174,14 @@ def test_extract_prints_chunk_progress_to_stderr(root, monkeypatch, capsys):
     run_extract(ctx(root, FakeLLM([json_of(), json_of()])))
     err = capsys.readouterr().err
     assert "extract chunk 1/2" in err and "extract chunk 2/2" in err
+
+
+def test_extract_changes_needs_no_files(tmp_path):
+    from metashift.core.stages.extract import extract_changes
+
+    llm = FakeLLM([json_of(change("Ahri", "Q Damage: 40 ⇒ 50"))])
+    changes, retries, warnings = extract_changes(RAW, StubAdapter(entities=ENTITIES), "26.21", llm)
+    assert [c.entity for c in changes] == ["Ahri"]
+    assert retries == 0
+    assert warnings == ["low coverage: extracted 1 of ~2 change lines"]
+    assert list(tmp_path.iterdir()) == []

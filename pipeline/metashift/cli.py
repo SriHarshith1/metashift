@@ -8,14 +8,15 @@ import typer
 from pydantic import ValidationError
 
 from metashift.core.errors import MetashiftError
+from metashift.core.evaluate import EvalScore, score_extraction
 from metashift.core.io import write_text
 from metashift.core.llm import LLM, make_llm
-from metashift.core.models import IndexFile, ReportFile, StageLog
+from metashift.core.models import ChangesFile, IndexFile, ReportFile, StageLog
 from metashift.core.paths import repo_root, web_data_dir
 from metashift.core.stages.analyze import run_analyze
 from metashift.core.stages.baseline import run_baseline
 from metashift.core.stages.context import StageContext
-from metashift.core.stages.extract import run_extract
+from metashift.core.stages.extract import extract_changes, run_extract
 from metashift.core.stages.fetch import run_fetch
 from metashift.core.stages.publish import run_publish
 from metashift.games import get_adapter
@@ -31,6 +32,12 @@ RUNNERS: dict[str, Callable[[StageContext], StageLog]] = {
 }
 
 app = typer.Typer(add_completion=False, no_args_is_help=True, help="Metashift pipeline")
+eval_app = typer.Typer(no_args_is_help=True, help="Measure pipeline quality")
+app.add_typer(eval_app, name="eval")
+
+GOLDEN_DIR = Path(__file__).resolve().parents[1] / "tests" / "golden"
+TARGET_PRECISION = 0.95
+TARGET_RECALL = 0.90
 
 
 class LlmKind(str, Enum):
@@ -145,6 +152,56 @@ def schema(out_dir: Path) -> None:
             typer.echo(f"wrote {path}")
     except OSError as err:
         raise _fail(f"cannot write schema: {err}") from err
+
+
+def _score_row(label: str, score: EvalScore) -> str:
+    return (
+        f"{label:<8} {score.precision:>5.2f} {score.recall:>5.2f}"
+        f" {score.tp:>4} {score.fp:>4} {score.fn:>4}"
+    )
+
+
+@eval_app.command("extract")
+def eval_extract(
+    game: Annotated[str, typer.Option("--game", help="Game of the golden set")] = "lol",
+    llm: Annotated[
+        LlmKind, typer.Option("--llm", help="Model to measure")
+    ] = LlmKind.ollama,
+    golden_dir: Annotated[
+        Path, typer.Option("--golden-dir", help="Folder with <game>/<patch>/ golden files")
+    ] = GOLDEN_DIR,
+) -> None:
+    """Score the extract stage against the hand-labeled golden patches."""
+    patch_dirs = sorted(
+        (d for d in (golden_dir / game).glob("*") if (d / "changes.json").exists()),
+        key=lambda d: tuple(int(p) for p in d.name.split(".")),
+    )
+    try:
+        if not patch_dirs:
+            raise MetashiftError(f"no golden patches in {golden_dir / game}")
+        adapter = get_adapter(game)
+        model = make_llm(llm.value)
+        typer.echo(f"model: {model.name}")
+        typer.echo(f"{'patch':<8} {'P':>5} {'R':>5} {'tp':>4} {'fp':>4} {'fn':>4}")
+        total = EvalScore(0, 0, 0)
+        for d in patch_dirs:
+            gold = ChangesFile.model_validate_json((d / "changes.json").read_text("utf-8"))
+            raw = (d / "raw.md").read_text("utf-8")
+            predicted, _, _ = extract_changes(raw, adapter, d.name, model)
+            score = score_extraction(predicted, gold.changes)
+            total = total + score
+            typer.echo(_score_row(d.name, score))
+    except MetashiftError as err:
+        raise _fail(str(err)) from err
+    except (OSError, ValidationError) as err:
+        raise _fail(f"cannot read golden set: {err}") from err
+    typer.echo(_score_row("total", total))
+    misses = []
+    if total.recall < TARGET_RECALL:
+        misses.append(f"recall {total.recall:.2f} < {TARGET_RECALL:.2f}")
+    if total.precision < TARGET_PRECISION:
+        misses.append(f"precision {total.precision:.2f} < {TARGET_PRECISION:.2f}")
+    typer.echo(f"below target: {', '.join(misses)}" if misses else "targets met")
 
 
 if __name__ == "__main__":

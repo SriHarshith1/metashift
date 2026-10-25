@@ -186,3 +186,42 @@ def test_schema_writes_both_files(tmp_path):
     index = json.loads((out / "IndexFile.schema.json").read_text(encoding="utf-8"))
     assert report == ReportFile.model_json_schema()
     assert index == IndexFile.model_json_schema()
+
+
+def write_golden(base, patch, changes):
+    from metashift.core.models import ChangesFile
+
+    d = base / "lol" / patch
+    d.mkdir(parents=True)
+    (d / "raw.md").write_text(NOTES, encoding="utf-8")
+    (d / "changes.json").write_text(
+        ChangesFile(game="lol", patch=patch, changes=changes).model_dump_json(), encoding="utf-8"
+    )
+
+
+def test_eval_extract_prints_scores_and_target_verdict(stubs, tmp_path):
+    write_golden(tmp_path / "golden", "26.21", [CHANGE])
+    result = runner.invoke(
+        app, ["eval", "extract", "--game", "lol", "--golden-dir", str(tmp_path / "golden")]
+    )
+    assert result.exit_code == 0, result.output
+    assert "26.21" in result.output and "total" in result.output
+    assert "targets met" in result.output
+
+
+def test_eval_extract_reports_below_target(stubs, tmp_path, monkeypatch):
+    extra = CHANGE.model_copy(update={"stat": "Mana Cost", "source_quote": "Q Damage: 40 ⇒ 50"})
+    write_golden(tmp_path / "golden", "26.21", [CHANGE, extra])
+    result = runner.invoke(
+        app, ["eval", "extract", "--game", "lol", "--golden-dir", str(tmp_path / "golden")]
+    )
+    assert result.exit_code == 0, result.output
+    assert "below target: recall 0.50 < 0.90" in result.output
+
+
+def test_eval_extract_without_golden_set_fails_cleanly(stubs, tmp_path):
+    result = runner.invoke(
+        app, ["eval", "extract", "--game", "lol", "--golden-dir", str(tmp_path / "none")]
+    )
+    assert result.exit_code == 1
+    assert "error: no golden patches" in result.stderr
