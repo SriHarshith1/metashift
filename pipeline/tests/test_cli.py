@@ -225,3 +225,68 @@ def test_eval_extract_without_golden_set_fails_cleanly(stubs, tmp_path):
     )
     assert result.exit_code == 1
     assert "error: no golden patches" in result.stderr
+
+
+def test_run_without_patch_uses_newest_patch_on_the_website(root, stubs):
+    result = runner.invoke(app, ["run", "lol"])
+    assert result.exit_code == 0, result.output
+    assert "newest patch: 26.21" in result.stdout
+    assert (root / "web/public/data/lol/26.21.json").exists()
+
+
+def write_published(root, patch):
+    from datetime import UTC, datetime
+
+    report = ReportFile(
+        game="lol", patch=patch, compared_to=None, generated_at=datetime.now(UTC), llm="fake",
+        headline="h", themes=[], entities=[], changes=[], warnings=[],
+    )
+    path = root / f"web/public/data/lol/{patch}.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(report.model_dump_json())
+
+
+def update_stubs(monkeypatch, patches, notes=NOTES):
+    adapter = StubAdapter(patches=patches, entities={"Ahri": "champion"}, notes_md=notes)
+    monkeypatch.setattr(cli, "get_adapter", lambda game: adapter)
+    monkeypatch.setattr(cli, "make_llm", lambda kind: FakeLLM([EXTRACT_JSON, ANALYZE_JSON] * 5))
+    return adapter
+
+
+def test_update_runs_unpublished_patches_oldest_first(root, monkeypatch):
+    adapter = update_stubs(monkeypatch, ["26.21", "26.20", "26.19"])
+    result = runner.invoke(app, ["update", "lol"])
+    assert result.exit_code == 0, result.output
+    assert adapter.fetch_calls == ["26.19", "26.20", "26.21"]
+    index = IndexFile.model_validate_json((root / "web/public/data/index.json").read_text())
+    assert [e.patch for e in index.games["lol"]] == ["26.21", "26.20", "26.19"]
+
+
+def test_update_skips_published_patches_and_respects_limit(root, monkeypatch):
+    adapter = update_stubs(monkeypatch, ["26.22", "26.21", "26.20", "26.19", "26.18"])
+    write_published(root, "26.21")
+    result = runner.invoke(app, ["update", "lol", "--limit", "2"])
+    assert result.exit_code == 0, result.output
+    assert adapter.fetch_calls == ["26.20", "26.22"]
+    assert "skipping 2 older unpublished patches (26.19, 26.18)" in result.stdout
+
+
+def test_update_when_up_to_date_does_nothing(root, monkeypatch):
+    adapter = update_stubs(monkeypatch, ["26.21", "26.20"])
+    for p in ("26.21", "26.20"):
+        write_published(root, p)
+    result = runner.invoke(app, ["update", "lol"])
+    assert result.exit_code == 0, result.output
+    assert "up to date: newest patch 26.21 is already published" in result.stdout
+    assert adapter.fetch_calls == []
+
+
+def test_update_stops_at_the_first_failing_patch(root, monkeypatch):
+    adapter = update_stubs(monkeypatch, ["26.21", "26.20"])
+    monkeypatch.setattr(
+        cli, "make_llm", lambda kind: FakeLLM([ExtractDraft(changes=[]).model_dump_json()] * 5)
+    )
+    result = runner.invoke(app, ["update", "lol"])
+    assert result.exit_code == 1
+    assert "error: patch 26.20: no changes extracted" in result.stderr
+    assert adapter.fetch_calls == ["26.20"]

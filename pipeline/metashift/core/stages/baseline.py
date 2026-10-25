@@ -55,9 +55,12 @@ def _history(
     return history
 
 
-def _load_stats(ctx: StageContext, previous: str) -> tuple[list[EntityStats], str]:
+def _load_stats(
+    ctx: StageContext, previous: str
+) -> tuple[list[EntityStats], str, str | None]:
+    """Return (rows, source, warning). A missing stats.csv skips stats with one warning."""
     try:
-        return ctx.adapter.fetch_stats(previous), "lolalytics"
+        return ctx.adapter.fetch_stats(previous), "lolalytics", None
     except StatsUnavailable:
         pass
     path = ctx.dir / "stats.csv"
@@ -66,10 +69,11 @@ def _load_stats(ctx: StageContext, previous: str) -> tuple[list[EntityStats], st
             shown = path.relative_to(repo_root()).as_posix()
         except ValueError:
             shown = str(path)
-        raise MetashiftError(
-            f"no stats for patch {previous}. Add {shown} with columns {','.join(COLUMNS)}"
+        return [], "none", (
+            f"no stats for patch {previous}: stats skipped. To add them, create {shown} "
+            f"with columns {','.join(COLUMNS)}"
         )
-    return read_stats_csv(path), "csv"
+    return read_stats_csv(path), "csv", None
 
 
 def run_baseline(ctx: StageContext) -> StageLog:
@@ -88,14 +92,16 @@ def run_baseline(ctx: StageContext) -> StageLog:
     if stats_patch is None:
         warnings.append("no previous patch: stats skipped")
     else:
-        rows, stats_source = _load_stats(ctx, stats_patch)
+        rows, stats_source, skipped = _load_stats(ctx, stats_patch)
+        if skipped:
+            warnings.append(skipped)
         for row in rows:
             by_key.setdefault(name_key(row.entity), row)
     history = _history(ctx, older, entities)
     result: dict[str, BaselineEntity] = {}
     for entity in entities:
         row = by_key.get(name_key(entity))
-        if row is None and stats_patch is not None:
+        if row is None and stats_source != "none":
             warnings.append(f"no stats for {entity}")
         result[entity] = BaselineEntity(
             win_rate=row.win_rate if row else None,

@@ -198,3 +198,44 @@ def test_get_adapter_knows_lol_and_rejects_others():
     assert get_adapter("lol").game == "lol"
     with pytest.raises(MetashiftError, match="unknown game 'dota'. Known: lol"):
         get_adapter("dota")
+
+
+def listing_transport(html: str, status: int = 200) -> httpx.MockTransport:
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/en-us/news/game-updates/":
+            return httpx.Response(status, text=html)
+        return httpx.Response(404)
+
+    return httpx.MockTransport(handler)
+
+
+def test_available_patches_reads_the_game_updates_page():
+    adapter = LolAdapter(http=httpx.Client(transport=listing_transport(fixture("game-updates.html"))))
+    patches = adapter.available_patches()
+    assert patches[:3] == ["26.21", "26.20", "26.19"]
+    assert patches[-1] == "25.4"            # zero-padded "patch-25-04-notes" → 25.4
+    assert "25.9" in patches and "25.09" not in patches
+    assert len(patches) == len(set(patches))
+
+
+def test_available_patches_ignores_teamfight_tactics_and_sorts_numerically():
+    html = (
+        '<a href="/en-us/news/game-updates/teamfight-tactics-patch-16-5-notes">tft</a>'
+        '<a href="/en-us/news/game-updates/league-of-legends-patch-26-9-notes">a</a>'
+        '<a href="/en-us/news/game-updates/league-of-legends-patch-26-10-notes">b</a>'
+        '<a href="/en-us/news/game-updates/patch-26-2-notes">c</a>'
+    )
+    adapter = LolAdapter(http=httpx.Client(transport=listing_transport(html)))
+    assert adapter.available_patches() == ["26.10", "26.9", "26.2"]
+
+
+def test_available_patches_fails_clearly_when_no_links_found():
+    adapter = LolAdapter(http=httpx.Client(transport=listing_transport("<html></html>")))
+    with pytest.raises(MetashiftError, match="no patch notes links found"):
+        adapter.available_patches()
+
+
+def test_available_patches_reports_http_errors():
+    adapter = LolAdapter(http=httpx.Client(transport=listing_transport("", status=503)))
+    with pytest.raises(MetashiftError, match="HTTP 503"):
+        adapter.available_patches()

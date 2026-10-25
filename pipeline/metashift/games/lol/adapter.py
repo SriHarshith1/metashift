@@ -11,6 +11,8 @@ from metashift.games.base import StatsUnavailable
 
 DDRAGON = "https://ddragon.leagueoflegends.com"
 NOTES_BASE = "https://www.leagueoflegends.com/en-us/news/game-updates/"
+# "game-updates/" directly before the slug keeps Teamfight Tactics patch notes out.
+_NOTES_LINK_RE = re.compile(r"game-updates/(?:league-of-legends-)?patch-(\d{2})-(\d{1,2})-notes")
 # Verified against the live site (patches 26.3 and 26.21 share the same structure): the
 # article body is the element with this id, and the publish date is the first
 # <time datetime> in the page header (div.metadata).
@@ -95,6 +97,20 @@ class LolAdapter:
             if m and int(m.group(1)) == major and int(m.group(2)) == minor:
                 return version
         raise MetashiftError(f"no Data Dragon data for patch {patch}")
+
+    def available_patches(self) -> list[str]:
+        """Patches whose notes are linked on Riot's game-updates page, newest first."""
+        response = self._get(NOTES_BASE)
+        if response.status_code != 200:
+            raise MetashiftError(f"{NOTES_BASE} returned HTTP {response.status_code}")
+        found = {
+            (int(yy), int(n)) for yy, n in _NOTES_LINK_RE.findall(response.text)
+        }
+        if not found:
+            raise MetashiftError(
+                f"no patch notes links found on {NOTES_BASE}: page layout changed"
+            )
+        return [f"{yy}.{n}" for yy, n in sorted(found, reverse=True)]
 
     # --- notes --------------------------------------------------------------------
 

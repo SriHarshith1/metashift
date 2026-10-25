@@ -48,6 +48,9 @@ class StubAdapter:
     def list_patches(self) -> list[str]:
         return list(self._patches)
 
+    def available_patches(self) -> list[str]:
+        return list(self._patches)
+
     def fetch_notes(self, patch: str) -> str:
         self.fetch_calls.append(patch)
         return self.notes_html

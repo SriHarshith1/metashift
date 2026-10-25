@@ -17,6 +17,10 @@ class GameAdapter(Protocol):
         """Known patch ids, newest first."""
         ...
 
+    def available_patches(self) -> list[str]:
+        """Patches with published notes on the game's website, newest first."""
+        ...
+
     def fetch_notes(self, patch: str) -> str:
         """Return the patch notes page as HTML."""
         ...

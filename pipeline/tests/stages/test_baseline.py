@@ -60,12 +60,16 @@ def test_baseline_prefers_adapter_stats_when_available(root):
     assert b.stats_source == "lolalytics" and b.entities["Ahri"].win_rate == 51.0
 
 
-def test_baseline_missing_csv_prints_path_and_columns(root):
-    write_changes("26.21", change("Ahri"))
-    with pytest.raises(
-        MetashiftError, match=r"data/lol/26.21/stats.csv.*entity,win_rate,pick_rate,ban_rate,tier"
-    ):
-        run_baseline(ctx())
+def test_baseline_missing_csv_skips_stats_with_one_warning(root):
+    write_changes("26.21", change("Ahri"), change("Kai'Sa"))
+    log = run_baseline(ctx())
+    b = read_baseline()
+    assert b.stats_source == "none"
+    assert b.entities["Ahri"].win_rate is None
+    assert len(log.warnings) == 1
+    assert "no stats for patch 26.20: stats skipped" in log.warnings[0]
+    assert "data/lol/26.21/stats.csv" in log.warnings[0]
+    assert "entity,win_rate,pick_rate,ban_rate,tier" in log.warnings[0]
 
 
 def test_baseline_entity_without_a_row_gets_null_stats_and_warning(root):

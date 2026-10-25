@@ -257,3 +257,11 @@ def test_ollama_transport_errors_become_metashift_errors(error):
 def test_ollama_host_without_scheme_is_a_clear_error():
     with pytest.raises(MetashiftError, match="OLLAMA_HOST must start with http:// or https://"):
         OllamaClient(model="m", host="0.0.0.0:11434")
+
+
+def test_ollama_defaults_to_the_free_cloud_model(monkeypatch):
+    monkeypatch.delenv("METASHIFT_OLLAMA_MODEL", raising=False)
+    monkeypatch.delenv("OLLAMA_HOST", raising=False)
+    llm = OllamaClient()
+    assert llm.name == "ollama:gemma4:31b-cloud"
+    assert llm.host == "http://localhost:11434"

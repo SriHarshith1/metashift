@@ -11,7 +11,7 @@ from metashift.core.errors import MetashiftError
 
 T = TypeVar("T", bound=BaseModel)
 
-DEFAULT_OLLAMA_MODEL = "qwen3:14b"
+DEFAULT_OLLAMA_MODEL = "gemma4:31b-cloud"
 DEFAULT_OLLAMA_HOST = "http://localhost:11434"
 DEFAULT_CLAUDE_MODEL = "claude-sonnet-5-5"
 OLLAMA_TIMEOUT_S = 600

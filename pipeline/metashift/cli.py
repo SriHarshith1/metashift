@@ -99,10 +99,20 @@ def _fail(message: str) -> typer.Exit:
     return typer.Exit(1)
 
 
+def _print_warnings(logs: list[StageLog]) -> None:
+    warnings = [w for log in logs for w in log.warnings]
+    if warnings:
+        typer.echo("warnings:")
+        for w in warnings:
+            typer.echo(f"  - {w}")
+
+
 @app.command()
 def run(
     game: str,
-    patch: str,
+    patch: Annotated[
+        str | None, typer.Argument(help="Patch id like 26.21. Default: newest on the website")
+    ] = None,
     llm: Annotated[
         LlmKind, typer.Option("--llm", help="Model for extract and analyze")
     ] = LlmKind.ollama,
@@ -124,6 +134,9 @@ def run(
     stages = STAGES[STAGES.index(from_stage) : STAGES.index(to_stage) + 1]
     try:
         adapter = get_adapter(game)
+        if patch is None:
+            patch = adapter.available_patches()[0]
+            typer.echo(f"newest patch: {patch}")
         model: LLM | None = make_llm(llm.value) if LLM_STAGES & set(stages) else None
         ctx = StageContext(game, patch, adapter, model, notes_file=notes_file)
         logs = run_pipeline(ctx, from_stage, to_stage, on_done=lambda log: typer.echo(_line(log)))
@@ -131,15 +144,55 @@ def run(
         raise _fail(str(err)) from err
     except ValidationError as err:
         raise _fail(f"invalid data file: {err}") from err
-    warnings = [w for log in logs for w in log.warnings]
-    if warnings:
-        typer.echo("warnings:")
-        for w in warnings:
-            typer.echo(f"  - {w}")
+    _print_warnings(logs)
     if "publish" in stages:
         typer.echo(f"report: {_shown(web_data_dir() / game / f'{patch}.json')}")
     elif "analyze" in stages:
         typer.echo(f"report: {_shown(ctx.dir / 'report.json')}")
+
+
+@app.command()
+def update(
+    game: str,
+    limit: Annotated[
+        int, typer.Option("--limit", min=1, help="Most new patches to run in one go")
+    ] = 3,
+    llm: Annotated[
+        LlmKind, typer.Option("--llm", help="Model for extract and analyze")
+    ] = LlmKind.ollama,
+) -> None:
+    """Find new patches on the game's website and run the pipeline for each, oldest first."""
+    try:
+        adapter = get_adapter(game)
+        available = adapter.available_patches()
+    except MetashiftError as err:
+        raise _fail(str(err)) from err
+    published = {p.stem for p in (web_data_dir() / game).glob("*.json")}
+    new = [p for p in available if p not in published]
+    if not new:
+        typer.echo(f"up to date: newest patch {available[0]} is already published")
+        return
+    todo, skipped = new[:limit], new[limit:]
+    if skipped:
+        typer.echo(
+            f"skipping {len(skipped)} older unpublished patches ({', '.join(skipped)}). "
+            "Raise --limit to include them"
+        )
+    try:
+        model = make_llm(llm.value)
+    except MetashiftError as err:
+        raise _fail(str(err)) from err
+    for patch in reversed(todo):
+        typer.echo(f"== {patch}")
+        ctx = StageContext(game, patch, adapter, model)
+        try:
+            logs = run_pipeline(ctx, on_done=lambda log: typer.echo(_line(log)))
+        except MetashiftError as err:
+            raise _fail(f"patch {patch}: {err}") from err
+        except ValidationError as err:
+            raise _fail(f"patch {patch}: invalid data file: {err}") from err
+        _print_warnings(logs)
+        typer.echo(f"report: {_shown(web_data_dir() / game / f'{patch}.json')}")
 
 
 @app.command()
