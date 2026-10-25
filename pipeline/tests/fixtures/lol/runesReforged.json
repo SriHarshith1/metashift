@@ -1,0 +1,98 @@
+[
+ {
+  "id": 8100,
+  "key": "Domination",
+  "icon": "perk-images/Styles/7200_Domination.png",
+  "name": "Domination",
+  "slots": [
+   {
+    "runes": [
+     {
+      "id": 8112,
+      "key": "Electrocute",
+      "icon": "perk-images/Styles/Domination/Electrocute/Electrocute.png",
+      "name": "Electrocute"
+     },
+     {
+      "id": 8128,
+      "key": "DarkHarvest",
+      "icon": "perk-images/Styles/Domination/DarkHarvest/DarkHarvest.png",
+      "name": "Dark Harvest"
+     },
+     {
+      "id": 9923,
+      "key": "HailOfBlades",
+      "icon": "perk-images/Styles/Domination/HailOfBlades/HailOfBlades.png",
+      "name": "Hail of Blades"
+     }
+    ]
+   },
+   {
+    "runes": [
+     {
+      "id": 8126,
+      "key": "CheapShot",
+      "icon": "perk-images/Styles/Domination/CheapShot/CheapShot.png",
+      "name": "Cheap Shot"
+     },
+     {
+      "id": 8139,
+      "key": "TasteOfBlood",
+      "icon": "perk-images/Styles/Domination/TasteOfBlood/GreenTerror_TasteOfBlood.png",
+      "name": "Taste of Blood"
+     },
+     {
+      "id": 8143,
+      "key": "SuddenImpact",
+      "icon": "perk-images/Styles/Domination/SuddenImpact/SuddenImpact.png",
+      "name": "Sudden Impact"
+     }
+    ]
+   },
+   {
+    "runes": [
+     {
+      "id": 8137,
+      "key": "SixthSense",
+      "icon": "perk-images/Styles/Domination/SixthSense/SixthSense.png",
+      "name": "Sixth Sense"
+     },
+     {
+      "id": 8140,
+      "key": "GrislyMementos",
+      "icon": "perk-images/Styles/Domination/GrislyMementos/GrislyMementos.png",
+      "name": "Grisly Mementos"
+     },
+     {
+      "id": 8141,
+      "key": "DeepWard",
+      "icon": "perk-images/Styles/Domination/DeepWard/DeepWard.png",
+      "name": "Deep Ward"
+     }
+    ]
+   },
+   {
+    "runes": [
+     {
+      "id": 8135,
+      "key": "TreasureHunter",
+      "icon": "perk-images/Styles/Domination/TreasureHunter/TreasureHunter.png",
+      "name": "Treasure Hunter"
+     },
+     {
+      "id": 8105,
+      "key": "RelentlessHunter",
+      "icon": "perk-images/Styles/Domination/RelentlessHunter/RelentlessHunter.png",
+      "name": "Relentless Hunter"
+     },
+     {
+      "id": 8106,
+      "key": "UltimateHunter",
+      "icon": "perk-images/Styles/Domination/UltimateHunter/UltimateHunter.png",
+      "name": "Ultimate Hunter"
+     }
+    ]
+   }
+  ]
+ }
+]

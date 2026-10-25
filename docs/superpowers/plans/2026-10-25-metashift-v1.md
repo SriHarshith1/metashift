@@ -226,7 +226,7 @@ def test_claude_without_key_names_the_variable(monkeypatch):
 
 LoL rules:
 - Patch ids: Data Dragon `versions.json` lists `"16.21.1"`. Map major − 10 → `"26.21"`. Skip versions with major < 15. Remove duplicates and keep order.
-- Notes URL: `https://www.leagueoflegends.com/en-us/news/game-updates/patch-{yy}-{n}-notes/` for patch `yy.n` (verify in Step 1).
+- Notes URL: `https://www.leagueoflegends.com/en-us/news/game-updates/patch-{yy}-{n}-notes/` for patch `yy.n` (verified in Step 1 on patch 26.3). `n` is not zero-padded for 2026 (`patch-26-3-notes`), but it is for 2025 (`patch-25-04-notes`): on a 404 for a one-digit `n`, try the zero-padded form before failing. The page is server-rendered, so plain HTTP gets the article. Article body selector: `#patch-notes-container`. Publish date: the first `time[datetime]` inside `div.metadata` (ISO UTC, for example `2026-02-03T19:00:00.000Z`); other `<time>` tags on the page belong to related articles. Change lines are `<li>old <span class="change-indicator">⇒</span> new</li>`.
 - Entities: `champion.json` `data[*].name` → `champion`; `item.json` `data[*].name` → `item`; `runesReforged.json` `[*].slots[*].runes[*].name` → `rune`. Cache each JSON per Data Dragon version.
 - Icons: champion `https://ddragon.leagueoflegends.com/cdn/{ver}/img/champion/{data[*].id}.png`, item `.../cdn/{ver}/img/item/{item key}.png`, rune `https://ddragon.leagueoflegends.com/cdn/img/{icon}`. `system` → `None`.
 - `notes_to_markdown`: select the article body with the selector found in Step 1, then `markdownify`. If the selector finds nothing → `MetashiftError("patch notes page layout changed: article body not found")`.

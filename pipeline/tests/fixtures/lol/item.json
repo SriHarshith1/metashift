@@ -1,0 +1,127 @@
+{
+ "type": "item",
+ "version": "16.21.1",
+ "data": {
+  "1001": {
+   "name": "Boots",
+   "plaintext": "Slightly increases Move Speed",
+   "image": {
+    "full": "1001.png",
+    "sprite": "item0.png",
+    "group": "item",
+    "x": 0,
+    "y": 0,
+    "w": 48,
+    "h": 48
+   },
+   "gold": {
+    "base": 300,
+    "purchasable": true,
+    "total": 300,
+    "sell": 210
+   },
+   "tags": [
+    "Boots"
+   ]
+  },
+  "1055": {
+   "name": "Doran's Blade",
+   "plaintext": "Good starting item for attackers",
+   "image": {
+    "full": "1055.png",
+    "sprite": "item0.png",
+    "group": "item",
+    "x": 96,
+    "y": 96,
+    "w": 48,
+    "h": 48
+   },
+   "gold": {
+    "base": 450,
+    "purchasable": true,
+    "total": 450,
+    "sell": 180
+   },
+   "tags": [
+    "Health",
+    "Damage",
+    "LifeSteal",
+    "SpellVamp",
+    "Lane"
+   ]
+  },
+  "3031": {
+   "name": "Infinity Edge",
+   "plaintext": "Massively enhances critical strikes",
+   "image": {
+    "full": "3031.png",
+    "sprite": "item3.png",
+    "group": "item",
+    "x": 48,
+    "y": 144,
+    "w": 48,
+    "h": 48
+   },
+   "gold": {
+    "base": 725,
+    "purchasable": true,
+    "total": 3500,
+    "sell": 2450
+   },
+   "tags": [
+    "CriticalStrike",
+    "Damage"
+   ]
+  },
+  "3089": {
+   "name": "Rabadon's Deathcap",
+   "plaintext": "Massively increases Ability Power",
+   "image": {
+    "full": "3089.png",
+    "sprite": "item3.png",
+    "group": "item",
+    "x": 288,
+    "y": 288,
+    "w": 48,
+    "h": 48
+   },
+   "gold": {
+    "base": 1100,
+    "purchasable": true,
+    "total": 3500,
+    "sell": 2450
+   },
+   "tags": [
+    "SpellDamage"
+   ]
+  },
+  "3078": {
+   "name": "Trinity Force",
+   "plaintext": "Tons of Damage",
+   "image": {
+    "full": "3078.png",
+    "sprite": "item3.png",
+    "group": "item",
+    "x": 432,
+    "y": 240,
+    "w": 48,
+    "h": 48
+   },
+   "gold": {
+    "base": 133,
+    "purchasable": true,
+    "total": 3333,
+    "sell": 2333
+   },
+   "tags": [
+    "Health",
+    "Damage",
+    "AttackSpeed",
+    "CooldownReduction",
+    "OnHit",
+    "NonbootsMovement",
+    "AbilityHaste"
+   ]
+  }
+ }
+}
