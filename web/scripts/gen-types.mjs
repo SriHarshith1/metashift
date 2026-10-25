@@ -8,7 +8,11 @@ function stripFieldTitles(node) {
   if (Array.isArray(node)) return node.forEach(stripFieldTitles);
   if (node === null || typeof node !== "object") return;
   if (!node.properties && !node.additionalProperties && node.type !== "object") delete node.title;
-  Object.values(node).forEach(stripFieldTitles);
+  for (const [key, value] of Object.entries(node)) {
+    // A "properties" or "$defs" map is keyed by name: a field called "title" is not a title.
+    if (key === "properties" || key === "$defs") Object.values(value).forEach(stripFieldTitles);
+    else stripFieldTitles(value);
+  }
 }
 
 const names = ["ReportFile", "IndexFile"];

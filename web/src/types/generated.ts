@@ -11,6 +11,7 @@ export interface ReportFile {
   entities: EntityVerdict[];
   changes: Change[];
   warnings: string[];
+  ripples?: Ripple[];
 }
 export interface EntityVerdict {
   entity: string;
@@ -21,6 +22,8 @@ export interface EntityVerdict {
   reason: string;
   change_refs: number[];
   icon_url?: string | null;
+  impact?: string | null;
+  build_shift?: string | null;
 }
 export interface PreviousStats {
   win_rate: number | null;
@@ -37,6 +40,16 @@ export interface Change {
   new: string | null;
   direction: "buff" | "nerf" | "adjust";
   source_quote: string;
+}
+export interface Ripple {
+  title: string;
+  explanation: string;
+  entities: RippleEntity[];
+}
+export interface RippleEntity {
+  entity: string;
+  entity_type: string;
+  icon_url?: string | null;
 }
 
 export interface IndexFile {

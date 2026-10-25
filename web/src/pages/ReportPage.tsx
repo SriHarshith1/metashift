@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import Board from "../components/Board";
+import Ripples from "../components/Ripples";
 import { LoadError, Loading } from "../components/Status";
 import WarningsPanel from "../components/WarningsPanel";
 import { fetchReport } from "../data";
@@ -28,6 +29,7 @@ export default function ReportPage() {
         <p className="report-meta">Written by {report.llm}</p>
       </header>
       <WarningsPanel warnings={report.warnings} />
+      <Ripples game={game} ripples={report.ripples ?? []} />
       <Board report={report} />
     </article>
   );

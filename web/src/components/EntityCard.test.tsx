@@ -74,3 +74,15 @@ test("EntityCard says no stats when previous is null", () => {
   expect(screen.getByText(/no stats/i)).toBeInTheDocument();
   expect(screen.queryByText(/null/)).not.toBeInTheDocument();
 });
+
+test("EntityCard shows impact and build shift when present", () => {
+  const { rerender } = render(
+    <EntityCard verdict={{ ...v, impact: "Less burst in lane.", build_shift: "Lethality builds gain value." }} changes={[c]} />,
+  );
+  expect(screen.getByText("Less burst in lane.")).toBeInTheDocument();
+  expect(screen.getByText("Lethality builds gain value.")).toBeInTheDocument();
+  expect(screen.getByText("Build shift")).toBeInTheDocument();
+  rerender(<EntityCard verdict={{ ...v, impact: null, build_shift: null }} changes={[c]} />);
+  expect(screen.queryByText("Impact")).not.toBeInTheDocument();
+  expect(screen.queryByText("Build shift")).not.toBeInTheDocument();
+});

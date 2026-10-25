@@ -7,6 +7,7 @@ from markdownify import markdownify
 
 from metashift.core.errors import MetashiftError
 from metashift.core.models import EntityStats
+from metashift.core.text import normalize_ws
 from metashift.games.base import StatsUnavailable
 
 DDRAGON = "https://ddragon.leagueoflegends.com"
@@ -34,6 +35,16 @@ KEPT_SECTIONS = {"mid-patch updates", "champions", "items", "runes", "systems"}
 KEPT_SECTION_PREFIX = "summoner's rift"
 
 _VERSION_RE = re.compile(r"^(\d+)\.(\d+)(?:\.\d+)*$")
+# A change target such as "Q", "Q - Piltover Peacemaker", "RW - Mimic" or "Passive - Headshot".
+_ABILITY_RE = re.compile(r"^(passive|[QWER]{1,4})\b", re.IGNORECASE)
+_SPELL_KEYS = "QWER"
+SUMMONERS_RIFT_MAP = "11"
+
+
+def _plain(html: str) -> str:
+    """Data Dragon descriptions hold HTML-like markup. Keep the text only."""
+    text = normalize_ws(re.sub(r"<[^>]+>", " ", html))
+    return re.sub(r" ([.,;:!?])", r"\1", text)
 
 
 class LolAdapter:
@@ -45,6 +56,10 @@ class LolAdapter:
         self._http = http or httpx.Client(timeout=HTTP_TIMEOUT_S, follow_redirects=True)
         self._versions: list[str] | None = None
         self._catalogs: dict[str, dict[str, tuple[str, str | None]]] = {}
+        # version -> display name -> champion id, or item/rune description text
+        self._champion_ids: dict[str, dict[str, str]] = {}
+        self._texts: dict[str, dict[str, str]] = {}
+        self._champions: dict[tuple[str, str], dict] = {}
 
     # --- HTTP helpers -------------------------------------------------------------
 
@@ -193,14 +208,31 @@ class LolAdapter:
             return self._catalogs[version]
         base = f"{DDRAGON}/cdn/{version}"
         catalog: dict[str, tuple[str, str | None]] = {}
+        champion_ids: dict[str, str] = {}
+        texts: dict[str, str] = {}
         champions = self._get_json(f"{base}/data/en_US/champion.json")["data"]
         for champ in champions.values():
             catalog.setdefault(
                 champ["name"], ("champion", f"{base}/img/champion/{champ['id']}.png")
             )
+            champion_ids.setdefault(champ["name"], champ["id"])
         items = self._get_json(f"{base}/data/en_US/item.json")["data"]
+        rift_text: set[str] = set()
         for key, item in items.items():
-            catalog.setdefault(item["name"], ("item", f"{base}/img/item/{key}.png"))
+            name = item["name"]
+            if catalog.get(name, ("item",))[0] != "item":
+                continue  # a champion of the same name wins
+            # Other modes reuse item names with other numbers: prefer the Summoner's Rift entry.
+            on_rift = item.get("maps", {}).get(SUMMONERS_RIFT_MAP, True)
+            if name not in texts or (on_rift and name not in rift_text):
+                catalog[name] = ("item", f"{base}/img/item/{key}.png")
+                cost = item.get("gold", {}).get("total")
+                parts = [item.get("plaintext", ""), _plain(item.get("description", ""))]
+                if cost:
+                    parts.append(f"Cost {cost} gold.")
+                texts[name] = normalize_ws(" ".join(parts))
+                if on_rift:
+                    rift_text.add(name)
         trees = self._get_json(f"{base}/data/en_US/runesReforged.json")
         for tree in trees:
             for slot in tree["slots"]:
@@ -208,7 +240,12 @@ class LolAdapter:
                     catalog.setdefault(
                         rune["name"], ("rune", f"{DDRAGON}/cdn/img/{rune['icon']}")
                     )
+                    texts.setdefault(
+                        rune["name"], f"{tree['name']} rune. {_plain(rune.get('shortDesc', ''))}"
+                    )
         self._catalogs[version] = catalog
+        self._champion_ids[version] = champion_ids
+        self._texts[version] = texts
         return catalog
 
     def entities(self, patch: str) -> dict[str, str]:
@@ -217,6 +254,48 @@ class LolAdapter:
     def icon_url(self, patch: str, entity: str) -> str | None:
         entry = self._catalog(patch).get(entity)
         return entry[1] if entry else None
+
+    # --- kit text -----------------------------------------------------------------
+
+    def _champion(self, version: str, champion_id: str) -> dict:
+        key = (version, champion_id)
+        if key not in self._champions:
+            url = f"{DDRAGON}/cdn/{version}/data/en_US/champion/{champion_id}.json"
+            self._champions[key] = self._get_json(url)["data"][champion_id]
+        return self._champions[key]
+
+    def describe(self, patch: str, entity: str, targets: list[str]) -> str | None:
+        """Data Dragon text for the changed parts of an entity: its role and the changed
+        abilities for a champion, the description for an item or rune."""
+        entry = self._catalog(patch).get(entity)
+        if entry is None or entry[0] == "system":
+            return None
+        version = self._version_for(patch)
+        if entry[0] != "champion":
+            return self._texts[version].get(entity) or None
+        champ = self._champion(version, self._champion_ids[version][entity])
+        roles = ", ".join(champ.get("tags", [])) or "champion"
+        lines = [f"{roles}; resource: {champ.get('partype') or 'none'}"]
+        wanted: list[str] = []
+        for target in targets:
+            if target.strip().lower().startswith("base"):
+                continue
+            # Unknown targets (Aphelios weapons, for example) live in the passive.
+            match = _ABILITY_RE.match(target.strip())
+            keys = "P"
+            if match is not None and match.group(1).lower() != "passive":
+                keys = match.group(1).upper()
+            wanted.extend(k for k in keys if k not in wanted)
+        spells = champ.get("spells", [])
+        for key in sorted(wanted, key="PQWER".index):
+            if key == "P":
+                ability = champ.get("passive")
+            else:
+                index = _SPELL_KEYS.index(key)
+                ability = spells[index] if index < len(spells) else None
+            if ability:
+                lines.append(f"{key} {ability['name']}: {_plain(ability['description'])}")
+        return "\n".join(lines)
 
     # --- stats --------------------------------------------------------------------
 

@@ -73,7 +73,7 @@ Each stage reads the files of earlier stages and writes one file to
 | 1 | fetch | patch notes URL or `--notes-file`; keeps only meta sections (`select_sections`) | `raw.md` | no |
 | 2 | extract | `raw.md`, adapter entity list | `changes.json` | yes |
 | 3 | baseline | previous patch stats, last 5 `changes.json` | `baseline.json` | no |
-| 4 | analyze | `changes.json`, `baseline.json` | `report.json` | yes |
+| 4 | analyze | `changes.json`, `baseline.json`, adapter `describe()` text | `report.json` | yes |
 | 5 | publish | `report.json` | `web/public/data/<game>/<patch>.json`, `web/public/data/index.json` | no |
 
 The previous patch for the baseline is found from the adapter's patch list
@@ -216,6 +216,14 @@ and on read. TypeScript types for the web app are generated from the same models
   so the published file is self-contained for the web app.
 - `previous` is copied from the baseline by code, not written by the LLM.
 - `warnings`: collected from all stages (see §6).
+- Impact (amended 2026-10-25): each entity also has `impact` (what the change does in a
+  game) and `build_shift` (null unless builds or playstyle probably change). The report
+  has `ripples`: 2 to 5 indirect effects, each with `title`, `explanation` and
+  `entities` (name, type, icon). Code keeps only ripple entities that the adapter knows.
+  The analyze prompt gets official text for the changed parts of each entity from the
+  adapter's `describe(patch, entity, targets)` (LoL: Data Dragon roles, changed
+  abilities, item and rune descriptions). A failed `describe` adds a warning. All three
+  fields are optional in the report schema, so older reports still load.
 
 ### 4.4 `index.json` (published)
 

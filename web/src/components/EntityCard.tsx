@@ -47,6 +47,16 @@ export default function EntityCard({ verdict, changes, game = "lol" }: Props) {
         </div>
       </dl>
       <p className="card-reason">{verdict.reason}</p>
+      {verdict.impact && (
+        <p className="card-note">
+          <span className="card-note-label">Impact</span> {verdict.impact}
+        </p>
+      )}
+      {verdict.build_shift && (
+        <p className="card-note" data-kind="build">
+          <span className="card-note-label">Build shift</span> {verdict.build_shift}
+        </p>
+      )}
       {changes.length > 0 && (
         <>
           <button type="button" className="card-toggle" aria-expanded={open} aria-controls={listId} onClick={() => setOpen(!open)}>

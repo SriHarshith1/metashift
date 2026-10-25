@@ -13,6 +13,7 @@ from metashift.core.models import (
     ChangesFile,
     HistoryEntry,
     ReportFile,
+    RippleDraft,
     StageLog,
     VerdictDraft,
 )
@@ -21,7 +22,13 @@ from metashift.core.stages.analyze import run_analyze
 from metashift.core.stages.context import StageContext
 from tests.conftest import StubAdapter
 
-ENTITIES = {"Ahri": "champion", "Kai'Sa": "champion"}
+ENTITIES = {
+    "Ahri": "champion",
+    "Kai'Sa": "champion",
+    "Jhin": "champion",
+    "Infinity Edge": "item",
+    "Dragon Soul": "system",
+}
 
 
 def make_change(entity, direction, stat="Damage"):
@@ -40,15 +47,23 @@ def make_change(entity, direction, stat="Damage"):
 CHANGES = [make_change("Ahri", "buff"), make_change("Kai'Sa", "nerf")]
 
 
-def v(entity, verdict):
+def v(entity, verdict, build_shift=None):
     return VerdictDraft(
-        entity=entity, verdict=verdict, confidence="high", reason=f"{entity} reason"
+        entity=entity,
+        verdict=verdict,
+        confidence="high",
+        reason=f"{entity} reason",
+        impact=f"{entity} impact",
+        build_shift=build_shift,
     )
 
 
-def draft_json(*verdicts, headline="Ahri up, Kai'Sa down"):
+def draft_json(*verdicts, headline="Ahri up, Kai'Sa down", ripples=()):
     return AnalysisDraft(
-        headline=headline, themes=["mid lane", "marksmen"], entities=list(verdicts)
+        headline=headline,
+        themes=["mid lane", "marksmen"],
+        entities=list(verdicts),
+        ripples=list(ripples),
     ).model_dump_json()
 
 
@@ -82,8 +97,8 @@ def inputs(root):
     return root
 
 
-def ctx(llm):
-    return StageContext("lol", "26.21", StubAdapter(entities=ENTITIES), llm)
+def ctx(llm, adapter=None):
+    return StageContext("lol", "26.21", adapter or StubAdapter(entities=ENTITIES), llm)
 
 
 def read_report() -> ReportFile:
@@ -199,3 +214,58 @@ def test_analyze_without_extract_or_baseline_names_the_stage(root):
 def test_analyze_requires_an_llm(inputs):
     with pytest.raises(MetashiftError, match="needs an LLM"):
         run_analyze(ctx(None))
+
+
+def test_analyze_copies_impact_and_build_shift(inputs):
+    good = draft_json(
+        v("Ahri", "rise", build_shift="AP burst builds gain value."),
+        v("Kai'Sa", "fall", build_shift=""),
+    )
+    run_analyze(ctx(FakeLLM([good])))
+    ahri, kaisa = read_report().entities
+    assert ahri.impact == "Ahri impact" and ahri.build_shift == "AP burst builds gain value."
+    assert kaisa.impact == "Kai'Sa impact" and kaisa.build_shift is None
+
+
+def test_analyze_prompt_holds_official_descriptions_and_impact_rules(inputs):
+    adapter = StubAdapter(
+        entities=ENTITIES, details={"Ahri": "Mage\nQ Orb of Deception: Ahri throws her orb."}
+    )
+    llm = FakeLLM([GOOD])
+    run_analyze(ctx(llm, adapter))
+    prompt = llm.prompts[0]
+    assert "  official description of the changed parts:\n    Mage\n    Q Orb of Deception" in prompt
+    assert "impact:" in prompt and "build_shift:" in prompt and "ripples:" in prompt
+    assert "Do not invent numbers or abilities" in prompt
+
+
+class FailingDescribe(StubAdapter):
+    def describe(self, patch, entity, targets):
+        raise MetashiftError("Data Dragon down")
+
+
+def test_analyze_continues_without_descriptions(inputs):
+    run_analyze(ctx(FakeLLM([GOOD]), FailingDescribe(entities=ENTITIES)))
+    r = read_report()
+    assert len(r.entities) == 2
+    assert "no description for Ahri: Data Dragon down" in r.warnings
+
+
+def test_analyze_resolves_ripple_entities_and_drops_unknown_names(inputs):
+    ripple = RippleDraft(
+        title="Crit marksmen lose",
+        explanation="Kai'Sa nerfs push players to Jhin.",
+        entities=["kaisa", "Jhin", "Jhin", "ADCs", "Dragon Soul", "Infinity Edge"],
+    )
+    run_analyze(ctx(FakeLLM([draft_json(v("Ahri", "rise"), v("Kai'Sa", "fall"), ripples=[ripple])])))
+    r = read_report()
+    assert len(r.ripples) == 1
+    got = r.ripples[0]
+    assert (got.title, got.explanation) == ("Crit marksmen lose", "Kai'Sa nerfs push players to Jhin.")
+    assert [(e.entity, e.entity_type, e.icon_url) for e in got.entities] == [
+        ("Kai'Sa", "champion", "stub://Kai'Sa.png"),
+        ("Jhin", "champion", "stub://Jhin.png"),
+        ("Infinity Edge", "item", "stub://Infinity Edge.png"),
+    ]
+    assert "ripple 'Crit marksmen lose': unknown entity 'ADCs' dropped" in r.warnings
+    assert "ripple 'Crit marksmen lose': unknown entity 'Dragon Soul' dropped" in r.warnings

@@ -69,6 +69,21 @@ class EntityVerdict(BaseModel):
     reason: str
     change_refs: list[Annotated[int, Field(ge=0)]]
     icon_url: str | None = None
+    # Optional so reports written before impact analysis still load.
+    impact: str | None = None
+    build_shift: str | None = None
+
+
+class RippleEntity(BaseModel):
+    entity: str
+    entity_type: str
+    icon_url: str | None = None
+
+
+class Ripple(BaseModel):
+    title: str
+    explanation: str
+    entities: list[RippleEntity]
 
 
 class ReportFile(BaseModel):
@@ -82,6 +97,7 @@ class ReportFile(BaseModel):
     entities: list[EntityVerdict]
     changes: list[Change]
     warnings: list[str]
+    ripples: list[Ripple] = []
 
 
 class IndexEntry(BaseModel):
@@ -121,9 +137,18 @@ class VerdictDraft(BaseModel):
     verdict: Verdict
     confidence: Confidence
     reason: str
+    impact: str
+    build_shift: str | None = None
+
+
+class RippleDraft(BaseModel):
+    title: str
+    explanation: str
+    entities: list[str]
 
 
 class AnalysisDraft(BaseModel):
     headline: str
     themes: list[str]
     entities: list[VerdictDraft]
+    ripples: list[RippleDraft]

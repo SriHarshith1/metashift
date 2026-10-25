@@ -2,6 +2,8 @@
 
 Metashift turns a game patch into a **meta shift report**. It reads the official patch notes, pulls out every buff and nerf as structured data, and says for each changed champion or item whether it rises, falls or stays stable compared with the previous patch.
 
+Each card also says what the change does in a game (**impact**, for example "late-game crit burst drops") and, when builds probably change, a **build shift** ("lethality builds gain value"). Each report lists 2 to 5 **ripple effects**: indirect effects across the patch, such as a nerf that opens room for a rival. The analyze stage gives the model the official text of each changed ability and item from Data Dragon, so it does not guess what an ability does. These are model predictions, not win-rate data.
+
 Version 1 supports **League of Legends** (Summoner's Rift only). The core is game-agnostic, so other games plug in as adapters.
 
 ```

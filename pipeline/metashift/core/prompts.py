@@ -48,7 +48,14 @@ def _stats_line(entity: BaselineEntity | None) -> str:
     return ", ".join(parts)
 
 
-def analyze_prompt(changes: list[Change], baseline: BaselineFile, glossary: str) -> str:
+def analyze_prompt(
+    changes: list[Change],
+    baseline: BaselineFile,
+    glossary: str,
+    kits: dict[str, str] | None = None,
+) -> str:
+    """`kits` maps an entity to official text about its changed parts (see describe)."""
+    kits = kits or {}
     numbered = "\n".join(
         f"[{i}] {c.entity} — {c.target} {c.stat}: {c.old if c.old is not None else '(none)'}"
         f" → {c.new if c.new is not None else '(removed)'} ({c.direction})"
@@ -59,6 +66,9 @@ def analyze_prompt(changes: list[Change], baseline: BaselineFile, glossary: str)
     for name in entity_names:
         entity = baseline.entities.get(name)
         lines = [f"{name}", f"  stats before this patch: {_stats_line(entity)}"]
+        if name in kits:
+            lines.append("  official description of the changed parts:")
+            lines.extend(f"    {line}" for line in kits[name].splitlines())
         if entity is not None and entity.history:
             lines.append("  recent changes:")
             lines.extend(
@@ -87,9 +97,16 @@ Return JSON with these keys:
   - verdict: "rise" when the entity should get stronger, "fall" when weaker, "stable" when the meta position stays the same.
   - confidence: "low", "medium" or "high".
   - reason: a short explanation that cites the change, the stats and the trend of earlier patches. Refer to the changes by their stat and values; do not give change indexes.
+  - impact: 1 or 2 sentences on what the change does in a game, not a repeat of the numbers. Say which part of the entity's power moves: damage output (burst or damage over time), laning, team fights, early or late game, survival. Example: "Headshot deals less damage with crit items, so her late-game damage drops. Her Q poke is stronger in lane."
+  - build_shift: one sentence when the change probably moves the builds, runes, role or playstyle of the entity or of the champions that use it. Example: "Crit scaling drops and Q base damage rises, so lethality builds gain value." Use null when builds probably stay the same.
+- ripples: 2 to 5 indirect effects of the whole patch on the meta. Examples: champions that gain because a rival or counter was nerfed, champions that use a changed item, build paths that an item or rune change pushes, a role that gets stronger or weaker as a group. Each ripple has:
+  - title: a short phrase, for example "Lethality marksmen gain".
+  - explanation: 1 or 2 sentences that name the changes that cause the effect.
+  - entities: the names of the champions, items or runes involved, as written in the game. Changed and unchanged entities are both allowed.
 
 Rules:
-- Use only the data above. Do not invent numbers.
+- Use only the data above and the official descriptions. Do not invent numbers or abilities.
+- Impact, build shifts and ripples are predictions. Keep them to what the changes and descriptions support.
 - A near-50% win rate together with a small change usually means "stable".
 - A verdict must fit the changes: do not say "rise" when every change is a nerf, or "fall" when every change is a buff.
 """

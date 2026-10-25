@@ -26,6 +26,7 @@ def ddragon_transport(versions: list[str] | None = None) -> httpx.MockTransport:
         f"/cdn/{VERSION}/data/en_US/champion.json": fixture("champion.json"),
         f"/cdn/{VERSION}/data/en_US/item.json": fixture("item.json"),
         f"/cdn/{VERSION}/data/en_US/runesReforged.json": fixture("runesReforged.json"),
+        f"/cdn/{VERSION}/data/en_US/champion/Ahri.json": fixture("champion/Ahri.json"),
     }
 
     def handler(request: httpx.Request) -> httpx.Response:
@@ -239,3 +240,45 @@ def test_available_patches_reports_http_errors():
     adapter = LolAdapter(http=httpx.Client(transport=listing_transport("", status=503)))
     with pytest.raises(MetashiftError, match="HTTP 503"):
         adapter.available_patches()
+
+
+def test_describe_champion_gives_roles_and_only_the_changed_abilities(adapter):
+    text = adapter.describe("26.21", "Ahri", ["Q - Orb of Deception", "Passive", "Base stats"])
+    lines = text.splitlines()
+    assert lines[0] == "Mage, Assassin; resource: Mana"
+    assert lines[1] == (
+        "P Essence Theft: After killing 9 minions or monsters, Ahri heals. "
+        "After taking down an enemy champion, Ahri heals for a greater amount."
+    )
+    assert lines[2].startswith("Q Orb of Deception: Ahri sends out and pulls back her orb")
+    assert len(lines) == 3
+
+
+def test_describe_champion_splits_combined_targets_and_skips_base_stats(adapter):
+    text = adapter.describe("26.21", "Ahri", ["RW - Spirit Rush", "Base Stats"])
+    assert [line.split(":")[0] for line in text.splitlines()[1:]] == [
+        "W Fox-Fire",
+        "R Spirit Rush",
+    ]
+    assert adapter.describe("26.21", "Ahri", ["Base stats"]) == "Mage, Assassin; resource: Mana"
+
+
+def test_describe_unknown_target_uses_the_passive(adapter):
+    text = adapter.describe("26.21", "Ahri", ["Calibrum"])
+    assert text.splitlines()[1].startswith("P Essence Theft:")
+
+
+def test_describe_item_prefers_the_summoners_rift_entry_and_strips_markup(adapter):
+    text = adapter.describe("26.21", "Infinity Edge", ["Item"])
+    assert text == (
+        "Massively enhances critical strikes 75 Attack Damage 25% Critical Strike Chance "
+        "Infinite Precision Critical strikes deal 250% damage. Cost 3500 gold."
+    )
+
+
+def test_describe_rune_and_unknown_entity(adapter):
+    assert adapter.describe("26.21", "Electrocute", []) == (
+        "Domination rune. Hitting a champion with 3 separate attacks or abilities in 3s "
+        "deals bonus adaptive damage."
+    )
+    assert adapter.describe("26.21", "Dragon Soul", []) is None

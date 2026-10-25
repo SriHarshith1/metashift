@@ -11,7 +11,8 @@
       "id": 8112,
       "key": "Electrocute",
       "icon": "perk-images/Styles/Domination/Electrocute/Electrocute.png",
-      "name": "Electrocute"
+      "name": "Electrocute",
+      "shortDesc": "Hitting a champion with 3 <b>separate</b> attacks or abilities in 3s deals bonus <lol-uikit-tooltipped-keyword key='x'>adaptive damage</lol-uikit-tooltipped-keyword>."
      },
      {
       "id": 8128,

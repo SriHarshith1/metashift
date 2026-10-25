@@ -20,11 +20,11 @@ kaisa_nerf = make_change("Kai'Sa", "nerf")
 
 
 def v(entity, verdict="stable"):
-    return VerdictDraft(entity=entity, verdict=verdict, confidence="medium", reason="r")
+    return VerdictDraft(entity=entity, verdict=verdict, confidence="medium", reason="r", impact="i")
 
 
 def draft(*verdicts):
-    return AnalysisDraft(headline="h", themes=[], entities=list(verdicts))
+    return AnalysisDraft(headline="h", themes=[], entities=list(verdicts), ripples=[])
 
 
 def test_retry_problems_finds_missing_verdicts():

@@ -50,6 +50,34 @@
     "Lane"
    ]
   },
+  "443031": {
+   "name": "Infinity Edge",
+   "plaintext": "",
+   "image": {
+    "full": "3031.png",
+    "sprite": "item3.png",
+    "group": "item",
+    "x": 48,
+    "y": 144,
+    "w": 48,
+    "h": 48
+   },
+   "gold": {
+    "base": 725,
+    "purchasable": true,
+    "total": 2500,
+    "sell": 2450
+   },
+   "tags": [
+    "CriticalStrike",
+    "Damage"
+   ],
+   "description": "<mainText><stats><attention>70</attention> Attack Damage</stats></mainText>",
+   "maps": {
+    "11": false,
+    "30": true
+   }
+  },
   "3031": {
    "name": "Infinity Edge",
    "plaintext": "Massively enhances critical strikes",
@@ -71,7 +99,12 @@
    "tags": [
     "CriticalStrike",
     "Damage"
-   ]
+   ],
+   "description": "<mainText><stats><attention>75</attention> Attack Damage<br><attention>25%</attention> Critical Strike Chance</stats><br><br><passive>Infinite Precision</passive><br>Critical strikes deal <physicalDamage>250% damage</physicalDamage>.</mainText>",
+   "maps": {
+    "11": true,
+    "12": true
+   }
   },
   "3089": {
    "name": "Rabadon's Deathcap",

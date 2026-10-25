@@ -380,6 +380,88 @@ select {
   letter-spacing: 0;
 }
 
+/* Ripple effects: patch-wide indirect effects above the board */
+.ripples {
+  margin-bottom: 24px;
+}
+
+.ripples h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+}
+
+.ripples-note {
+  margin: 4px 0 12px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.ripple-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ripple {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--signal);
+  border-radius: var(--radius);
+}
+
+.ripple h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.ripple p {
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+.ripple-entities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 2px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ripple-entities a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 2px 10px 2px 2px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink);
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.ripple-entities a:not(:has(img)) {
+  padding-left: 10px;
+}
+
+.ripple-entities a:hover {
+  border-color: var(--signal);
+}
+
+.ripple-entities img {
+  border-radius: 50%;
+}
+
 /* Board: three columns on wide screens, tabs below 640px */
 .board {
   display: grid;
@@ -572,6 +654,27 @@ select {
 
 .card-reason {
   margin: 0;
+}
+
+.card-note {
+  margin: 0;
+  padding: 6px 10px;
+  background: var(--surface-2);
+  border-left: 3px solid var(--line);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 0.92rem;
+}
+
+.card-note[data-kind="build"] {
+  border-left-color: var(--signal);
+}
+
+.card-note-label {
+  display: block;
+  color: var(--muted);
+  font: 600 0.72rem var(--font-data);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .card-toggle {

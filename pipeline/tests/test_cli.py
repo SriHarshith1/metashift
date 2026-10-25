@@ -39,9 +39,10 @@ ANALYZE_JSON = AnalysisDraft(
     themes=["mid lane"],
     entities=[
         VerdictDraft(
-            entity="Ahri", verdict="rise", confidence="high", reason="buff"
+            entity="Ahri", verdict="rise", confidence="high", reason="buff", impact="i"
         )
     ],
+    ripples=[],
 ).model_dump_json()
 STATS = [EntityStats(entity="Ahri", win_rate=49.1, pick_rate=6.2, ban_rate=3.0, tier=None)]
 
@@ -83,7 +84,7 @@ def test_run_all_stages_writes_report_and_index(root, stubs):
 
 
 def test_run_prints_retries_and_warnings(root, stubs, monkeypatch):
-    bad = AnalysisDraft(headline="h", themes=[], entities=[]).model_dump_json()
+    bad = AnalysisDraft(headline="h", themes=[], entities=[], ripples=[]).model_dump_json()
     monkeypatch.setattr(
         cli, "make_llm", lambda kind: FakeLLM([EXTRACT_JSON, bad, bad, bad], name="fake")
     )

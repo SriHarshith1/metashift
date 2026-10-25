@@ -40,3 +40,18 @@ test("ReportPage shows the load error", async () => {
   renderPage();
   expect(await screen.findByText("could not load data/lol/26.21.json")).toBeInTheDocument();
 });
+
+test("ReportPage shows ripple effects when the report has them", async () => {
+  const ripples = [{ title: "Tanks breathe", explanation: "Marksman nerfs help tanks.", entities: [] }];
+  vi.mocked(fetchReport).mockResolvedValue({ ...(fixtureJson as ReportFile), ripples });
+  renderPage();
+  expect(await screen.findByRole("heading", { level: 2, name: "Ripple effects" })).toBeInTheDocument();
+  expect(screen.getByText("Marksman nerfs help tanks.")).toBeInTheDocument();
+});
+
+test("ReportPage hides ripple effects for older reports", async () => {
+  vi.mocked(fetchReport).mockResolvedValue(fixtureJson as ReportFile);
+  renderPage();
+  await screen.findByRole("heading", { level: 1 });
+  expect(screen.queryByText("Ripple effects")).not.toBeInTheDocument();
+});

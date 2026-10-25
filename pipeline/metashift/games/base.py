@@ -39,6 +39,11 @@ class GameAdapter(Protocol):
 
     def icon_url(self, patch: str, entity: str) -> str | None: ...
 
+    def describe(self, patch: str, entity: str, targets: list[str]) -> str | None:
+        """Short official text about the changed parts of an entity (for example the
+        changed abilities of a champion), or None when the game has none."""
+        ...
+
     def fetch_stats(self, patch: str) -> list[EntityStats]:
         """Raises StatsUnavailable when no statistics source is available."""
         ...

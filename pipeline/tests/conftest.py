@@ -19,7 +19,8 @@ class StubAdapter:
     `notes_html` is what fetch_notes returns. `notes_to_markdown` returns `notes_md`
     when it is set, else the HTML unchanged. `fetch_stats` raises StatsUnavailable
     unless `stats` rows are given. Icons follow `stub://{entity}.png` for every
-    entity of type champion, item or rune; `system` entities have none.
+    entity of type champion, item or rune; `system` entities have none. `describe`
+    returns the `details` text of an entity, or None.
     """
 
     def __init__(
@@ -33,6 +34,7 @@ class StubAdapter:
         game: str = "lol",
         entity_types: list[str] | None = None,
         glossary: str = "AD: attack damage.",
+        details: dict[str, str] | None = None,
     ) -> None:
         self.game = game
         self.entity_types = entity_types or ["champion", "item", "rune", "system"]
@@ -44,6 +46,7 @@ class StubAdapter:
         self.published = published
         self.stats = stats
         self.fetch_calls: list[str] = []
+        self.details = dict(details) if details is not None else {}
 
     def list_patches(self) -> list[str]:
         return list(self._patches)
@@ -71,6 +74,9 @@ class StubAdapter:
         if self._entities.get(entity) in (None, "system"):
             return None
         return f"stub://{entity}.png"
+
+    def describe(self, patch: str, entity: str, targets: list[str]) -> str | None:
+        return self.details.get(entity)
 
     def fetch_stats(self, patch: str) -> list[EntityStats]:
         if self.stats is None:
