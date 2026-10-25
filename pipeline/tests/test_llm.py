@@ -69,7 +69,9 @@ def test_ollama_unreachable_says_ollama_serve():
     def boom(request):
         raise httpx.ConnectError("refused")
 
-    llm = OllamaClient(model="m", host="http://x", transport=httpx.MockTransport(boom))
+    llm = OllamaClient(
+        model="m", host="http://localhost:11434", transport=httpx.MockTransport(boom)
+    )
     with pytest.raises(MetashiftError, match="ollama serve"):
         llm.complete_json("P", ExtractDraft)
 
@@ -183,3 +185,48 @@ def test_make_llm_selects_client(monkeypatch):
     monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key")
     assert make_llm("ollama").name.startswith("ollama:")
     assert make_llm("claude").name.startswith("claude:")
+
+
+def _capture_headers(seen: dict, status: int = 200):
+    def handler(request: httpx.Request) -> httpx.Response:
+        seen["auth"] = request.headers.get("authorization")
+        if status != 200:
+            return httpx.Response(status, text="unauthorized")
+        return httpx.Response(200, json={"message": {"content": '{"changes": []}'}})
+
+    return httpx.MockTransport(handler)
+
+
+def test_ollama_sends_api_key_as_bearer_token(monkeypatch):
+    monkeypatch.setenv("OLLAMA_API_KEY", "secret-key")
+    seen: dict = {}
+    llm = OllamaClient(model="m", host="https://ollama.com", transport=_capture_headers(seen))
+    llm.complete_json("P", ExtractDraft)
+    assert seen["auth"] == "Bearer secret-key"
+
+
+def test_ollama_sends_no_auth_header_without_key(monkeypatch):
+    monkeypatch.delenv("OLLAMA_API_KEY", raising=False)
+    seen: dict = {}
+    llm = OllamaClient(model="m", host="http://x", transport=_capture_headers(seen))
+    llm.complete_json("P", ExtractDraft)
+    assert seen["auth"] is None
+
+
+def test_ollama_rejected_key_names_the_variable_not_the_key(monkeypatch):
+    monkeypatch.setenv("OLLAMA_API_KEY", "secret-key")
+    llm = OllamaClient(model="m", host="https://ollama.com", transport=_capture_headers({}, 401))
+    with pytest.raises(MetashiftError, match="OLLAMA_API_KEY") as err:
+        llm.complete_json("P", ExtractDraft)
+    assert "secret-key" not in str(err.value)
+
+
+def test_ollama_unreachable_remote_host_does_not_suggest_ollama_serve():
+    def boom(request):
+        raise httpx.ConnectError("refused")
+
+    llm = OllamaClient(model="m", host="https://ollama.com", transport=httpx.MockTransport(boom))
+    with pytest.raises(MetashiftError) as err:
+        llm.complete_json("P", ExtractDraft)
+    assert "ollama serve" not in str(err.value)
+    assert "https://ollama.com" in str(err.value)

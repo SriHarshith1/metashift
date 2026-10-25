@@ -67,6 +67,11 @@ class OllamaClient:
         self.host = (host or os.environ.get("OLLAMA_HOST") or DEFAULT_OLLAMA_HOST).rstrip("/")
         self.name = f"ollama:{self.model}"
         self._transport = transport
+        api_key = os.environ.get("OLLAMA_API_KEY")
+        self._headers = {"Authorization": f"Bearer {api_key}"} if api_key else {}
+
+    def _is_local(self) -> bool:
+        return httpx.URL(self.host).host in {"localhost", "127.0.0.1", "::1"}
 
     def complete_json(self, prompt: str, schema: type[T]) -> T:
         payload = {
@@ -78,14 +83,20 @@ class OllamaClient:
             "options": {"temperature": 0, "num_ctx": 32768},
         }
         try:
-            with httpx.Client(transport=self._transport, timeout=self.timeout) as http:
+            with httpx.Client(
+                transport=self._transport, timeout=self.timeout, headers=self._headers
+            ) as http:
                 response = http.post(f"{self.host}/api/chat", json=payload)
                 response.raise_for_status()
         except httpx.ConnectError as err:
-            raise MetashiftError(
-                f"Ollama is not reachable at {self.host}. Start it with: ollama serve"
-            ) from err
+            hint = " Start it with: ollama serve" if self._is_local() else ""
+            raise MetashiftError(f"Ollama is not reachable at {self.host}.{hint}") from err
         except httpx.HTTPStatusError as err:
+            if err.response.status_code in (401, 403):
+                raise MetashiftError(
+                    f"Ollama at {self.host} rejected the request (HTTP "
+                    f"{err.response.status_code}). Check OLLAMA_API_KEY"
+                ) from err
             raise MetashiftError(
                 f"Ollama returned HTTP {err.response.status_code}: {err.response.text[:200]}"
             ) from err
