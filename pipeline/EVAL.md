@@ -27,3 +27,13 @@ Remaining mismatches:
 - `qwen3.6:27b` (local): 17 GB, does not fit the 11.8 GB of GPU memory on a 16 GB Mac.
 - `qwen3:14b` (local): fits only with a smaller context; with `num_ctx` 32768 it ran 25% on CPU. Not measured.
 - `minimax-m3:cloud`: not in the Ollama Cloud free plan (HTTP 402).
+
+## Manual check — first real reports (2026-10-25, `gemma4:31b-cloud`, no stats)
+
+Reports for 26.19, 26.20 and 26.21 were built oldest first, so each one has the history of the earlier patches. No stats were given: every `stats.csv` is a template with blank values.
+
+- 5 random changes from 26.21 checked against the notes (Nidalee E, Hubris, Lee Sin R, Rammus W, Varus W): all 5 correct, directions sensible.
+- Reasons quote real values and use history (Lucian 26.20 refers to the mixed 26.19 change).
+- One wrong detail: Vayne 26.20 reason says "base health"; the change is health regen per 5.
+- No rise/fall consistency warnings in any report.
+- Analyze takes 4–7 s per patch; the whole run for one patch is under 30 s.

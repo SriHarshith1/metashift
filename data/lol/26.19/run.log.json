@@ -1,0 +1,49 @@
+{
+  "game": "lol",
+  "patch": "26.19",
+  "patch_date": "2026-09-22",
+  "stages": [
+    {
+      "stage": "fetch",
+      "llm": null,
+      "duration_s": 1.0823217080014729,
+      "retries": 0,
+      "warnings": [
+        "skipped sections: Patch Highlights, Team Voice, Classic, ARAM: Mayhem, Arena, Bugfixes & QoL Changes, Upcoming Skins & Chromas"
+      ]
+    },
+    {
+      "stage": "extract",
+      "llm": "ollama:gemma4:31b-cloud",
+      "duration_s": 13.480398959000013,
+      "retries": 0,
+      "warnings": [
+        "unknown entity 'World Atlas and Runic Compass' dropped",
+        "unknown entity 'World Atlas and Runic Compass' dropped"
+      ]
+    },
+    {
+      "stage": "baseline",
+      "llm": null,
+      "duration_s": 0.12032545799957006,
+      "retries": 0,
+      "warnings": [
+        "no stats for Teleport Cooldown"
+      ]
+    },
+    {
+      "stage": "analyze",
+      "llm": "ollama:gemma4:31b-cloud",
+      "duration_s": 6.617751292000321,
+      "retries": 0,
+      "warnings": []
+    },
+    {
+      "stage": "publish",
+      "llm": null,
+      "duration_s": 0.0025884160004352452,
+      "retries": 0,
+      "warnings": []
+    }
+  ]
+}

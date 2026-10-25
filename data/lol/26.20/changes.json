@@ -1,0 +1,346 @@
+{
+  "game": "lol",
+  "patch": "26.20",
+  "changes": [
+    {
+      "entity": "Ambessa",
+      "entity_type": "champion",
+      "target": "Passive - Drakehound's Step",
+      "stat": "Damage",
+      "old": "5 - 30 (+25% bonus AD)",
+      "new": "5 - 25 (+20% bonus AD)",
+      "direction": "nerf",
+      "source_quote": "**Damage**: 5 - 30 (+25% bonus AD) ⇒ **5 - 25 (+20% bonus AD)**"
+    },
+    {
+      "entity": "Ashe",
+      "entity_type": "champion",
+      "target": "Base Stats",
+      "stat": "Attack Damage per Level",
+      "old": "3.5",
+      "new": "3",
+      "direction": "nerf",
+      "source_quote": "**Attack Damage per Level**: 3.5 ⇒ **3**"
+    },
+    {
+      "entity": "Cassiopeia",
+      "entity_type": "champion",
+      "target": "Base Stats",
+      "stat": "Base Health",
+      "old": "630",
+      "new": "610",
+      "direction": "nerf",
+      "source_quote": "**Base Health**: 630 ⇒ **610**"
+    },
+    {
+      "entity": "Cassiopeia",
+      "entity_type": "champion",
+      "target": "Base Stats",
+      "stat": "Base Mana",
+      "old": "480",
+      "new": "450",
+      "direction": "nerf",
+      "source_quote": "**Base Mana**: 480 ⇒ **450**"
+    },
+    {
+      "entity": "Diana",
+      "entity_type": "champion",
+      "target": "W - Pale Cascade",
+      "stat": "Shield Bonus Health Ratio",
+      "old": "11%",
+      "new": "14%",
+      "direction": "buff",
+      "source_quote": "**Shield Bonus Health Ratio**: 11% ⇒ **14%**"
+    },
+    {
+      "entity": "Kennen",
+      "entity_type": "champion",
+      "target": "E - Lightning Rush",
+      "stat": "Bonus Attack Speed",
+      "old": "40 / 50 / 60 / 70 / 80%",
+      "new": "50 / 60 / 70 / 80 / 90%",
+      "direction": "buff",
+      "source_quote": "**Bonus Attack Speed**: 40 / 50 / 60 / 70 / 80% ⇒ **50 / 60 / 70 / 80 / 90%**"
+    },
+    {
+      "entity": "Kindred",
+      "entity_type": "champion",
+      "target": "W - Wolf's Frenzy",
+      "stat": "Monster Mod",
+      "old": "150%",
+      "new": "165%",
+      "direction": "buff",
+      "source_quote": "**Monster Mod**: 150% ⇒ **165%**"
+    },
+    {
+      "entity": "Kindred",
+      "entity_type": "champion",
+      "target": "E - Mounting Dread",
+      "stat": "Slow Duration",
+      "old": "1s",
+      "new": "1.5s",
+      "direction": "buff",
+      "source_quote": "**Slow Duration**: 1s ⇒ **1.5s**"
+    },
+    {
+      "entity": "Kindred",
+      "entity_type": "champion",
+      "target": "E - Mounting Dread",
+      "stat": "Small Monster Targeting",
+      "old": "Enabled",
+      "new": "Removed",
+      "direction": "nerf",
+      "source_quote": "**Small Monster Targeting**: Enabled ⇒ **Removed**"
+    },
+    {
+      "entity": "K'Sante",
+      "entity_type": "champion",
+      "target": "W - Path Maker",
+      "stat": "Mana Cost",
+      "old": "40 / 45 / 50 / 55 / 60",
+      "new": "45 / 50 / 55 / 60 / 65",
+      "direction": "nerf",
+      "source_quote": "**Mana Cost**: 40 / 45 / 50 / 55 / 60 ⇒ **45 / 50 / 55 / 60 / 65**"
+    },
+    {
+      "entity": "K'Sante",
+      "entity_type": "champion",
+      "target": "W - Path Maker",
+      "stat": "W Base/All-Out Damage Reduction",
+      "old": "30 / 75%",
+      "new": "25 / 70%",
+      "direction": "nerf",
+      "source_quote": "**W Base/All-Out Damage Reduction**: 30 / 75% ⇒ **25 / 70%**"
+    },
+    {
+      "entity": "Lillia",
+      "entity_type": "champion",
+      "target": "R - Lilting Lullaby",
+      "stat": "Duration",
+      "old": "2.5s",
+      "new": "2.5 / 2.75 / 3s",
+      "direction": "buff",
+      "source_quote": "**Duration**: 2.5s ⇒ **2.5 / 2.75 / 3s**"
+    },
+    {
+      "entity": "Lucian",
+      "entity_type": "champion",
+      "target": "Base Stats",
+      "stat": "Attack Damage",
+      "old": "60 + 2.5/Level",
+      "new": "60 + 2.9/Level",
+      "direction": "buff",
+      "source_quote": "**Attack Damage**: 60 + 2.5/Level ⇒ **60 + 2.9/Level**"
+    },
+    {
+      "entity": "Mordekaiser",
+      "entity_type": "champion",
+      "target": "Q - Obliterate",
+      "stat": "Scaling Level 10-20",
+      "old": "(+5/lvl)",
+      "new": "(+7/lvl)",
+      "direction": "buff",
+      "source_quote": "**Scaling Level 10-20**: (+5/lvl) ⇒ **(+7/lvl)**"
+    },
+    {
+      "entity": "Mordekaiser",
+      "entity_type": "champion",
+      "target": "R - Realm of Death",
+      "stat": "Cooldown",
+      "old": "140 / 120 / 100s",
+      "new": "120 / 110 / 100s",
+      "direction": "buff",
+      "source_quote": "**Cooldown**: 140 / 120 / 100s ⇒ **120 / 110 / 100s**"
+    },
+    {
+      "entity": "Neeko",
+      "entity_type": "champion",
+      "target": "E - Tangle-Barbs",
+      "stat": "Base Damage",
+      "old": "70 / 105 / 140 / 175 / 210 (+65% AP)",
+      "new": "80 / 115 / 150 / 185 / 220 (+65% AP)",
+      "direction": "buff",
+      "source_quote": "**Base Damage**: 70 / 105 / 140 / 175 / 210 (+65% AP) ⇒ **80 / 115 / 150 / 185 / 220 (+65% AP)**"
+    },
+    {
+      "entity": "Neeko",
+      "entity_type": "champion",
+      "target": "E - Tangle-Barbs",
+      "stat": "Empowered Root Duration",
+      "old": "1.8 / 2.1 / 2.4 / 2.7 / 3s",
+      "new": "2 / 2.25 / 2.5 / 2.75 / 3s",
+      "direction": "buff",
+      "source_quote": "**Empowered Root Duration**: 1.8 / 2.1 / 2.4 / 2.7 / 3s ⇒ **2 / 2.25 / 2.5 / 2.75 / 3s**"
+    },
+    {
+      "entity": "Smolder",
+      "entity_type": "champion",
+      "target": "Passive - Dragon Practice",
+      "stat": "Super Scorcher Bonus Magic Damage",
+      "old": "25 - 55% (+0-9% with IE) of Dragon Practice Stacks, scaling with Crit Chance",
+      "new": "25 - 60% (+0-10.5% with IE) of Dragon Practice Stacks, scaling with Crit Chance",
+      "direction": "buff",
+      "source_quote": "**Super Scorcher Bonus Magic Damage**: 25 - 55% (+0-9% with IE) of Dragon Practice Stacks, scaling with Crit Chance ⇒ **25 - 60% (+0-10.5% with IE) of Dragon Practice Stacks, scaling with Crit Chance**"
+    },
+    {
+      "entity": "Smolder",
+      "entity_type": "champion",
+      "target": "Passive - Dragon Practice",
+      "stat": "Flap Flap Flap Bonus Magic Damage",
+      "old": "8 - 12.8% (+0-1.44% with IE) of Dragon Practice Stacks, scaling with Crit Chance",
+      "new": "8 - 14% (+0-1.8% with IE) of Dragon Practice Stacks, scaling with Crit Chance",
+      "direction": "buff",
+      "source_quote": "**Flap Flap Flap Bonus Magic Damage**: 8 - 12.8% (+0-1.44% with IE) of Dragon Practice Stacks, scaling with Crit Chance ⇒ **8 - 14% (+0-1.8% with IE) of Dragon Practice Stacks, scaling with Crit Chance**"
+    },
+    {
+      "entity": "Smolder",
+      "entity_type": "champion",
+      "target": "R - Mmooommmm!",
+      "stat": "Self Heal",
+      "old": "100 / 135 / 170 (+50% bonus AD) (+75% AP)",
+      "new": "100 / 175 / 250 (+75% bonus AD) (+75% AP)",
+      "direction": "buff",
+      "source_quote": "**Self Heal**: 100 / 135 / 170 (+50% bonus AD) (+75% AP) ⇒ **100 / 175 / 250 (+75% bonus AD) (+75% AP)**"
+    },
+    {
+      "entity": "Swain",
+      "entity_type": "champion",
+      "target": "Base Stats",
+      "stat": "Base Magic Resistance",
+      "old": "31",
+      "new": "34",
+      "direction": "buff",
+      "source_quote": "**Base Magic Resistance**: 31 ⇒ **34**"
+    },
+    {
+      "entity": "Swain",
+      "entity_type": "champion",
+      "target": "Base Stats",
+      "stat": "Base Armor",
+      "old": "25",
+      "new": "23",
+      "direction": "nerf",
+      "source_quote": "**Base Armor**: 25 ⇒ **23**"
+    },
+    {
+      "entity": "Swain",
+      "entity_type": "champion",
+      "target": "W - Vision of Empire",
+      "stat": "Damage",
+      "old": "70 / 105 / 140 / 175 / 210 (+60%)",
+      "new": "70 / 115 / 160 / 205 / 250 (+60%)",
+      "direction": "buff",
+      "source_quote": "**Damage**: 70 / 105 / 140 / 175 / 210 (+60%) ⇒ **70 / 115 / 160 / 205 / 250 (+60%)**"
+    },
+    {
+      "entity": "Swain",
+      "entity_type": "champion",
+      "target": "W - Vision of Empire",
+      "stat": "Cooldown",
+      "old": "22 / 21 / 20 / 19 / 18s",
+      "new": "20 / 19 / 18 / 17 / 16s",
+      "direction": "buff",
+      "source_quote": "**Cooldown**: 22 / 21 / 20 / 19 / 18s ⇒ **20 / 19 / 18 / 17 / 16s**"
+    },
+    {
+      "entity": "Tahm Kench",
+      "entity_type": "champion",
+      "target": "Q",
+      "stat": "Base Healing",
+      "old": "10 / 13.75 / 17.5 / 21.25 / 25",
+      "new": "10 / 20 / 30 / 40 / 50",
+      "direction": "buff",
+      "source_quote": "* **Base Healing**: 10 / 13.75 / 17.5 / 21.25 / 25 ⇒ **10 / 20 / 30 / 40 / 50**"
+    },
+    {
+      "entity": "Vayne",
+      "entity_type": "champion",
+      "target": "Base stats",
+      "stat": "Health per 5",
+      "old": "4 + .5/Level",
+      "new": "5.5 +.4/Level",
+      "direction": "adjust",
+      "source_quote": "* **Health per 5**: 4 + .5/Level ⇒ **5.5 +.4/Level**"
+    },
+    {
+      "entity": "Vayne",
+      "entity_type": "champion",
+      "target": "Q",
+      "stat": "Mana Cost",
+      "old": "46 / 42 / 38 / 34 / 30",
+      "new": "30",
+      "direction": "buff",
+      "source_quote": "* **Mana Cost**: 46 / 42 / 38 / 34 / 30 ⇒ **30**"
+    },
+    {
+      "entity": "Yunara",
+      "entity_type": "champion",
+      "target": "Q",
+      "stat": "Passive On Hit Damage",
+      "old": "5 / 10 / 15 / 20 / 25 (+20% AP)",
+      "new": "3 / 8 / 13 / 18 / 23 (+20% AP)",
+      "direction": "nerf",
+      "source_quote": "* **Passive On Hit Damage**: 5 / 10 / 15 / 20 / 25 (+20% AP) ⇒ **3 / 8 / 13 / 18 / 23 (+20% AP)**"
+    },
+    {
+      "entity": "Yunara",
+      "entity_type": "champion",
+      "target": "Q",
+      "stat": "Active On Hit Damage",
+      "old": "5 / 10 / 15 / 20 / 25 (+20% AP)",
+      "new": "3 / 8 / 13 / 18 / 23 (+20% AP)",
+      "direction": "nerf",
+      "source_quote": "* **Active On Hit Damage**: 5 / 10 / 15 / 20 / 25 (+20% AP) ⇒ **3 / 8 / 13 / 18 / 23 (+20% AP)**"
+    },
+    {
+      "entity": "Yunara",
+      "entity_type": "champion",
+      "target": "W",
+      "stat": "Slow Stacking",
+      "old": "Stacks with other slows",
+      "new": "No longer stacks with other slows",
+      "direction": "nerf",
+      "source_quote": "* **Slow Stacking**: Stacks with other slows ⇒ **No longer stacks with other slows**"
+    },
+    {
+      "entity": "Experimental Hexplate",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Ranged Mod",
+      "old": "70% of Value (35% Attack Speed, 14% Move Speed)",
+      "new": "50% of Value (25% Attack Speed, 10% Move Speed)",
+      "direction": "nerf",
+      "source_quote": "* **Ranged Mod**: 70% of Value (35% Attack Speed, 14% Move Speed) ⇒ **50% of Value (25% Attack Speed, 10% Move Speed)**"
+    },
+    {
+      "entity": "Hextech Rocketbelt",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Ability Haste",
+      "old": "20",
+      "new": "10",
+      "direction": "nerf",
+      "source_quote": "* **Ability Haste**: 20 ⇒ **10**"
+    },
+    {
+      "entity": "Hextech Rocketbelt",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Active Damage",
+      "old": "100 (+10% AP)",
+      "new": "135 (+15% AP)",
+      "direction": "buff",
+      "source_quote": "* **Active Damage**: 100 (+10% AP) ⇒ **135 (+15% AP)**"
+    },
+    {
+      "entity": "Runaan's Hurricane",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Attack Damage per Bolt",
+      "old": "65%",
+      "new": "60%",
+      "direction": "nerf",
+      "source_quote": "* **Attack Damage per Bolt**: 65% ⇒ **60%**"
+    }
+  ]
+}

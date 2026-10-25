@@ -1,0 +1,132 @@
+{
+  "stats_patch": "26.18",
+  "stats_source": "csv",
+  "entities": {
+    "Aatrox": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Aphelios": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Aurora": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Draven": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Elise": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Fiora": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Kha'Zix": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Lillia": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Lucian": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Master Yi": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Nasus": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Nocturne": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Poppy": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Rumble": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Ryze": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Vi": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Volibear": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Teleport Cooldown": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    }
+  }
+}

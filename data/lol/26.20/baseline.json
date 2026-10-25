@@ -1,0 +1,151 @@
+{
+  "stats_patch": "26.19",
+  "stats_source": "csv",
+  "entities": {
+    "Ambessa": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Ashe": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Cassiopeia": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Diana": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Kennen": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Kindred": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "K'Sante": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Lillia": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": [
+        {
+          "patch": "26.19",
+          "direction": "buff",
+          "summary": "Base stats Armor buff; R - Lilting Lullaby Sleep Duration buff"
+        }
+      ]
+    },
+    "Lucian": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": [
+        {
+          "patch": "26.19",
+          "direction": "adjust",
+          "summary": "Passive - Vigilance Empowered On-Hit Damage nerf; Q - Piercing Light Base Damage buff"
+        }
+      ]
+    },
+    "Mordekaiser": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Neeko": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Smolder": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Swain": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Tahm Kench": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Vayne": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Yunara": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Experimental Hexplate": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Hextech Rocketbelt": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Runaan's Hurricane": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    }
+  }
+}

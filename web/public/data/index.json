@@ -1,0 +1,30 @@
+{
+  "games": {
+    "lol": [
+      {
+        "patch": "26.21",
+        "patch_date": "2026-10-20",
+        "headline": "This patch focuses on diversifying ADC power levels and adjusting tank/bruiser utility while refining several mage kits.",
+        "buffs": 29,
+        "nerfs": 22,
+        "llm": "ollama:gemma4:31b-cloud"
+      },
+      {
+        "patch": "26.20",
+        "patch_date": "2026-10-06",
+        "headline": "A diverse patch focusing on strengthening several mid-to-late game carries and tanks while curbing the power of Yunara and specific ADC items.",
+        "buffs": 19,
+        "nerfs": 14,
+        "llm": "ollama:gemma4:31b-cloud"
+      },
+      {
+        "patch": "26.19",
+        "patch_date": "2026-09-22",
+        "headline": "A widespread series of buffs to diverse roles, paired with targeted nerfs to specific powerhouses like Nasus and Ryze.",
+        "buffs": 29,
+        "nerfs": 8,
+        "llm": "ollama:gemma4:31b-cloud"
+      }
+    ]
+  }
+}

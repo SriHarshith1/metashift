@@ -1,0 +1,44 @@
+{
+  "game": "lol",
+  "patch": "26.21",
+  "patch_date": "2026-10-20",
+  "stages": [
+    {
+      "stage": "fetch",
+      "llm": null,
+      "duration_s": 0.6677477079992968,
+      "retries": 0,
+      "warnings": [
+        "skipped sections: Patch Highlights, Replay Download Limits, ARAM: Mayhem, Classic, Arena, Mythic Shop Update, Minimum System Requirements, Bugfixes & QoL Changes, Upcoming Skins & Chromas"
+      ]
+    },
+    {
+      "stage": "extract",
+      "llm": "ollama:gemma4:31b-cloud",
+      "duration_s": 22.502459166000335,
+      "retries": 0,
+      "warnings": []
+    },
+    {
+      "stage": "baseline",
+      "llm": null,
+      "duration_s": 0.062272582999867154,
+      "retries": 0,
+      "warnings": []
+    },
+    {
+      "stage": "analyze",
+      "llm": "ollama:gemma4:31b-cloud",
+      "duration_s": 5.896906832998866,
+      "retries": 0,
+      "warnings": []
+    },
+    {
+      "stage": "publish",
+      "llm": null,
+      "duration_s": 0.0038581669996347046,
+      "retries": 0,
+      "warnings": []
+    }
+  ]
+}

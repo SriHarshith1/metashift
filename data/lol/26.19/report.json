@@ -1,0 +1,639 @@
+{
+  "game": "lol",
+  "patch": "26.19",
+  "compared_to": "26.18",
+  "generated_at": "2026-10-25T11:22:51.415418Z",
+  "llm": "ollama:gemma4:31b-cloud",
+  "headline": "A widespread series of buffs to diverse roles, paired with targeted nerfs to specific powerhouses like Nasus and Ryze.",
+  "themes": [
+    "General champion power creep",
+    "Top lane mobility and sustain buffs",
+    "Targeted scaling nerfs"
+  ],
+  "entities": [
+    {
+      "entity": "Aatrox",
+      "entity_type": "champion",
+      "verdict": "rise",
+      "confidence": "high",
+      "previous": null,
+      "reason": "Received buffs to W cooldown (20-12s to 18-12s) and E health heal ratio (1.1% to 1.3% per 100 bonus health).",
+      "change_refs": [
+        0,
+        1
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Aatrox.png"
+    },
+    {
+      "entity": "Aphelios",
+      "entity_type": "champion",
+      "verdict": "rise",
+      "confidence": "high",
+      "previous": null,
+      "reason": "Significant buffs across multiple weapons, including Calibrum base damage, Severum healing, Gravitum slow decay, Infernum cooldown, and Crescendum damage.",
+      "change_refs": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Aphelios.png"
+    },
+    {
+      "entity": "Aurora",
+      "entity_type": "champion",
+      "verdict": "rise",
+      "confidence": "high",
+      "previous": null,
+      "reason": "Buffs to E base damage (70-230 to 80-240) and R rift duration (1.75-3.25s to 2.25-3.25s).",
+      "change_refs": [
+        7,
+        8
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Aurora.png"
+    },
+    {
+      "entity": "Draven",
+      "entity_type": "champion",
+      "verdict": "rise",
+      "confidence": "medium",
+      "previous": null,
+      "reason": "Small increase to base Attack Damage from 62 to 64.",
+      "change_refs": [
+        9
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Draven.png"
+    },
+    {
+      "entity": "Elise",
+      "entity_type": "champion",
+      "verdict": "rise",
+      "confidence": "high",
+      "previous": null,
+      "reason": "Buffs to passive on-hit magic damage (12-42 to 14-44) and W bonus attack speed (60-120% to 70-130%).",
+      "change_refs": [
+        10,
+        11
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Elise.png"
+    },
+    {
+      "entity": "Fiora",
+      "entity_type": "champion",
+      "verdict": "rise",
+      "confidence": "high",
+      "previous": null,
+      "reason": "Buffs to health growth (99 to 105) and significant increases to R heal range and healing values.",
+      "change_refs": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Fiora.png"
+    },
+    {
+      "entity": "Kha'Zix",
+      "entity_type": "champion",
+      "verdict": "rise",
+      "confidence": "high",
+      "previous": null,
+      "reason": "Buffs to passive damage (17-136 to 22-141), W evolved slow duration (2s to 2.25s), and E evolved range bonus (+200 to +300).",
+      "change_refs": [
+        16,
+        17,
+        18
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Khazix.png"
+    },
+    {
+      "entity": "Lillia",
+      "entity_type": "champion",
+      "verdict": "rise",
+      "confidence": "medium",
+      "previous": null,
+      "reason": "Buffs to base armor (22 to 24) and R sleep duration (2s to 2.5s).",
+      "change_refs": [
+        19,
+        20
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Lillia.png"
+    },
+    {
+      "entity": "Lucian",
+      "entity_type": "champion",
+      "verdict": "rise",
+      "confidence": "medium",
+      "previous": null,
+      "reason": "Despite a nerf to passive on-hit damage (15+20% AD to 5+15% AD), he received a significant buff to Q base damage (80-220 to 90-250).",
+      "change_refs": [
+        21,
+        22
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Lucian.png"
+    },
+    {
+      "entity": "Master Yi",
+      "entity_type": "champion",
+      "verdict": "rise",
+      "confidence": "high",
+      "previous": null,
+      "reason": "Buff to Q cooldown refund on hit, changing from a scaling value to a flat 1 second.",
+      "change_refs": [
+        23
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/MasterYi.png"
+    },
+    {
+      "entity": "Nasus",
+      "entity_type": "champion",
+      "verdict": "fall",
+      "confidence": "high",
+      "previous": null,
+      "reason": "Nerf to Q bonus damage across all ranks (40-120 to 30-110).",
+      "change_refs": [
+        24
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Nasus.png"
+    },
+    {
+      "entity": "Nocturne",
+      "entity_type": "champion",
+      "verdict": "fall",
+      "confidence": "high",
+      "previous": null,
+      "reason": "Significant increase to R cooldown (140-90s to 160-100s).",
+      "change_refs": [
+        25
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Nocturne.png"
+    },
+    {
+      "entity": "Poppy",
+      "entity_type": "champion",
+      "verdict": "fall",
+      "confidence": "medium",
+      "previous": null,
+      "reason": "Nerf to Q maximum health cap for minions and monsters (85-225 to 70-210).",
+      "change_refs": [
+        26
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Poppy.png"
+    },
+    {
+      "entity": "Rumble",
+      "entity_type": "champion",
+      "verdict": "stable",
+      "confidence": "medium",
+      "previous": null,
+      "reason": "Mixed changes: nerf to passive overheat attack speed (50-130% to 30-100%) but a buff to passive monster cap (65-150 to 90-175).",
+      "change_refs": [
+        27,
+        28
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Rumble.png"
+    },
+    {
+      "entity": "Ryze",
+      "entity_type": "champion",
+      "verdict": "fall",
+      "confidence": "high",
+      "previous": null,
+      "reason": "Despite a small armor growth buff, he received nerfs to Q bonus damage (25-100% to 15-90%) and increased E mana costs.",
+      "change_refs": [
+        29,
+        30,
+        31
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Ryze.png"
+    },
+    {
+      "entity": "Vi",
+      "entity_type": "champion",
+      "verdict": "fall",
+      "confidence": "medium",
+      "previous": null,
+      "reason": "Nerf to passive shield (12% to 10% Max HP) and a slight reduction in early base AD.",
+      "change_refs": [
+        32,
+        33
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Vi.png"
+    },
+    {
+      "entity": "Volibear",
+      "entity_type": "champion",
+      "verdict": "rise",
+      "confidence": "high",
+      "previous": null,
+      "reason": "Buffs to passive attack speed per stack (3% to 4% per 100 AP) and addition of 20% bonus AD to passive on-hit damage.",
+      "change_refs": [
+        34,
+        35
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Volibear.png"
+    },
+    {
+      "entity": "Teleport Cooldown",
+      "entity_type": "system",
+      "verdict": "rise",
+      "confidence": "high",
+      "previous": null,
+      "reason": "Cooldowns reduced for both the free teleport (420s to 390s) and upgraded Unleashed Teleport (330-240s to 300-210s).",
+      "change_refs": [
+        36,
+        37
+      ],
+      "icon_url": null
+    }
+  ],
+  "changes": [
+    {
+      "entity": "Aatrox",
+      "entity_type": "champion",
+      "target": "W - Infernal Chains",
+      "stat": "Cooldown",
+      "old": "20 / 18 / 16 / 14 / 12 seconds",
+      "new": "18 / 16.5 / 15 / 13.5 / 12 seconds",
+      "direction": "buff",
+      "source_quote": "Cooldown: 20 / 18 / 16 / 14 / 12 seconds ⇒ 18 / 16.5 / 15 / 13.5 / 12 seconds"
+    },
+    {
+      "entity": "Aatrox",
+      "entity_type": "champion",
+      "target": "E - Umbral Dash",
+      "stat": "Health Heal Ratio",
+      "old": "1.1% per 100 bonus health",
+      "new": "1.3% per 100 bonus health",
+      "direction": "buff",
+      "source_quote": "Health Heal Ratio: 1.1% per 100 bonus health ⇒ 1.3% per 100 bonus health"
+    },
+    {
+      "entity": "Aphelios",
+      "entity_type": "champion",
+      "target": "Calibrum",
+      "stat": "Moonshot Damage",
+      "old": "70 - 160 (+42 - 60% bonus AD) (+100% AP)",
+      "new": "80 - 170 (+42 - 60% bonus AD) (+100% AP)",
+      "direction": "buff",
+      "source_quote": "Moonshot Damage: 70 - 160 (+42 - 60% bonus AD) (+100% AP) ⇒ 80 - 170 (+42 - 60% bonus AD) (+100% AP)"
+    },
+    {
+      "entity": "Aphelios",
+      "entity_type": "champion",
+      "target": "Severum",
+      "stat": "Healing",
+      "old": "2 - 7.1%, increased to 5 - 17.75%",
+      "new": "2 - 8%, increased to 5 - 20%",
+      "direction": "buff",
+      "source_quote": "Healing: 2 - 7.1%, increased to 5 - 17.75% ⇒ 2 - 8%, increased to 5 - 20%"
+    },
+    {
+      "entity": "Aphelios",
+      "entity_type": "champion",
+      "target": "Gravitum",
+      "stat": "Slow",
+      "old": "30% for 2.5 seconds, decaying to 10% after 0.7 seconds",
+      "new": "30% for 2.5 seconds, decaying to 15% after 0.7 seconds",
+      "direction": "buff",
+      "source_quote": "Slow: 30% for 2.5 seconds, decaying to 10% after 0.7 seconds ⇒ 30% for 2.5 seconds, decaying to 15% after 0.7 seconds"
+    },
+    {
+      "entity": "Aphelios",
+      "entity_type": "champion",
+      "target": "Infernum",
+      "stat": "Duskwave Cooldown",
+      "old": "9 / 8.25 / 7.5 / 6.75 / 6 seconds",
+      "new": "8 / 7.25 / 6.5 / 5.75 / 5 seconds",
+      "direction": "buff",
+      "source_quote": "Duskwave Cooldown: 9 / 8.25 / 7.5 / 6.75 / 6 seconds ⇒ 8 / 7.25 / 6.5 / 5.75 / 5 seconds"
+    },
+    {
+      "entity": "Aphelios",
+      "entity_type": "champion",
+      "target": "Crescendum",
+      "stat": "Mini-Crescendum Damage",
+      "old": "15% AD, decreasing by 1.5% AD to a minimum of 5% AD for the 8th+ chakram",
+      "new": "16% AD, decreasing by 1.5% AD to a minimum of 5% AD for the 9th+ chakram",
+      "direction": "buff",
+      "source_quote": "Mini-Crescendum Damage: 15% AD, decreasing by 1.5% AD to a minimum of 5% AD for the 8th+ chakram ⇒ 16% AD, decreasing by 1.5% AD to a minimum of 5% AD for the 9th+ chakram"
+    },
+    {
+      "entity": "Aurora",
+      "entity_type": "champion",
+      "target": "E - The Weirding",
+      "stat": "Base Damage",
+      "old": "70 / 110 / 150 / 190 / 230",
+      "new": "80 / 120 / 160 / 200 / 240",
+      "direction": "buff",
+      "source_quote": "Base Damage: 70 / 110 / 150 / 190 / 230 ⇒ 80 / 120 / 160 / 200 / 240"
+    },
+    {
+      "entity": "Aurora",
+      "entity_type": "champion",
+      "target": "R - Between Worlds",
+      "stat": "Rift Duration",
+      "old": "1.75 / 2.5 / 3.25 seconds",
+      "new": "2.25 / 2.75 / 3.25 seconds",
+      "direction": "buff",
+      "source_quote": "Rift Duration: 1.75 / 2.5 / 3.25 seconds ⇒ 2.25 / 2.75 / 3.25 seconds"
+    },
+    {
+      "entity": "Draven",
+      "entity_type": "champion",
+      "target": "Base stats",
+      "stat": "Attack Damage",
+      "old": "62",
+      "new": "64",
+      "direction": "buff",
+      "source_quote": "Attack Damage: 62 ⇒ 64"
+    },
+    {
+      "entity": "Elise",
+      "entity_type": "champion",
+      "target": "Passive - Spider Queen",
+      "stat": "Passive Magic Damage On-Hit",
+      "old": "12 / 22 / 32 / 42",
+      "new": "14 / 24 / 34 / 44",
+      "direction": "buff",
+      "source_quote": "Passive Magic Damage On-Hit: 12 / 22 / 32 / 42 ⇒ 14 / 24 / 34 / 44"
+    },
+    {
+      "entity": "Elise",
+      "entity_type": "champion",
+      "target": "W - Skittering Frenzy",
+      "stat": "Bonus Attack Speed",
+      "old": "60 / 75 / 90 / 105 / 120%",
+      "new": "70 / 85 / 100 / 115 / 130%",
+      "direction": "buff",
+      "source_quote": "Bonus Attack Speed: 60 / 75 / 90 / 105 / 120% ⇒ 70 / 85 / 100 / 115 / 130%"
+    },
+    {
+      "entity": "Fiora",
+      "entity_type": "champion",
+      "target": "Base stats",
+      "stat": "Health Growth",
+      "old": "99",
+      "new": "105",
+      "direction": "buff",
+      "source_quote": "Health Growth: 99 ⇒ 105"
+    },
+    {
+      "entity": "Fiora",
+      "entity_type": "champion",
+      "target": "R - Grand Challenge",
+      "stat": "Heal Range",
+      "old": "550",
+      "new": "600",
+      "direction": "buff",
+      "source_quote": "Heal Range: 550 ⇒ 600"
+    },
+    {
+      "entity": "Fiora",
+      "entity_type": "champion",
+      "target": "R - Grand Challenge",
+      "stat": "Heal Per Tick",
+      "old": "18.75 / 25 / 31.25 (+15% bonus AD)",
+      "new": "20 / 26.25 / 32.5 (+17.5% bonus AD)",
+      "direction": "buff",
+      "source_quote": "Heal Per Tick: 18.75 / 25 / 31.25 (+15% bonus AD) ⇒ 20 / 26.25 / 32.5 (+17.5% bonus AD)"
+    },
+    {
+      "entity": "Fiora",
+      "entity_type": "champion",
+      "target": "R - Grand Challenge",
+      "stat": "Maximum Heal",
+      "old": "375 / 500 / 625 (+300% bonus AD)",
+      "new": "400 / 525 / 650 (+350% bonus AD)",
+      "direction": "buff",
+      "source_quote": "Maximum Heal: 375 / 500 / 625 (+300% bonus AD) ⇒ 400 / 525 / 650 (+350% bonus AD)"
+    },
+    {
+      "entity": "Kha'Zix",
+      "entity_type": "champion",
+      "target": "Passive - Unseen Threat",
+      "stat": "Damage",
+      "old": "17 - 136 (+50% bonus AD)",
+      "new": "22 - 141 (+50% bonus AD)",
+      "direction": "buff",
+      "source_quote": "Damage: 17 - 136 (+50% bonus AD) ⇒ 22 - 141 (+50% bonus AD)"
+    },
+    {
+      "entity": "Kha'Zix",
+      "entity_type": "champion",
+      "target": "W - Void Spike",
+      "stat": "Evolved Slow Duration",
+      "old": "2 seconds",
+      "new": "2.25 seconds",
+      "direction": "buff",
+      "source_quote": "Evolved Slow Duration: 2 seconds ⇒ 2.25 seconds"
+    },
+    {
+      "entity": "Kha'Zix",
+      "entity_type": "champion",
+      "target": "E - Leap",
+      "stat": "Evolved Range Bonus",
+      "old": "+200",
+      "new": "+300",
+      "direction": "buff",
+      "source_quote": "Evolved Range Bonus: +200 ⇒ +300"
+    },
+    {
+      "entity": "Lillia",
+      "entity_type": "champion",
+      "target": "Base stats",
+      "stat": "Armor",
+      "old": "22",
+      "new": "24",
+      "direction": "buff",
+      "source_quote": "Armor: 22 ⇒ 24"
+    },
+    {
+      "entity": "Lillia",
+      "entity_type": "champion",
+      "target": "R - Lilting Lullaby",
+      "stat": "Sleep Duration",
+      "old": "2 seconds",
+      "new": "2.5 seconds",
+      "direction": "buff",
+      "source_quote": "Sleep Duration: 2 seconds ⇒ 2.5 seconds"
+    },
+    {
+      "entity": "Lucian",
+      "entity_type": "champion",
+      "target": "Passive - Vigilance",
+      "stat": "Empowered On-Hit Damage",
+      "old": "15 (+20% AD)",
+      "new": "5 (+15% AD)",
+      "direction": "nerf",
+      "source_quote": "Empowered On-Hit Damage: 15 (+20% AD) ⇒ 5 (+15% AD)"
+    },
+    {
+      "entity": "Lucian",
+      "entity_type": "champion",
+      "target": "Q - Piercing Light",
+      "stat": "Base Damage",
+      "old": "80 / 115 / 150 / 185 / 220 (+100% bonus AD)",
+      "new": "90 / 130 / 170 / 210 / 250 (+100% bonus AD)",
+      "direction": "buff",
+      "source_quote": "Base Damage: 80 / 115 / 150 / 185 / 220 (+100% bonus AD) ⇒ 90 / 130 / 170 / 210 / 250 (+100% bonus AD)"
+    },
+    {
+      "entity": "Master Yi",
+      "entity_type": "champion",
+      "target": "Q - Alpha Strike",
+      "stat": "Cooldown Refund on Hit",
+      "old": "-1 second, scaling down with Ability Haste",
+      "new": "1 second",
+      "direction": "buff",
+      "source_quote": "Cooldown Refund on Hit: -1 second, scaling down with Ability Haste ⇒ 1 second"
+    },
+    {
+      "entity": "Nasus",
+      "entity_type": "champion",
+      "target": "Q",
+      "stat": "Bonus Damage",
+      "old": "40 / 60 / 80 / 100 / 120",
+      "new": "30 / 50 / 70 / 90 / 110",
+      "direction": "nerf",
+      "source_quote": "* **Bonus Damage**: 40 / 60 / 80 / 100 / 120 ⇒ **30 / 50 / 70 / 90 / 110**"
+    },
+    {
+      "entity": "Nocturne",
+      "entity_type": "champion",
+      "target": "R",
+      "stat": "Cooldown",
+      "old": "140 / 115 / 90 seconds",
+      "new": "160 / 130 / 100 seconds",
+      "direction": "nerf",
+      "source_quote": "* **Cooldown**: 140 / 115 / 90 seconds ⇒ **160 / 130 / 100 seconds**"
+    },
+    {
+      "entity": "Poppy",
+      "entity_type": "champion",
+      "target": "Q",
+      "stat": "Minion/Monster Maximum Health Cap",
+      "old": "85 / 120 / 155 / 190 / 225",
+      "new": "70 / 105 / 140 / 175 / 210",
+      "direction": "nerf",
+      "source_quote": "* **Minion/Monster Maximum Health Cap**: 85 / 120 / 155 / 190 / 225 ⇒ **70 / 105 / 140 / 175 / 210**"
+    },
+    {
+      "entity": "Rumble",
+      "entity_type": "champion",
+      "target": "Passive",
+      "stat": "Overheat Attack Speed",
+      "old": "50 - 130%",
+      "new": "30 - 100%",
+      "direction": "nerf",
+      "source_quote": "* **Overheat Attack Speed**: 50 - 130% ⇒ **30 - 100%**"
+    },
+    {
+      "entity": "Rumble",
+      "entity_type": "champion",
+      "target": "Passive",
+      "stat": "Monster Cap",
+      "old": "65 - 150",
+      "new": "90 - 175",
+      "direction": "buff",
+      "source_quote": "* **Monster Cap**: 65 - 150 ⇒ **90 - 175**"
+    },
+    {
+      "entity": "Ryze",
+      "entity_type": "champion",
+      "target": "Base stats",
+      "stat": "Armor Growth",
+      "old": "4.2",
+      "new": "4.7",
+      "direction": "buff",
+      "source_quote": "* **Armor Growth**: 4.2 ⇒ **4.7**"
+    },
+    {
+      "entity": "Ryze",
+      "entity_type": "champion",
+      "target": "Q",
+      "stat": "Flux Bonus Damage",
+      "old": "25 / 50 / 75 / 100% increased damage",
+      "new": "15 / 40 / 65 / 90% increased damage",
+      "direction": "nerf",
+      "source_quote": "* **Flux Bonus Damage**: 25 / 50 / 75 / 100% increased damage ⇒ **15 / 40 / 65 / 90% increased damage**"
+    },
+    {
+      "entity": "Ryze",
+      "entity_type": "champion",
+      "target": "E",
+      "stat": "Mana Cost",
+      "old": "35 / 45 / 55 / 65 / 75",
+      "new": "40 / 50 / 60 / 70 / 80",
+      "direction": "nerf",
+      "source_quote": "* **Mana Cost**: 35 / 45 / 55 / 65 / 75 ⇒ **40 / 50 / 60 / 70 / 80**"
+    },
+    {
+      "entity": "Vi",
+      "entity_type": "champion",
+      "target": "Base stats",
+      "stat": "Attack Damage",
+      "old": "63 + 3.5/Level",
+      "new": "61 + 3.9/Level",
+      "direction": "adjust",
+      "source_quote": "* **Attack Damage**: 63 + 3.5/Level ⇒ **61 + 3.9/Level**"
+    },
+    {
+      "entity": "Vi",
+      "entity_type": "champion",
+      "target": "Passive",
+      "stat": "Shield",
+      "old": "12% Maximum Health",
+      "new": "10% Maximum Health",
+      "direction": "nerf",
+      "source_quote": "* **Shield**: 12% Maximum Health ⇒ **10% Maximum Health**"
+    },
+    {
+      "entity": "Volibear",
+      "entity_type": "champion",
+      "target": "Passive",
+      "stat": "Attack Speed per Stack",
+      "old": "5% (+3% per 100 AP)",
+      "new": "5% (+4% per 100 AP)",
+      "direction": "buff",
+      "source_quote": "* **Attack Speed per Stack**: 5% (+3% per 100 AP) ⇒ **5% (+4% per 100 AP)**"
+    },
+    {
+      "entity": "Volibear",
+      "entity_type": "champion",
+      "target": "Passive",
+      "stat": "Lightning On-Hit Damage",
+      "old": "11 - 60 (Levels 1-18) (+45% AP)",
+      "new": "11 - 60 (Levels 1-18) (+45% AP) (+20% bonus AD)",
+      "direction": "buff",
+      "source_quote": "* **Lightning On-Hit Damage**: 11 - 60 (Levels 1-18) (+45% AP) ⇒ **11 - 60 (Levels 1-18) (+45% AP) (+20% bonus AD)**"
+    },
+    {
+      "entity": "Teleport Cooldown",
+      "entity_type": "system",
+      "target": "Top Role Quest's Free Teleport",
+      "stat": "Cooldown",
+      "old": "420 seconds",
+      "new": "390 seconds",
+      "direction": "buff",
+      "source_quote": "* **Top Role Quest's Free Teleport Cooldown**: 420 seconds ⇒ **390 seconds**"
+    },
+    {
+      "entity": "Teleport Cooldown",
+      "entity_type": "system",
+      "target": "Top Role Quest's Upgraded Unleashed Teleport",
+      "stat": "Cooldown",
+      "old": "330 - 240 seconds",
+      "new": "300 - 210 seconds",
+      "direction": "buff",
+      "source_quote": "* **Top Role Quest's Upgraded Unleashed Teleport Cooldown**: 330 - 240 seconds ⇒ **300 - 210 seconds**"
+    }
+  ],
+  "warnings": [
+    "skipped sections: Patch Highlights, Team Voice, Classic, ARAM: Mayhem, Arena, Bugfixes & QoL Changes, Upcoming Skins & Chromas",
+    "unknown entity 'World Atlas and Runic Compass' dropped",
+    "unknown entity 'World Atlas and Runic Compass' dropped",
+    "no stats for Teleport Cooldown"
+  ]
+}
