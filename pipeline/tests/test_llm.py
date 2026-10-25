@@ -38,6 +38,33 @@ def test_check_problems_returned_when_retries_run_out():
     assert "missing Ahri" in llm.prompts[1]
 
 
+def test_malformed_retry_after_a_valid_result_keeps_the_valid_result():
+    llm = FakeLLM(['{"changes": []}', "nope", "nope"])
+    result, retries, problems = complete_with_retry(
+        llm, "P", ExtractDraft, check=lambda r: ["missing Ahri"]
+    )
+    assert result == ExtractDraft(changes=[]) and retries == 2
+    assert problems[0] == "missing Ahri"
+    assert any("invalid JSON" in p for p in problems[1:])
+    assert len(llm.prompts) == 3
+    assert "missing Ahri" in llm.prompts[2]  # the rule problem is still named in the retry
+
+
+def test_malformed_retry_can_still_recover_with_a_later_valid_result():
+    llm = FakeLLM(['{"changes": []}', "nope", '{"changes": []}'])
+    calls = iter([["missing Ahri"], []])
+    result, retries, problems = complete_with_retry(
+        llm, "P", ExtractDraft, check=lambda r: next(calls)
+    )
+    assert result == ExtractDraft(changes=[]) and retries == 2 and problems == []
+
+
+def test_no_valid_result_ever_still_raises():
+    llm = FakeLLM(["nope"] * 3)
+    with pytest.raises(MetashiftError, match="invalid JSON after 2 retries"):
+        complete_with_retry(llm, "P", ExtractDraft, check=lambda r: ["x"])
+
+
 def test_ollama_unreachable_says_ollama_serve():
     def boom(request):
         raise httpx.ConnectError("refused")

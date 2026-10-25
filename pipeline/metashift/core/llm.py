@@ -130,26 +130,44 @@ def complete_with_retry(
     check: Callable[[T], list[str]] | None = None,
     max_retries: int = 2,
 ) -> tuple[T, int, list[str]]:
+    """Ask for JSON, retry on bad JSON or rule problems.
+
+    Once one schema-valid result exists, a later schema failure never raises: when the
+    retries run out the last valid result is returned with its problems.
+    """
     retries = 0
     current = prompt
+    best: tuple[T, list[str]] | None = None
     while True:
         try:
             result = llm.complete_json(current, schema)
         except (ValidationError, ValueError) as err:
             if retries >= max_retries:
+                if best is not None:
+                    note = f"a retry returned invalid JSON, kept the last valid answer: {err}"
+                    return best[0], retries, best[1] + [note.splitlines()[0]]
                 raise MetashiftError(
                     f"{llm.name} returned invalid JSON after {max_retries} retries: {err}"
                 ) from err
             retries += 1
+            rules = ""
+            if best is not None:
+                rules = "\nThese rule problems of the last valid answer remain:\n" + "\n".join(
+                    best[1]
+                )
             current = (
                 prompt
                 + "\n\nYour previous answer was invalid:\n"
                 + str(err)
+                + rules
                 + "\nReturn corrected JSON only."
             )
             continue
         problems = check(result) if check else []
-        if not problems or retries >= max_retries:
+        if not problems:
+            return result, retries, []
+        best = (result, problems)
+        if retries >= max_retries:
             return result, retries, problems
         retries += 1
         current = (
