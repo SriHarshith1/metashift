@@ -1,0 +1,296 @@
+{
+  "game": "lol",
+  "patch": "26.18",
+  "changes": [
+    {
+      "entity": "Bard",
+      "entity_type": "champion",
+      "target": "Base stats",
+      "stat": "Armor",
+      "old": "34 + 5/Level",
+      "new": "32 + 4.7/Level",
+      "direction": "nerf",
+      "source_quote": "* **Armor**: 34 + 5/Level ⇒ **32 + 4.7/Level**"
+    },
+    {
+      "entity": "Cassiopeia",
+      "entity_type": "champion",
+      "target": "Passive - Serpentine Grace",
+      "stat": "Move Speed Bonus",
+      "old": "6% - 40% (based on level)",
+      "new": "5% - 36% (based on level)",
+      "direction": "nerf",
+      "source_quote": "* **Move Speed Bonus**: 6% - 40% (based on level) ⇒ **5% - 36% (based on level)**"
+    },
+    {
+      "entity": "Cassiopeia",
+      "entity_type": "champion",
+      "target": "Q - Noxious Blast",
+      "stat": "Damage",
+      "old": "75 / 110 / 145 / 180 / 215",
+      "new": "65 / 100 / 135 / 170 / 205",
+      "direction": "nerf",
+      "source_quote": "* **Damage**: 75 / 110 / 145 / 180 / 215 ⇒ **65 / 100 / 135 / 170 / 205**"
+    },
+    {
+      "entity": "Cassiopeia",
+      "entity_type": "champion",
+      "target": "Q - Noxious Blast",
+      "stat": "Ability Power Ratio",
+      "old": "65%",
+      "new": "75%",
+      "direction": "buff",
+      "source_quote": "* **Ability Power Ratio**: 65% ⇒ **75%**"
+    },
+    {
+      "entity": "Cassiopeia",
+      "entity_type": "champion",
+      "target": "E - Twin Fang",
+      "stat": "Mana Cost",
+      "old": "40",
+      "new": "45",
+      "direction": "nerf",
+      "source_quote": "* **Mana Cost**: 40 ⇒ **45**"
+    },
+    {
+      "entity": "Cassiopeia",
+      "entity_type": "champion",
+      "target": "E - Twin Fang",
+      "stat": "Base Ability Power Ratio",
+      "old": "10%",
+      "new": "20%",
+      "direction": "buff",
+      "source_quote": "* **Base Ability Power Ratio**: 10% ⇒ **20%**"
+    },
+    {
+      "entity": "Cassiopeia",
+      "entity_type": "champion",
+      "target": "E - Twin Fang",
+      "stat": "Enhanced Ability Power Ratio",
+      "old": "55%",
+      "new": "45%",
+      "direction": "nerf",
+      "source_quote": "* **Enhanced Ability Power Ratio**: 55% ⇒ **45%**"
+    },
+    {
+      "entity": "Cassiopeia",
+      "entity_type": "champion",
+      "target": "E - Twin Fang",
+      "stat": "Total Ability Power Ratio",
+      "old": "65%",
+      "new": "65%",
+      "direction": "adjust",
+      "source_quote": "* **Total Ability Power Ratio**: 65% ⇒ **65%**"
+    },
+    {
+      "entity": "Cassiopeia",
+      "entity_type": "champion",
+      "target": "E - Twin Fang",
+      "stat": "Damage",
+      "old": "52 - 120",
+      "new": "50 - 120",
+      "direction": "nerf",
+      "source_quote": "* **Damage**: 52 - 120 ⇒ **50 - 120**"
+    },
+    {
+      "entity": "Cassiopeia",
+      "entity_type": "champion",
+      "target": "R - Petrifying Gaze",
+      "stat": "Damage",
+      "old": "150 / 250 / 350",
+      "new": "125 / 225 / 325",
+      "direction": "nerf",
+      "source_quote": "* **Damage**: 150 / 250 / 350 ⇒ **125 / 225 / 325**"
+    },
+    {
+      "entity": "Cassiopeia",
+      "entity_type": "champion",
+      "target": "R - Petrifying Gaze",
+      "stat": "Ability Power Ratio",
+      "old": "50%",
+      "new": "75%",
+      "direction": "buff",
+      "source_quote": "* **Ability Power Ratio**: 50% ⇒ **75%**"
+    },
+    {
+      "entity": "Ekko",
+      "entity_type": "champion",
+      "target": "Q - Timewinder",
+      "stat": "Mana Cost",
+      "old": "50 / 60 / 70 / 80 / 90",
+      "new": "40 / 50 / 60 / 70 / 80",
+      "direction": "buff",
+      "source_quote": "* **Mana Cost**: 50 / 60 / 70 / 80 / 90 ⇒ **40 / 50 / 60 / 70 / 80**"
+    },
+    {
+      "entity": "Ekko",
+      "entity_type": "champion",
+      "target": "Q - Timewinder",
+      "stat": "Return Damage Ability Power Ratio",
+      "old": "60%",
+      "new": "70%",
+      "direction": "buff",
+      "source_quote": "* **Return Damage Ability Power Ratio**: 60% ⇒ **70%**"
+    },
+    {
+      "entity": "Kassadin",
+      "entity_type": "champion",
+      "target": "Q - Null Sphere",
+      "stat": "Ability Power Ratio",
+      "old": "70% AP",
+      "new": "80% AP",
+      "direction": "buff",
+      "source_quote": "* **Ability Power Ratio**: 70% AP ⇒ **80% AP**"
+    },
+    {
+      "entity": "Kassadin",
+      "entity_type": "champion",
+      "target": "R - Riftwalk",
+      "stat": "Base Damage",
+      "old": "70 / 90 / 110",
+      "new": "80 / 95 / 110",
+      "direction": "buff",
+      "source_quote": "* **Base Damage**: 70 / 90 / 110 ⇒ **80 / 95 / 110**"
+    },
+    {
+      "entity": "Master Yi",
+      "entity_type": "champion",
+      "target": "Base stats",
+      "stat": "Armor Growth",
+      "old": "33 + 4.5/Level",
+      "new": "33 + 5/Level",
+      "direction": "buff",
+      "source_quote": "* **Armor Growth**: 33 + 4.5/Level ⇒ **33 + 5/Level**"
+    },
+    {
+      "entity": "Master Yi",
+      "entity_type": "champion",
+      "target": "R - Highlander",
+      "stat": "Move Speed",
+      "old": "35 / 45 / 55%",
+      "new": "40 / 50 / 60%",
+      "direction": "buff",
+      "source_quote": "* **Move Speed**: 35 / 45 / 55% ⇒ **40 / 50 / 60%**"
+    },
+    {
+      "entity": "Nautilus",
+      "entity_type": "champion",
+      "target": "Base stats",
+      "stat": "Attack Damage",
+      "old": "61 + 3.3/Level",
+      "new": "58 + 3.3/Level",
+      "direction": "nerf",
+      "source_quote": "* **Attack Damage**: 61 + 3.3/Level ⇒ **58 + 3.3/Level**"
+    },
+    {
+      "entity": "Nautilus",
+      "entity_type": "champion",
+      "target": "Q - Dredge Line",
+      "stat": "Damage",
+      "old": "85 / 130 / 175 / 220 / 265 (+90% AP)",
+      "new": "85 / 125 / 165 / 205 / 245 (+90% AP)",
+      "direction": "nerf",
+      "source_quote": "* **Damage**: 85 / 130 / 175 / 220 / 265 (+90% AP) ⇒ **85 / 125 / 165 / 205 / 245 (+90% AP)**"
+    },
+    {
+      "entity": "Seraphine",
+      "entity_type": "champion",
+      "target": "E - Beat Drop",
+      "stat": "Cooldown",
+      "old": "11 / 10.5 / 10 / 9.5 / 9s",
+      "new": "11s",
+      "direction": "nerf",
+      "source_quote": "* **Cooldown**: 11 / 10.5 / 10 / 9.5 / 9s ⇒ **11s**"
+    },
+    {
+      "entity": "Syndra",
+      "entity_type": "champion",
+      "target": "Passive - Transcendent",
+      "stat": "Splinter Mana",
+      "old": "20 - 255",
+      "new": "20 - 199",
+      "direction": "nerf",
+      "source_quote": "* **Splinter Mana**: 20 - 255 ⇒ **20 - 199**"
+    },
+    {
+      "entity": "Syndra",
+      "entity_type": "champion",
+      "target": "W - Force of Will",
+      "stat": "Cooldown",
+      "old": "12 / 11 / 10 / 9 / 8s",
+      "new": "13 / 12 / 11 / 10 / 9s",
+      "direction": "nerf",
+      "source_quote": "* **Cooldown**: 12 / 11 / 10 / 9 / 8s ⇒ **13 / 12 / 11 / 10 / 9s**"
+    },
+    {
+      "entity": "Viego",
+      "entity_type": "champion",
+      "target": "Base Stats",
+      "stat": "Attack Damage Growth",
+      "old": "3.5",
+      "new": "4",
+      "direction": "buff",
+      "source_quote": "* **Attack Damage Growth**: 3.5 ⇒ **4**"
+    },
+    {
+      "entity": "Viego",
+      "entity_type": "champion",
+      "target": "Passive - Sovereign's Domination",
+      "stat": "Heal",
+      "old": "2% (+…. )",
+      "new": "2% (+ 2.5% per 100 bonus AD) (+ 2% per 100 AP) (+ 5% per 100% bonus attack speed) (+ 2% per 500 bonus HP) of the target's maximum health",
+      "direction": "buff",
+      "source_quote": "* **Heal**: 2% (+…. ) ⇒ **2% (+ 2.5% per 100 bonus AD) (+ 2% per 100 AP) (+ 5% per 100% bonus attack speed) (+ 2% per 500 bonus HP) of the target's maximum health**"
+    },
+    {
+      "entity": "Zaahen",
+      "entity_type": "champion",
+      "target": "Q - The Darkin Glaive",
+      "stat": "Cooldown Behavior",
+      "old": null,
+      "new": "If Q is active, it is now placed on Cooldown immediately upon being put in Resurrection",
+      "direction": "adjust",
+      "source_quote": "* **NEW** **Cooldown Behavior**: If Q is active, it is now placed on Cooldown immediately upon being put in Resurrection"
+    },
+    {
+      "entity": "Zaahen",
+      "entity_type": "champion",
+      "target": "Q - The Darkin Glaive",
+      "stat": "Q2 Damage",
+      "old": "25 / 50 / 75 / 100 / 125 (+20 / 25 / 30 / 35 / 40% bonus AD)",
+      "new": "30 / 60 / 90 / 120 / 150 (+20 / 25 / 30 / 35 / 40% bonus AD)",
+      "direction": "buff",
+      "source_quote": "* **Q2 Damage**: 25 / 50 / 75 / 100 / 125 (+20 / 25 / 30 / 35 / 40% bonus AD) ⇒ **30 / 60 / 90 / 120 / 150 (+20 / 25 / 30 / 35 / 40% bonus AD)**"
+    },
+    {
+      "entity": "Zeri",
+      "entity_type": "champion",
+      "target": "W - Ultrashock Laser",
+      "stat": "Damage",
+      "old": "30 / 70 / 110 / 150 / 190 (+120% tAD)",
+      "new": "30 / 70 / 110 / 150 / 190 (+100% tAD)",
+      "direction": "nerf",
+      "source_quote": "* **Damage**: 30 / 70 / 110 / 150 / 190 (+120% tAD) ⇒ **30 / 70 / 110 / 150 / 190 (+100% tAD)**"
+    },
+    {
+      "entity": "Zeri",
+      "entity_type": "champion",
+      "target": "W - Ultrashock Laser",
+      "stat": "Wall Damage",
+      "old": "45 / 105 / 165 / 225 / 285 (+180% tAD)",
+      "new": "45 / 105 / 165 / 225 / 285 (+150% tAD)",
+      "direction": "nerf",
+      "source_quote": "* **Wall Damage**: 45 / 105 / 165 / 225 / 285 (+180% tAD) ⇒ **45 / 105 / 165 / 225 / 285 (+150% tAD)**"
+    },
+    {
+      "entity": "Guinsoo's Rageblade",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Seething Strike Stack Duration",
+      "old": "3s",
+      "new": "4s",
+      "direction": "buff",
+      "source_quote": "* **Seething Strike Stack Duration**: 3s ⇒ **4s**"
+    }
+  ]
+}

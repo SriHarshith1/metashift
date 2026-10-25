@@ -60,7 +60,10 @@ pipeline publishes.
 
 ## 3. Pipeline
 
-Command: `metashift run <game> <patch> [--llm ollama|claude] [--notes-file PATH] [--from-stage NAME]`
+Commands (amended 2026-10-25):
+
+- `metashift run <game> [<patch>] [--llm ollama|claude] [--notes-file PATH] [--from-stage NAME] [--to-stage NAME]` — no patch means the newest patch on the game's website.
+- `metashift update <game> [--limit N]` — finds patches on the website newer than the newest published report (or the newest N when nothing is published, default 3) and runs the full pipeline for each, oldest first. It stops at the first patch that fails.
 
 Each stage reads the files of earlier stages and writes one file to
 `data/<game>/<patch>/`. Any stage can be re-run alone with `--from-stage`.
@@ -84,7 +87,8 @@ class GameAdapter(Protocol):
     entity_types: list[str]                     # ["champion", "item", "rune", "system"]
     glossary: str                               # game terms for prompts
 
-    def list_patches(self) -> list[str]: ...    # newest first
+    def list_patches(self) -> list[str]: ...    # newest first (Data Dragon for LoL)
+    def available_patches(self) -> list[str]: ...  # patches with notes on the website, newest first
     def fetch_notes(self, patch: str) -> str: ...        # returns HTML
     def notes_to_markdown(self, html: str) -> str: ...
     def select_sections(self, markdown: str) -> tuple[str, list[str]]: ...  # kept, dropped titles
@@ -113,7 +117,7 @@ class LLM(Protocol):
     def complete_json(self, prompt: str, schema: type[BaseModel]) -> BaseModel: ...
 ```
 
-- `OllamaClient` is the default. Model set by `METASHIFT_OLLAMA_MODEL`.
+- `OllamaClient` is the default. Model set by `METASHIFT_OLLAMA_MODEL`; default `gemma4:31b-cloud` (amended 2026-10-25: cloud first). `OLLAMA_API_KEY`, when set, is sent as a bearer token for direct Ollama Cloud access.
 - `ClaudeClient` uses the Anthropic SDK. Key from `ANTHROPIC_API_KEY`. Model set by
   `METASHIFT_CLAUDE_MODEL`.
 - `FakeLLM` returns fixed responses for tests.
@@ -278,7 +282,7 @@ Rules for all stages:
 | extract | Unknown entity name | Fuzzy-match against `entities()`. No match → drop the change, add a warning. |
 | extract | `source_quote` not in `raw.md` | Drop the change, add a warning. |
 | extract | Low coverage | Count `⇒` lines in `raw.md`. If extracted changes < 80% of that count, add a warning. |
-| baseline | Scraper fails | Use `stats.csv`. If missing, stop and print the expected CSV path and columns. |
+| baseline | Scraper fails | Use `stats.csv`. If missing (amended 2026-10-25): skip stats with one warning that names the expected CSV path and columns. |
 | baseline | Entity has no stats | Stats fields `null`. Card shows "no stats". |
 | baseline | No earlier `changes.json` | `history` is empty. Not an error. |
 | analyze | Bad `change_ref` or a changed entity missing from the report | Retry, max 2. Then write the report with a warning. |

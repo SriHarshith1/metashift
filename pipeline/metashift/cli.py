@@ -19,6 +19,7 @@ from metashift.core.stages.context import StageContext
 from metashift.core.stages.extract import extract_changes, run_extract
 from metashift.core.stages.fetch import run_fetch
 from metashift.core.stages.publish import run_publish
+from metashift.core.text import patch_sort_key
 from metashift.games import get_adapter
 
 STAGES = ["fetch", "extract", "baseline", "analyze", "publish"]
@@ -161,22 +162,28 @@ def update(
         LlmKind, typer.Option("--llm", help="Model for extract and analyze")
     ] = LlmKind.ollama,
 ) -> None:
-    """Find new patches on the game's website and run the pipeline for each, oldest first."""
+    """Run the pipeline for patches on the game's website that are newer than the newest
+    published one (or the newest LIMIT patches when nothing is published), oldest first."""
     try:
         adapter = get_adapter(game)
         available = adapter.available_patches()
     except MetashiftError as err:
         raise _fail(str(err)) from err
-    published = {p.stem for p in (web_data_dir() / game).glob("*.json")}
-    new = [p for p in available if p not in published]
+    published = [p.stem for p in (web_data_dir() / game).glob("*.json")]
+    newest = max(published, key=patch_sort_key, default=None)
+    new = [
+        p for p in available
+        if newest is None or patch_sort_key(p) > patch_sort_key(newest)
+    ]
     if not new:
-        typer.echo(f"up to date: newest patch {available[0]} is already published")
+        typer.echo(f"up to date: newest patch {newest} is already published")
         return
     todo, skipped = new[:limit], new[limit:]
     if skipped:
+        many = len(skipped) > 1
         typer.echo(
-            f"skipping {len(skipped)} older unpublished patches ({', '.join(skipped)}). "
-            "Raise --limit to include them"
+            f"skipping {len(skipped)} new patch{'es' if many else ''} ({', '.join(skipped)}). "
+            f"Raise --limit to include {'them' if many else 'it'}"
         )
     try:
         model = make_llm(llm.value)

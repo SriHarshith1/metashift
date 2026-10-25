@@ -1,0 +1,130 @@
+{
+  "stats_patch": "26.16",
+  "stats_source": "none",
+  "entities": {
+    "Aurelion Sol": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Cho'Gath": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Graves": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Irelia": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "LeBlanc": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Nasus": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": [
+        {
+          "patch": "26.16",
+          "direction": "adjust",
+          "summary": "Q Stacks adjust"
+        }
+      ]
+    },
+    "Nocturne": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Qiyana": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Thresh": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Trundle": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Vayne": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Xerath": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Yasuo": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Yone": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Stormrazor": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Sundered Sky": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": [
+        {
+          "patch": "26.16",
+          "direction": "adjust",
+          "summary": "Item Recipe adjust; Item Healing nerf; Item Health buff"
+        }
+      ]
+    }
+  }
+}

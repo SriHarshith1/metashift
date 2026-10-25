@@ -1,0 +1,472 @@
+{
+  "game": "lol",
+  "patch": "26.18",
+  "compared_to": "26.17",
+  "generated_at": "2026-10-25T11:40:32.226833Z",
+  "llm": "ollama:gemma4:31b-cloud",
+  "headline": "The patch focuses on shifting AP carries toward higher scaling while curbing the dominance of certain utility and burst champions.",
+  "themes": [
+    "AP scaling redistribution",
+    "Melee carry buffs",
+    "Utility and burst nerfs"
+  ],
+  "entities": [
+    {
+      "entity": "Bard",
+      "entity_type": "champion",
+      "verdict": "fall",
+      "confidence": "high",
+      "previous": null,
+      "reason": "Base armor reduced from 34 + 5/Level to 32 + 4.7/Level.",
+      "change_refs": [
+        0
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.18.1/img/champion/Bard.png"
+    },
+    {
+      "entity": "Cassiopeia",
+      "entity_type": "champion",
+      "verdict": "stable",
+      "confidence": "medium",
+      "previous": null,
+      "reason": "Mixed changes: base damage and move speed nerfed, but AP ratios on Q (65% to 75%), E (10% to 20% base), and R (50% to 75%) were buffed.",
+      "change_refs": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.18.1/img/champion/Cassiopeia.png"
+    },
+    {
+      "entity": "Ekko",
+      "entity_type": "champion",
+      "verdict": "rise",
+      "confidence": "high",
+      "previous": null,
+      "reason": "Q mana costs reduced across all ranks and Q return damage ratio increased from 60% to 70% AP.",
+      "change_refs": [
+        11,
+        12
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.18.1/img/champion/Ekko.png"
+    },
+    {
+      "entity": "Kassadin",
+      "entity_type": "champion",
+      "verdict": "rise",
+      "confidence": "high",
+      "previous": null,
+      "reason": "Q AP ratio increased from 70% to 80% and R base damage buffed at early ranks (70/90 to 80/95).",
+      "change_refs": [
+        13,
+        14
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.18.1/img/champion/Kassadin.png"
+    },
+    {
+      "entity": "Master Yi",
+      "entity_type": "champion",
+      "verdict": "rise",
+      "confidence": "high",
+      "previous": null,
+      "reason": "Armor growth increased from 4.5 to 5/Level and R move speed increased by 5% across all ranks.",
+      "change_refs": [
+        15,
+        16
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.18.1/img/champion/MasterYi.png"
+    },
+    {
+      "entity": "Nautilus",
+      "entity_type": "champion",
+      "verdict": "fall",
+      "confidence": "high",
+      "previous": null,
+      "reason": "Base AD reduced by 3 and Q base damage reduced across all ranks.",
+      "change_refs": [
+        17,
+        18
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.18.1/img/champion/Nautilus.png"
+    },
+    {
+      "entity": "Seraphine",
+      "entity_type": "champion",
+      "verdict": "fall",
+      "confidence": "high",
+      "previous": null,
+      "reason": "E cooldown increased from a scaling 11/10.5/10/9.5/9s to a flat 11s.",
+      "change_refs": [
+        19
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.18.1/img/champion/Seraphine.png"
+    },
+    {
+      "entity": "Syndra",
+      "entity_type": "champion",
+      "verdict": "fall",
+      "confidence": "high",
+      "previous": null,
+      "reason": "Passive max mana reduced from 255 to 199 and W cooldown increased by 1s across all ranks.",
+      "change_refs": [
+        20,
+        21
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.18.1/img/champion/Syndra.png"
+    },
+    {
+      "entity": "Viego",
+      "entity_type": "champion",
+      "verdict": "rise",
+      "confidence": "high",
+      "previous": null,
+      "reason": "AD growth increased from 3.5 to 4 and passive heal now scales with bonus AD, AP, AS, and bonus HP.",
+      "change_refs": [
+        22,
+        23
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.18.1/img/champion/Viego.png"
+    },
+    {
+      "entity": "Zaahen",
+      "entity_type": "champion",
+      "verdict": "rise",
+      "confidence": "medium",
+      "previous": null,
+      "reason": "Q2 base damage increased by 5-25 across ranks, though Q now goes on cooldown immediately upon Resurrection.",
+      "change_refs": [
+        24,
+        25
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.18.1/img/champion/Zaahen.png"
+    },
+    {
+      "entity": "Zeri",
+      "entity_type": "champion",
+      "verdict": "fall",
+      "confidence": "high",
+      "previous": null,
+      "reason": "W total AD ratio reduced from 120% to 100% and W wall damage ratio reduced from 180% to 150%.",
+      "change_refs": [
+        26,
+        27
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.18.1/img/champion/Zeri.png"
+    },
+    {
+      "entity": "Guinsoo's Rageblade",
+      "entity_type": "item",
+      "verdict": "rise",
+      "confidence": "high",
+      "previous": null,
+      "reason": "Seething Strike stack duration increased from 3s to 4s.",
+      "change_refs": [
+        28
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.18.1/img/item/223124.png"
+    }
+  ],
+  "changes": [
+    {
+      "entity": "Bard",
+      "entity_type": "champion",
+      "target": "Base stats",
+      "stat": "Armor",
+      "old": "34 + 5/Level",
+      "new": "32 + 4.7/Level",
+      "direction": "nerf",
+      "source_quote": "* **Armor**: 34 + 5/Level ⇒ **32 + 4.7/Level**"
+    },
+    {
+      "entity": "Cassiopeia",
+      "entity_type": "champion",
+      "target": "Passive - Serpentine Grace",
+      "stat": "Move Speed Bonus",
+      "old": "6% - 40% (based on level)",
+      "new": "5% - 36% (based on level)",
+      "direction": "nerf",
+      "source_quote": "* **Move Speed Bonus**: 6% - 40% (based on level) ⇒ **5% - 36% (based on level)**"
+    },
+    {
+      "entity": "Cassiopeia",
+      "entity_type": "champion",
+      "target": "Q - Noxious Blast",
+      "stat": "Damage",
+      "old": "75 / 110 / 145 / 180 / 215",
+      "new": "65 / 100 / 135 / 170 / 205",
+      "direction": "nerf",
+      "source_quote": "* **Damage**: 75 / 110 / 145 / 180 / 215 ⇒ **65 / 100 / 135 / 170 / 205**"
+    },
+    {
+      "entity": "Cassiopeia",
+      "entity_type": "champion",
+      "target": "Q - Noxious Blast",
+      "stat": "Ability Power Ratio",
+      "old": "65%",
+      "new": "75%",
+      "direction": "buff",
+      "source_quote": "* **Ability Power Ratio**: 65% ⇒ **75%**"
+    },
+    {
+      "entity": "Cassiopeia",
+      "entity_type": "champion",
+      "target": "E - Twin Fang",
+      "stat": "Mana Cost",
+      "old": "40",
+      "new": "45",
+      "direction": "nerf",
+      "source_quote": "* **Mana Cost**: 40 ⇒ **45**"
+    },
+    {
+      "entity": "Cassiopeia",
+      "entity_type": "champion",
+      "target": "E - Twin Fang",
+      "stat": "Base Ability Power Ratio",
+      "old": "10%",
+      "new": "20%",
+      "direction": "buff",
+      "source_quote": "* **Base Ability Power Ratio**: 10% ⇒ **20%**"
+    },
+    {
+      "entity": "Cassiopeia",
+      "entity_type": "champion",
+      "target": "E - Twin Fang",
+      "stat": "Enhanced Ability Power Ratio",
+      "old": "55%",
+      "new": "45%",
+      "direction": "nerf",
+      "source_quote": "* **Enhanced Ability Power Ratio**: 55% ⇒ **45%**"
+    },
+    {
+      "entity": "Cassiopeia",
+      "entity_type": "champion",
+      "target": "E - Twin Fang",
+      "stat": "Total Ability Power Ratio",
+      "old": "65%",
+      "new": "65%",
+      "direction": "adjust",
+      "source_quote": "* **Total Ability Power Ratio**: 65% ⇒ **65%**"
+    },
+    {
+      "entity": "Cassiopeia",
+      "entity_type": "champion",
+      "target": "E - Twin Fang",
+      "stat": "Damage",
+      "old": "52 - 120",
+      "new": "50 - 120",
+      "direction": "nerf",
+      "source_quote": "* **Damage**: 52 - 120 ⇒ **50 - 120**"
+    },
+    {
+      "entity": "Cassiopeia",
+      "entity_type": "champion",
+      "target": "R - Petrifying Gaze",
+      "stat": "Damage",
+      "old": "150 / 250 / 350",
+      "new": "125 / 225 / 325",
+      "direction": "nerf",
+      "source_quote": "* **Damage**: 150 / 250 / 350 ⇒ **125 / 225 / 325**"
+    },
+    {
+      "entity": "Cassiopeia",
+      "entity_type": "champion",
+      "target": "R - Petrifying Gaze",
+      "stat": "Ability Power Ratio",
+      "old": "50%",
+      "new": "75%",
+      "direction": "buff",
+      "source_quote": "* **Ability Power Ratio**: 50% ⇒ **75%**"
+    },
+    {
+      "entity": "Ekko",
+      "entity_type": "champion",
+      "target": "Q - Timewinder",
+      "stat": "Mana Cost",
+      "old": "50 / 60 / 70 / 80 / 90",
+      "new": "40 / 50 / 60 / 70 / 80",
+      "direction": "buff",
+      "source_quote": "* **Mana Cost**: 50 / 60 / 70 / 80 / 90 ⇒ **40 / 50 / 60 / 70 / 80**"
+    },
+    {
+      "entity": "Ekko",
+      "entity_type": "champion",
+      "target": "Q - Timewinder",
+      "stat": "Return Damage Ability Power Ratio",
+      "old": "60%",
+      "new": "70%",
+      "direction": "buff",
+      "source_quote": "* **Return Damage Ability Power Ratio**: 60% ⇒ **70%**"
+    },
+    {
+      "entity": "Kassadin",
+      "entity_type": "champion",
+      "target": "Q - Null Sphere",
+      "stat": "Ability Power Ratio",
+      "old": "70% AP",
+      "new": "80% AP",
+      "direction": "buff",
+      "source_quote": "* **Ability Power Ratio**: 70% AP ⇒ **80% AP**"
+    },
+    {
+      "entity": "Kassadin",
+      "entity_type": "champion",
+      "target": "R - Riftwalk",
+      "stat": "Base Damage",
+      "old": "70 / 90 / 110",
+      "new": "80 / 95 / 110",
+      "direction": "buff",
+      "source_quote": "* **Base Damage**: 70 / 90 / 110 ⇒ **80 / 95 / 110**"
+    },
+    {
+      "entity": "Master Yi",
+      "entity_type": "champion",
+      "target": "Base stats",
+      "stat": "Armor Growth",
+      "old": "33 + 4.5/Level",
+      "new": "33 + 5/Level",
+      "direction": "buff",
+      "source_quote": "* **Armor Growth**: 33 + 4.5/Level ⇒ **33 + 5/Level**"
+    },
+    {
+      "entity": "Master Yi",
+      "entity_type": "champion",
+      "target": "R - Highlander",
+      "stat": "Move Speed",
+      "old": "35 / 45 / 55%",
+      "new": "40 / 50 / 60%",
+      "direction": "buff",
+      "source_quote": "* **Move Speed**: 35 / 45 / 55% ⇒ **40 / 50 / 60%**"
+    },
+    {
+      "entity": "Nautilus",
+      "entity_type": "champion",
+      "target": "Base stats",
+      "stat": "Attack Damage",
+      "old": "61 + 3.3/Level",
+      "new": "58 + 3.3/Level",
+      "direction": "nerf",
+      "source_quote": "* **Attack Damage**: 61 + 3.3/Level ⇒ **58 + 3.3/Level**"
+    },
+    {
+      "entity": "Nautilus",
+      "entity_type": "champion",
+      "target": "Q - Dredge Line",
+      "stat": "Damage",
+      "old": "85 / 130 / 175 / 220 / 265 (+90% AP)",
+      "new": "85 / 125 / 165 / 205 / 245 (+90% AP)",
+      "direction": "nerf",
+      "source_quote": "* **Damage**: 85 / 130 / 175 / 220 / 265 (+90% AP) ⇒ **85 / 125 / 165 / 205 / 245 (+90% AP)**"
+    },
+    {
+      "entity": "Seraphine",
+      "entity_type": "champion",
+      "target": "E - Beat Drop",
+      "stat": "Cooldown",
+      "old": "11 / 10.5 / 10 / 9.5 / 9s",
+      "new": "11s",
+      "direction": "nerf",
+      "source_quote": "* **Cooldown**: 11 / 10.5 / 10 / 9.5 / 9s ⇒ **11s**"
+    },
+    {
+      "entity": "Syndra",
+      "entity_type": "champion",
+      "target": "Passive - Transcendent",
+      "stat": "Splinter Mana",
+      "old": "20 - 255",
+      "new": "20 - 199",
+      "direction": "nerf",
+      "source_quote": "* **Splinter Mana**: 20 - 255 ⇒ **20 - 199**"
+    },
+    {
+      "entity": "Syndra",
+      "entity_type": "champion",
+      "target": "W - Force of Will",
+      "stat": "Cooldown",
+      "old": "12 / 11 / 10 / 9 / 8s",
+      "new": "13 / 12 / 11 / 10 / 9s",
+      "direction": "nerf",
+      "source_quote": "* **Cooldown**: 12 / 11 / 10 / 9 / 8s ⇒ **13 / 12 / 11 / 10 / 9s**"
+    },
+    {
+      "entity": "Viego",
+      "entity_type": "champion",
+      "target": "Base Stats",
+      "stat": "Attack Damage Growth",
+      "old": "3.5",
+      "new": "4",
+      "direction": "buff",
+      "source_quote": "* **Attack Damage Growth**: 3.5 ⇒ **4**"
+    },
+    {
+      "entity": "Viego",
+      "entity_type": "champion",
+      "target": "Passive - Sovereign's Domination",
+      "stat": "Heal",
+      "old": "2% (+…. )",
+      "new": "2% (+ 2.5% per 100 bonus AD) (+ 2% per 100 AP) (+ 5% per 100% bonus attack speed) (+ 2% per 500 bonus HP) of the target's maximum health",
+      "direction": "buff",
+      "source_quote": "* **Heal**: 2% (+…. ) ⇒ **2% (+ 2.5% per 100 bonus AD) (+ 2% per 100 AP) (+ 5% per 100% bonus attack speed) (+ 2% per 500 bonus HP) of the target's maximum health**"
+    },
+    {
+      "entity": "Zaahen",
+      "entity_type": "champion",
+      "target": "Q - The Darkin Glaive",
+      "stat": "Cooldown Behavior",
+      "old": null,
+      "new": "If Q is active, it is now placed on Cooldown immediately upon being put in Resurrection",
+      "direction": "adjust",
+      "source_quote": "* **NEW** **Cooldown Behavior**: If Q is active, it is now placed on Cooldown immediately upon being put in Resurrection"
+    },
+    {
+      "entity": "Zaahen",
+      "entity_type": "champion",
+      "target": "Q - The Darkin Glaive",
+      "stat": "Q2 Damage",
+      "old": "25 / 50 / 75 / 100 / 125 (+20 / 25 / 30 / 35 / 40% bonus AD)",
+      "new": "30 / 60 / 90 / 120 / 150 (+20 / 25 / 30 / 35 / 40% bonus AD)",
+      "direction": "buff",
+      "source_quote": "* **Q2 Damage**: 25 / 50 / 75 / 100 / 125 (+20 / 25 / 30 / 35 / 40% bonus AD) ⇒ **30 / 60 / 90 / 120 / 150 (+20 / 25 / 30 / 35 / 40% bonus AD)**"
+    },
+    {
+      "entity": "Zeri",
+      "entity_type": "champion",
+      "target": "W - Ultrashock Laser",
+      "stat": "Damage",
+      "old": "30 / 70 / 110 / 150 / 190 (+120% tAD)",
+      "new": "30 / 70 / 110 / 150 / 190 (+100% tAD)",
+      "direction": "nerf",
+      "source_quote": "* **Damage**: 30 / 70 / 110 / 150 / 190 (+120% tAD) ⇒ **30 / 70 / 110 / 150 / 190 (+100% tAD)**"
+    },
+    {
+      "entity": "Zeri",
+      "entity_type": "champion",
+      "target": "W - Ultrashock Laser",
+      "stat": "Wall Damage",
+      "old": "45 / 105 / 165 / 225 / 285 (+180% tAD)",
+      "new": "45 / 105 / 165 / 225 / 285 (+150% tAD)",
+      "direction": "nerf",
+      "source_quote": "* **Wall Damage**: 45 / 105 / 165 / 225 / 285 (+180% tAD) ⇒ **45 / 105 / 165 / 225 / 285 (+150% tAD)**"
+    },
+    {
+      "entity": "Guinsoo's Rageblade",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Seething Strike Stack Duration",
+      "old": "3s",
+      "new": "4s",
+      "direction": "buff",
+      "source_quote": "* **Seething Strike Stack Duration**: 3s ⇒ **4s**"
+    }
+  ],
+  "warnings": [
+    "skipped sections: Patch Highlights, Hall of Legends, Classic, ARAM: Mayhem, Bugfixes & QoL Changes, Upcoming Skins & Chromas",
+    "no stats for patch 26.17: stats skipped. To add them, create data/lol/26.18/stats.csv with columns entity,win_rate,pick_rate,ban_rate,tier"
+  ]
+}

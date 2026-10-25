@@ -1,0 +1,476 @@
+{
+  "game": "lol",
+  "patch": "26.16",
+  "changes": [
+    {
+      "entity": "Azir",
+      "entity_type": "champion",
+      "target": "Q",
+      "stat": "Damage",
+      "old": "60 / 80 / 100 / 120 / 140 (+35 / 40 / 45 / 50 / 55% AP)",
+      "new": "75 / 95 / 115 / 135 / 155 (+35 / 40 / 45 / 50 / 55% AP)",
+      "direction": "buff",
+      "source_quote": "**Damage**: 60 / 80 / 100 / 120 / 140 (+35 / 40 / 45 / 50 / 55% AP) ⇒ **75 / 95 / 115 / 135 / 155 (+35 / 40 / 45 / 50 / 55% AP)**"
+    },
+    {
+      "entity": "Bel'Veth",
+      "entity_type": "champion",
+      "target": "Base stats",
+      "stat": "Health Growth",
+      "old": "110",
+      "new": "105",
+      "direction": "nerf",
+      "source_quote": "**Health Growth**: 110 ⇒ **105**"
+    },
+    {
+      "entity": "Bel'Veth",
+      "entity_type": "champion",
+      "target": "R",
+      "stat": "True Form Total Attack Speed",
+      "old": "5 / 15 / 25%",
+      "new": "6 / 13 / 20%",
+      "direction": "adjust",
+      "source_quote": "**True Form Total Attack Speed**: 5 / 15 / 25% ⇒ **6 / 13 / 20%**"
+    },
+    {
+      "entity": "Camille",
+      "entity_type": "champion",
+      "target": "Base stats",
+      "stat": "Mana",
+      "old": "339",
+      "new": "375",
+      "direction": "buff",
+      "source_quote": "**Mana**: 339 ⇒ **375**"
+    },
+    {
+      "entity": "Camille",
+      "entity_type": "champion",
+      "target": "Passive",
+      "stat": "Shield",
+      "old": "20% Maximum Health",
+      "new": "10 / 15 / 20 / 25% Maximum Health (levels 1 / 7 / 13 / 19)",
+      "direction": "adjust",
+      "source_quote": "**Shield**: 20% Maximum Health ⇒ **10 / 15 / 20 / 25% Maximum Health (levels 1 / 7 / 13 / 19)**"
+    },
+    {
+      "entity": "Camille",
+      "entity_type": "champion",
+      "target": "Passive",
+      "stat": "Cooldown",
+      "old": "18 / 14 / 10 / 6s (levels 1 / 7 / 13 / 19)",
+      "new": "14 / 11 / 8s (levels 1 / 7 / 13)",
+      "direction": "buff",
+      "source_quote": "**Cooldown**: 18 / 14 / 10 / 6s (levels 1 / 7 / 13 / 19) ⇒ **14 / 11 / 8s (levels 1 / 7 / 13)**"
+    },
+    {
+      "entity": "Camille",
+      "entity_type": "champion",
+      "target": "W",
+      "stat": "Cooldown",
+      "old": "15 / 14 / 13 / 12 / 11s",
+      "new": "12 / 11.5 / 11 / 10.5 / 10s",
+      "direction": "buff",
+      "source_quote": "**Cooldown**: 15 / 14 / 13 / 12 / 11s ⇒ **12 / 11.5 / 11 / 10.5 / 10s**"
+    },
+    {
+      "entity": "Camille",
+      "entity_type": "champion",
+      "target": "W",
+      "stat": "Outer Cone Bonus Damage",
+      "old": "6 / 6.5 / 7 / 7.5 / 8% (+2.5% per 100 bonus Attack Damage) Target Maximum Health",
+      "new": "7 / 7.5 / 8 / 8.5 / 9% (+2.5% per 100 bonus Attack Damage) Target Maximum Health",
+      "direction": "buff",
+      "source_quote": "**Outer Cone Bonus Damage**: 6 / 6.5 / 7 / 7.5 / 8% (+2.5% per 100 bonus Attack Damage) Target Maximum Health ⇒ **7 / 7.5 / 8 / 8.5 / 9% (+2.5% per 100 bonus Attack Damage) Target Maximum Health**"
+    },
+    {
+      "entity": "Gwen",
+      "entity_type": "champion",
+      "target": "Passive",
+      "stat": "Healing On Champions",
+      "old": "50% post-mitigation, capped to 10-25 (based on level) (+6.5% AP)",
+      "new": "67% post-mitigation, capped to 12-40 (based on level) (+7% AP)",
+      "direction": "buff",
+      "source_quote": "**Healing On Champions**: 50% post-mitigation, capped to 10-25 (based on level) (+6.5% AP) ⇒ **67% post-mitigation, capped to 12-40 (based on level) (+7% AP)**"
+    },
+    {
+      "entity": "Kennen",
+      "entity_type": "champion",
+      "target": "R",
+      "stat": "Bonus Resistances",
+      "old": "20 / 40 / 60",
+      "new": "25 / 50 / 75",
+      "direction": "buff",
+      "source_quote": "**Bonus Resistances**: 20 / 40 / 60 ⇒ **25 / 50 / 75**"
+    },
+    {
+      "entity": "Kennen",
+      "entity_type": "champion",
+      "target": "R",
+      "stat": "Damage",
+      "old": "40 / 75 / 110 (+22.5% AP)",
+      "new": "40 / 80 / 120 (+25% AP)",
+      "direction": "buff",
+      "source_quote": "**Damage**: 40 / 75 / 110 (+22.5% AP) ⇒ **40 / 80 / 120 (+25% AP)**"
+    },
+    {
+      "entity": "Kennen",
+      "entity_type": "champion",
+      "target": "R",
+      "stat": "Maximum Damage",
+      "old": "300 / 562.5 / 825 (+168.75% AP)",
+      "new": "300 / 600 / 900 (+187.5% AP)",
+      "direction": "buff",
+      "source_quote": "**Maximum Damage**: 300 / 562.5 / 825 (+168.75% AP) ⇒ **300 / 600 / 900 (+187.5% AP)**"
+    },
+    {
+      "entity": "Nasus",
+      "entity_type": "champion",
+      "target": "Q",
+      "stat": "Stacks",
+      "old": "3, increased to 12 on champions / large minions / monsters",
+      "new": "4, increased to 10 on champions / large minions / monsters",
+      "direction": "adjust",
+      "source_quote": "**Stacks**: 3, increased to 12 on champions / large minions / monsters ⇒ **4, increased to 10 on champions / large minions / monsters**"
+    },
+    {
+      "entity": "Poppy",
+      "entity_type": "champion",
+      "target": "Base stats",
+      "stat": "Attack Damage",
+      "old": "60",
+      "new": "56",
+      "direction": "nerf",
+      "source_quote": "* **Attack Damage**: 60 ⇒ **56**"
+    },
+    {
+      "entity": "Poppy",
+      "entity_type": "champion",
+      "target": "Base stats",
+      "stat": "Health Regeneration",
+      "old": "8",
+      "new": "9",
+      "direction": "buff",
+      "source_quote": "* **Health Regeneration**: 8 ⇒ **9**"
+    },
+    {
+      "entity": "Poppy",
+      "entity_type": "champion",
+      "target": "Base stats",
+      "stat": "Mana",
+      "old": "280 + 40/level",
+      "new": "300 + 45/level",
+      "direction": "buff",
+      "source_quote": "* **Mana**: 280 + 40/level ⇒ **300 + 45/level**"
+    },
+    {
+      "entity": "Poppy",
+      "entity_type": "champion",
+      "target": "Q - Hammer Shock",
+      "stat": "Damage",
+      "old": "30 / 55 / 80 / 105 / 130 (+100% bonus Attack Damage) (+9% Target Maximum Health), twice",
+      "new": "30 / 55 / 80 / 105 / 130 (+75% bonus Attack Damage) (+7 / 7.5 / 8 / 8.5 / 9% Target Maximum Health), twice",
+      "direction": "adjust",
+      "source_quote": "* **Damage**: 30 / 55 / 80 / 105 / 130 (+100% bonus Attack Damage) (+9% Target Maximum Health), twice ⇒ **30 / 55 / 80 / 105 / 130 (+75% bonus Attack Damage) (+7 / 7.5 / 8 / 8.5 / 9% Target Maximum Health), twice**"
+    },
+    {
+      "entity": "Poppy",
+      "entity_type": "champion",
+      "target": "Q - Hammer Shock",
+      "stat": "Target Maximum Health Monster Cap",
+      "old": "75 / 105 / 135 / 165 / 195",
+      "new": "85 / 120 / 155 / 190 / 225",
+      "direction": "buff",
+      "source_quote": "* **Target Maximum Health Monster Cap**: 75 / 105 / 135 / 165 / 195 ⇒ **85 / 120 / 155 / 190 / 225**"
+    },
+    {
+      "entity": "Poppy",
+      "entity_type": "champion",
+      "target": "Q - Hammer Shock",
+      "stat": "Slow Amount",
+      "old": "20 / 25 / 30 / 35 / 40%",
+      "new": "20 / 23 / 26 / 29 / 32% (+8% per 1000 bonus Health)",
+      "direction": "adjust",
+      "source_quote": "* **Slow Amount**: 20 / 25 / 30 / 35 / 40% ⇒ **20 / 23 / 26 / 29 / 32% (+8% per 1000 bonus Health)**"
+    },
+    {
+      "entity": "Poppy",
+      "entity_type": "champion",
+      "target": "W - Steadfast Presence",
+      "stat": "Total Armor and Magic Resistance",
+      "old": "12%, doubled below 40% Maximum Health",
+      "new": "16%, doubled below 40% Maximum Health",
+      "direction": "buff",
+      "source_quote": "* **Total Armor and Magic Resistance**: 12%, doubled below 40% Maximum Health ⇒ **16%, doubled below 40% Maximum Health**"
+    },
+    {
+      "entity": "Berserker's Greaves",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Attack Speed",
+      "old": "25%",
+      "new": "30%",
+      "direction": "buff",
+      "source_quote": "* **Attack Speed**: 25% ⇒ **30%**"
+    },
+    {
+      "entity": "Berserker's Greaves",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "T3 Attack Speed",
+      "old": "40%",
+      "new": "45%",
+      "direction": "buff",
+      "source_quote": "* **T3 Attack Speed**: 40% ⇒ **45%**"
+    },
+    {
+      "entity": "Black Cleaver",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Attack Damage",
+      "old": "40",
+      "new": "45",
+      "direction": "buff",
+      "source_quote": "* **Attack Damage**: 40 ⇒ **45**"
+    },
+    {
+      "entity": "Black Cleaver",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Fervor Move Speed",
+      "old": "20 for 2s",
+      "new": "[20 Melee || 10 Ranged] for 2s",
+      "direction": "adjust",
+      "source_quote": "* **Fervor Move Speed**: 20 for 2s ⇒ **[20 Melee || 10 Ranged] for 2s**"
+    },
+    {
+      "entity": "Eclipse",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Damage",
+      "old": "[6% Melee || 4% Ranged] Target Maximum Health",
+      "new": "[8% Melee || 5% Ranged] Target Maximum Health",
+      "direction": "buff",
+      "source_quote": "* **Damage**: [6% Melee || 4% Ranged] Target Maximum Health ⇒ **[8% Melee || 5% Ranged] Target Maximum Health**"
+    },
+    {
+      "entity": "Eclipse",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Shield",
+      "old": "[160 + 40% bonus Attack Damage Melee || 80 + 20% bonus Attack Damage Ranged]",
+      "new": "[150 + 40% bonus Attack Damage Melee || 75 + 20% bonus Attack Damage Ranged]",
+      "direction": "nerf",
+      "source_quote": "* **Shield**: [160 + 40% bonus Attack Damage Melee || 80 + 20% bonus Attack Damage Ranged] ⇒ **[150 + 40% bonus Attack Damage Melee || 75 + 20% bonus Attack Damage Ranged]**"
+    },
+    {
+      "entity": "Runaan's Hurricane",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Move Speed",
+      "old": "4%",
+      "new": "5%",
+      "direction": "buff",
+      "source_quote": "* **Move Speed**: 4% ⇒ **5%**"
+    },
+    {
+      "entity": "Runaan's Hurricane",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Wind's Fury Bolt Damage",
+      "old": "55% Attack Damage",
+      "new": "65% Attack Damage",
+      "direction": "buff",
+      "source_quote": "* **Wind's Fury Bolt Damage**: 55% Attack Damage ⇒ **65% Attack Damage**"
+    },
+    {
+      "entity": "Sterak's Gage",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Bonus Attack Damage",
+      "old": "45% of Base Attack Damage",
+      "new": "50% of Base Attack Damage",
+      "direction": "buff",
+      "source_quote": "* **Bonus Attack Damage**: 45% of Base Attack Damage ⇒ **50% of Base Attack Damage**"
+    },
+    {
+      "entity": "Sundered Sky",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Recipe",
+      "old": "Tunneler (1150g) + Caulfield's (1050g) + Ruby Crystal (400g) + 500g",
+      "new": "Tunneler (1150g) + Caulfield's (1050g) + 900g",
+      "direction": "adjust",
+      "source_quote": "* **Recipe**: Tunneler (1150g) + Caulfield's (1050g) + Ruby Crystal (400g) + 500g ⇒ **Tunneler (1150g) + Caulfield's (1050g) + 900g**"
+    },
+    {
+      "entity": "Sundered Sky",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Healing",
+      "old": "[100% Melee || 50% Ranged] Base Attack Damage + 6% Missing Health",
+      "new": "[90% Melee || 45% Ranged] Base Attack Damage + 4% Missing Health",
+      "direction": "nerf",
+      "source_quote": "* **Healing**: [100% Melee || 50% Ranged] Base Attack Damage + 6% Missing Health ⇒ **[90% Melee || 45% Ranged] Base Attack Damage + 4% Missing Health**"
+    },
+    {
+      "entity": "Sundered Sky",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Health",
+      "old": "400",
+      "new": "450",
+      "direction": "buff",
+      "source_quote": "* **Health**: 400 ⇒ **450**"
+    },
+    {
+      "entity": "Sunfire Cape",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Damage",
+      "old": "20 (+1% bonus Health)",
+      "new": "20 (+1.5% bonus Health)",
+      "direction": "buff",
+      "source_quote": "* **Damage**: 20 (+1% bonus Health) ⇒ **20 (+1.5% bonus Health)**"
+    },
+    {
+      "entity": "Sunfire Cape",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Minion / Monster Modifier",
+      "old": "160% Minion, 200% Monster",
+      "new": "150% Minion, 180% Monster",
+      "direction": "nerf",
+      "source_quote": "* **Minion / Monster Modifier**: 160% Minion, 200% Monster ⇒ **150% Minion, 180% Monster**"
+    },
+    {
+      "entity": "Sunfire Cape",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Recipe",
+      "old": "600g",
+      "new": "700g",
+      "direction": "nerf",
+      "source_quote": "* **Recipe**: 600g ⇒ **700g**"
+    },
+    {
+      "entity": "Chainlaced Crushers",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Magic Resistance",
+      "old": "30",
+      "new": "25",
+      "direction": "nerf",
+      "source_quote": "* **Magic Resistance**: 30 ⇒ **25**"
+    },
+    {
+      "entity": "Spellslinger's Shoes",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Magic Penetration",
+      "old": "18 + 8%",
+      "new": "20 + 8%",
+      "direction": "buff",
+      "source_quote": "* **Magic Penetration**: 18 + 8% ⇒ **20 + 8%**"
+    },
+    {
+      "entity": "Tiamat",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Attack Damage",
+      "old": "20",
+      "new": "25",
+      "direction": "buff",
+      "source_quote": "* **Attack Damage**: 20 ⇒ **25**"
+    },
+    {
+      "entity": "Fleet Footwork",
+      "entity_type": "rune",
+      "target": "Item",
+      "stat": "Healing",
+      "old": "10-130 ( +[10% bonus AD Melee || 6% bonus AD Ranged]) ( +[5% AP Melee || 3% AP Ranged])",
+      "new": "15-160 ( +[10% bonus AD Melee || 6% bonus AD Ranged]) ( +[5% AP Melee || 3% AP Ranged])",
+      "direction": "buff",
+      "source_quote": "* **Healing**: 10-130 ( +[10% bonus AD Melee || 6% bonus AD Ranged]) ( +[5% AP Melee || 3% AP Ranged]) ⇒ **15-160 ( +[10% bonus AD Melee || 6% bonus AD Ranged]) ( +[5% AP Melee || 3% AP Ranged])**"
+    },
+    {
+      "entity": "Hail of Blades",
+      "entity_type": "rune",
+      "target": "Item",
+      "stat": "Attack Speed",
+      "old": "120% Melee || 60% Ranged",
+      "new": "90% Melee || 60% Ranged",
+      "direction": "nerf",
+      "source_quote": "* **Attack Speed**: 120% Melee || 60% Ranged ⇒ **90% Melee || 60% Ranged**"
+    },
+    {
+      "entity": "Hail of Blades",
+      "entity_type": "rune",
+      "target": "Item",
+      "stat": "Bonus True Damage",
+      "old": "4-20 (+8% bonus AD) (+6% AP)",
+      "new": "2-20 (+12% bonus AD) (+10% AP)",
+      "direction": "adjust",
+      "source_quote": "* **Bonus True Damage**: 4-20 (+8% bonus AD) (+6% AP) ⇒ **2-20 (+12% bonus AD) (+10% AP)**"
+    },
+    {
+      "entity": "ADC champions",
+      "entity_type": "system",
+      "target": "Base stats",
+      "stat": "Magic Resistance",
+      "old": "30 + 1.3/level",
+      "new": "33 + 1.1/level",
+      "direction": "adjust",
+      "source_quote": "Magic Resistance: 30 + 1.3/level ⇒ 33 + 1.1/level"
+    },
+    {
+      "entity": "Tristana",
+      "entity_type": "champion",
+      "target": "Base stats",
+      "stat": "Magic Resistance",
+      "old": "28 + 1.3/level",
+      "new": "33 + 1.1/level",
+      "direction": "buff",
+      "source_quote": "Tristana Magic Resistance: 28 + 1.3/level ⇒ 33 + 1.1/level"
+    },
+    {
+      "entity": "JUNGLE PETS",
+      "entity_type": "system",
+      "target": "Damage Per Attack",
+      "stat": "Scaling",
+      "old": "20 - 150 (based on level) (+10% bonus Attack Damage) (+12% Ability Power) (+20% bonus Armor) (+20% bonus Magic Resistance) (+3% bonus Health)",
+      "new": "20 - 150 (based on level) (+10% bonus Attack Damage) (+16% Ability Power) (+25% bonus Armor) (+25% bonus Magic Resistance) (+4% bonus Health)",
+      "direction": "buff",
+      "source_quote": "Damage Per Attack: 20 - 150 (based on level) (+10% bonus Attack Damage) (+12% Ability Power) (+20% bonus Armor) (+20% bonus Magic Resistance) (+3% bonus Health) ⇒ 20 - 150 (based on level) (+10% bonus Attack Damage) (+16% Ability Power) (+25% bonus Armor) (+25% bonus Magic Resistance) (+4% bonus Health)"
+    },
+    {
+      "entity": "SUPPORT ROLE QUEST",
+      "entity_type": "system",
+      "target": "Stack Consumption On Champion / Turret Damage",
+      "stat": "Value",
+      "old": "22 Melee || 20 Ranged and 24 Melee || 22 Ranged",
+      "new": "18 and 21",
+      "direction": "buff",
+      "source_quote": "Stack Consumption On Champion / Turret Damage: 22 Melee || 20 Ranged and 24 Melee || 22 Ranged ⇒ 18 and 21"
+    },
+    {
+      "entity": "SUPPORT ROLE QUEST",
+      "entity_type": "system",
+      "target": "Stack Consumption On Creep Score",
+      "stat": "Value",
+      "old": "15 and 20",
+      "new": "18 and 21",
+      "direction": "nerf",
+      "source_quote": "Stack Consumption On Creep Score: 15 and 20 ⇒ 18 and 21"
+    },
+    {
+      "entity": "SUPPORT ROLE QUEST",
+      "entity_type": "system",
+      "target": "Minion Creep Score Experience / Gold Penalty",
+      "stat": "Penalty",
+      "old": "-25% outside of bot lane until level 3",
+      "new": "-33% outside of bot lane until level 5",
+      "direction": "nerf",
+      "source_quote": "Minion Creep Score Experience / Gold Penalty: -25% outside of bot lane until level 3 ⇒ -33% outside of bot lane until level 5"
+    }
+  ]
+}

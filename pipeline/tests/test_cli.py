@@ -262,13 +262,32 @@ def test_update_runs_unpublished_patches_oldest_first(root, monkeypatch):
     assert [e.patch for e in index.games["lol"]] == ["26.21", "26.20", "26.19"]
 
 
-def test_update_skips_published_patches_and_respects_limit(root, monkeypatch):
-    adapter = update_stubs(monkeypatch, ["26.22", "26.21", "26.20", "26.19", "26.18"])
+def test_update_runs_only_patches_newer_than_the_newest_published(root, monkeypatch):
+    adapter = update_stubs(monkeypatch, ["26.24", "26.23", "26.22", "26.21", "26.20", "26.19"])
     write_published(root, "26.21")
     result = runner.invoke(app, ["update", "lol", "--limit", "2"])
     assert result.exit_code == 0, result.output
-    assert adapter.fetch_calls == ["26.20", "26.22"]
-    assert "skipping 2 older unpublished patches (26.19, 26.18)" in result.stdout
+    assert adapter.fetch_calls == ["26.23", "26.24"]
+    assert "skipping 1 new patch (26.22). Raise --limit to include it" in result.stdout
+    assert "26.20" not in result.stdout and "26.19" not in result.stdout
+
+
+def test_update_ignores_older_gaps(root, monkeypatch):
+    adapter = update_stubs(monkeypatch, ["26.21", "26.20", "26.19", "26.18"])
+    write_published(root, "26.21")
+    write_published(root, "26.18")
+    result = runner.invoke(app, ["update", "lol"])
+    assert result.exit_code == 0, result.output
+    assert "up to date: newest patch 26.21 is already published" in result.stdout
+    assert adapter.fetch_calls == []
+
+
+def test_update_with_nothing_published_runs_the_newest_patches(root, monkeypatch):
+    adapter = update_stubs(monkeypatch, ["26.21", "26.20", "26.19", "26.18"])
+    result = runner.invoke(app, ["update", "lol", "--limit", "2"])
+    assert result.exit_code == 0, result.output
+    assert adapter.fetch_calls == ["26.20", "26.21"]
+    assert "skipping 2 new patches (26.19, 26.18). Raise --limit to include them" in result.stdout
 
 
 def test_update_when_up_to_date_does_nothing(root, monkeypatch):

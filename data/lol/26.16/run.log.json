@@ -1,0 +1,46 @@
+{
+  "game": "lol",
+  "patch": "26.16",
+  "patch_date": "2026-08-11",
+  "stages": [
+    {
+      "stage": "fetch",
+      "llm": null,
+      "duration_s": 0.5831875839994609,
+      "retries": 0,
+      "warnings": [
+        "skipped sections: Patch Highlights, Classic, ARAM: Mayhem, Arena, Bugfixes & QoL Changes, Upcoming Skins & Chromas"
+      ]
+    },
+    {
+      "stage": "extract",
+      "llm": "ollama:gemma4:31b-cloud",
+      "duration_s": 26.75130020799952,
+      "retries": 0,
+      "warnings": []
+    },
+    {
+      "stage": "baseline",
+      "llm": null,
+      "duration_s": 0.0018732919998001307,
+      "retries": 0,
+      "warnings": [
+        "no stats for patch 26.15: stats skipped. To add them, create data/lol/26.16/stats.csv with columns entity,win_rate,pick_rate,ban_rate,tier"
+      ]
+    },
+    {
+      "stage": "analyze",
+      "llm": "ollama:gemma4:31b-cloud",
+      "duration_s": 7.657545584001127,
+      "retries": 0,
+      "warnings": []
+    },
+    {
+      "stage": "publish",
+      "llm": null,
+      "duration_s": 0.00432350000119186,
+      "retries": 0,
+      "warnings": []
+    }
+  ]
+}

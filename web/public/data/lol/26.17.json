@@ -1,0 +1,550 @@
+{
+  "game": "lol",
+  "patch": "26.17",
+  "compared_to": "26.16",
+  "generated_at": "2026-10-25T11:40:13.546386Z",
+  "llm": "ollama:gemma4:31b-cloud",
+  "headline": "This patch focuses on empowering several carry champions while curbing the dominance of Vayne and high-sustain bruisers.",
+  "themes": [
+    "Carry empowerment",
+    "Vayne sustainability and damage nerf",
+    "Bruiser item and sustain reduction",
+    "AP scaling adjustments"
+  ],
+  "entities": [
+    {
+      "entity": "Aurelion Sol",
+      "entity_type": "champion",
+      "verdict": "rise",
+      "confidence": "high",
+      "previous": null,
+      "reason": "Received buffs to Q mana cost (35-55 ⇒ 30-50) and W cooldown (22-16s ⇒ 22-14s).",
+      "change_refs": [
+        0,
+        1
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/AurelionSol.png"
+    },
+    {
+      "entity": "Cho'Gath",
+      "entity_type": "champion",
+      "verdict": "rise",
+      "confidence": "medium",
+      "previous": null,
+      "reason": "Base damage on E increased by 10 across all ranks (20-100 ⇒ 30-110).",
+      "change_refs": [
+        2
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Chogath.png"
+    },
+    {
+      "entity": "Graves",
+      "entity_type": "champion",
+      "verdict": "fall",
+      "confidence": "high",
+      "previous": null,
+      "reason": "Significant nerfs to Q bonus AD ratios on both initial damage (65% ⇒ 55%) and return damage (up to 115% ⇒ 105%).",
+      "change_refs": [
+        3,
+        4
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Graves.png"
+    },
+    {
+      "entity": "Irelia",
+      "entity_type": "champion",
+      "verdict": "rise",
+      "confidence": "high",
+      "previous": null,
+      "reason": "Buffs to Q AD ratio (70% ⇒ 80%), W AP ratio (7% ⇒ 8%), and R AP ratio (70% ⇒ 100%).",
+      "change_refs": [
+        5,
+        6,
+        7
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Irelia.png"
+    },
+    {
+      "entity": "LeBlanc",
+      "entity_type": "champion",
+      "verdict": "rise",
+      "confidence": "medium",
+      "previous": null,
+      "reason": "Buffs to W and RW AP ratios (80% ⇒ 90%) and base AS ratio (0.4 ⇒ 0.625), despite a slight nerf to AS growth.",
+      "change_refs": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Leblanc.png"
+    },
+    {
+      "entity": "Nasus",
+      "entity_type": "champion",
+      "verdict": "fall",
+      "confidence": "medium",
+      "previous": null,
+      "reason": "Passive life steal reduced (12/18/24% ⇒ 10/15/20%) following a previous Q stack adjustment in 26.16.",
+      "change_refs": [
+        12
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Nasus.png"
+    },
+    {
+      "entity": "Nocturne",
+      "entity_type": "champion",
+      "verdict": "fall",
+      "confidence": "medium",
+      "previous": null,
+      "reason": "Base stats reduced: Armor (38 ⇒ 36) and Health (655 ⇒ 640).",
+      "change_refs": [
+        13,
+        14
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Nocturne.png"
+    },
+    {
+      "entity": "Qiyana",
+      "entity_type": "champion",
+      "verdict": "rise",
+      "confidence": "medium",
+      "previous": null,
+      "reason": "Q damage and bonus AD ratio increased (70-190 + 85% ⇒ 80-200 + 90%), outweighing the monster damage nerf.",
+      "change_refs": [
+        15,
+        16
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Qiyana.png"
+    },
+    {
+      "entity": "Thresh",
+      "entity_type": "champion",
+      "verdict": "fall",
+      "confidence": "medium",
+      "previous": null,
+      "reason": "E active damage reduced (75-255 ⇒ 65-245) and AP ratio lowered (70% ⇒ 60%).",
+      "change_refs": [
+        17
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Thresh.png"
+    },
+    {
+      "entity": "Trundle",
+      "entity_type": "champion",
+      "verdict": "rise",
+      "confidence": "high",
+      "previous": null,
+      "reason": "W attack speed increased across most ranks (30/45/60/75/90% ⇒ 30/50/70/90/110%).",
+      "change_refs": [
+        18
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Trundle.png"
+    },
+    {
+      "entity": "Vayne",
+      "entity_type": "champion",
+      "verdict": "fall",
+      "confidence": "high",
+      "previous": null,
+      "reason": "Significant nerfs to W true damage (10% ⇒ 10% max, but lower early ranks) and minimum damage, plus increased Q mana costs.",
+      "change_refs": [
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Vayne.png"
+    },
+    {
+      "entity": "Xerath",
+      "entity_type": "champion",
+      "verdict": "fall",
+      "confidence": "medium",
+      "previous": null,
+      "reason": "Base health reduced (596 ⇒ 575) and Q base damage decreased (75-235 ⇒ 70-230).",
+      "change_refs": [
+        25,
+        26
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Xerath.png"
+    },
+    {
+      "entity": "Yasuo",
+      "entity_type": "champion",
+      "verdict": "rise",
+      "confidence": "medium",
+      "previous": null,
+      "reason": "Passive critical strike damage reduction improved (-10% ⇒ -5%).",
+      "change_refs": [
+        27
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Yasuo.png"
+    },
+    {
+      "entity": "Yone",
+      "entity_type": "champion",
+      "verdict": "rise",
+      "confidence": "medium",
+      "previous": null,
+      "reason": "Passive critical strike damage reduction improved (-10% ⇒ -5%).",
+      "change_refs": [
+        28
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/champion/Yone.png"
+    },
+    {
+      "entity": "Stormrazor",
+      "entity_type": "item",
+      "verdict": "rise",
+      "confidence": "medium",
+      "previous": null,
+      "reason": "Item attack speed increased (20% ⇒ 25%).",
+      "change_refs": [
+        29
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/item/223095.png"
+    },
+    {
+      "entity": "Sundered Sky",
+      "entity_type": "item",
+      "verdict": "fall",
+      "confidence": "high",
+      "previous": null,
+      "reason": "Health reduced (450 ⇒ 400) and AD reduced (45 ⇒ 40) following a previous adjustment in 26.16.",
+      "change_refs": [
+        30,
+        31
+      ],
+      "icon_url": "https://ddragon.leagueoflegends.com/cdn/16.17.1/img/item/226610.png"
+    }
+  ],
+  "changes": [
+    {
+      "entity": "Aurelion Sol",
+      "entity_type": "champion",
+      "target": "Q - Breath of Light",
+      "stat": "Mana Cost Per Second",
+      "old": "35 / 40 / 45 / 50 / 55",
+      "new": "30 / 35 / 40 / 45 / 50",
+      "direction": "buff",
+      "source_quote": "Mana Cost Per Second: 35 / 40 / 45 / 50 / 55 ⇒ 30 / 35 / 40 / 45 / 50"
+    },
+    {
+      "entity": "Aurelion Sol",
+      "entity_type": "champion",
+      "target": "W - Astral Flight",
+      "stat": "Cooldown",
+      "old": "22 / 20.5 / 19 / 17.5 / 16s",
+      "new": "22 / 20 / 18 / 16 / 14s",
+      "direction": "buff",
+      "source_quote": "Cooldown: 22 / 20.5 / 19 / 17.5 / 16s ⇒ 22 / 20 / 18 / 16 / 14s"
+    },
+    {
+      "entity": "Cho'Gath",
+      "entity_type": "champion",
+      "target": "E - Vorpal Spikes",
+      "stat": "Base Damage (x3 attacks)",
+      "old": "20 / 40 / 60 / 80 / 100 (+30% AP) (+2.5% - 3.9% (+.5% Per Feast) Target Max HP)",
+      "new": "30 / 50 / 70 / 90 / 110 (+30% AP) (+2.5% - 3.9% (+.5% Per Feast) Target Max HP)",
+      "direction": "buff",
+      "source_quote": "Base Damage (x3 attacks): 20 / 40 / 60 / 80 / 100 (+30% AP) (+2.5% - 3.9% (+.5% Per Feast) Target Max HP) ⇒ 30 / 50 / 70 / 90 / 110 (+30% AP) (+2.5% - 3.9% (+.5% Per Feast) Target Max HP)"
+    },
+    {
+      "entity": "Graves",
+      "entity_type": "champion",
+      "target": "Q - End of the Line",
+      "stat": "Initial Damage",
+      "old": "50 / 75 / 100 / 125 / 150 (+65% bonus AD)",
+      "new": "50 / 75 / 100 / 125 / 150 (+55% bonus AD)",
+      "direction": "nerf",
+      "source_quote": "Initial Damage: 50 / 75 / 100 / 125 / 150 (+65% bonus AD) ⇒ 50 / 75 / 100 / 125 / 150 (+55% bonus AD)"
+    },
+    {
+      "entity": "Graves",
+      "entity_type": "champion",
+      "target": "Q - End of the Line",
+      "stat": "Return Damage",
+      "old": "80 / 125 / 170 / 215 / 260 (+55 / 70 / 85 / 100 / 115% bonus AD)",
+      "new": "80 / 125 / 170 / 215 / 260 (+45 / 60 / 75 / 90 / 105% bonus AD)",
+      "direction": "nerf",
+      "source_quote": "Return Damage: 80 / 125 / 170 / 215 / 260 (+55 / 70 / 85 / 100 / 115% bonus AD) ⇒ 80 / 125 / 170 / 215 / 260 (+45 / 60 / 75 / 90 / 105% bonus AD)"
+    },
+    {
+      "entity": "Irelia",
+      "entity_type": "champion",
+      "target": "Q - Bladesurge",
+      "stat": "Damage",
+      "old": "5 / 25 / 45 / 65 / 85 (+70% AD)",
+      "new": "5 / 25 / 45 / 65 / 85 (+80% AD)",
+      "direction": "buff",
+      "source_quote": "Damage: 5 / 25 / 45 / 65 / 85 (+70% AD) ⇒ 5 / 25 / 45 / 65 / 85 (+80% AD)"
+    },
+    {
+      "entity": "Irelia",
+      "entity_type": "champion",
+      "target": "W - Defiant Dance",
+      "stat": "Damage Reduction Ability Power Ratio",
+      "old": "7% per 100 AP (Halved for Magic Damage) (reduced to 75% value for Magic Damage in Arena)",
+      "new": "8% per 100 AP (Halved for Magic Damage) (reduced to 75% value for Magic Damage in Arena)",
+      "direction": "buff",
+      "source_quote": "Damage Reduction Ability Power Ratio: 7% per 100 AP (Halved for Magic Damage) (reduced to 75% value for Magic Damage in Arena) ⇒ 8% per 100 AP (Halved for Magic Damage) (reduced to 75% value for Magic Damage in Arena)"
+    },
+    {
+      "entity": "Irelia",
+      "entity_type": "champion",
+      "target": "R - Vanguard's Edge",
+      "stat": "Ability Power Ratio",
+      "old": "70%",
+      "new": "100%",
+      "direction": "buff",
+      "source_quote": "Ability Power Ratio: 70% ⇒ 100% (It is already 100% in Arena, so this is standardizing the value)"
+    },
+    {
+      "entity": "LeBlanc",
+      "entity_type": "champion",
+      "target": "Base Stats",
+      "stat": "Attack Speed Ratio",
+      "old": "0.4",
+      "new": "0.625",
+      "direction": "buff",
+      "source_quote": "Attack Speed Ratio: 0.4 ⇒ 0.625"
+    },
+    {
+      "entity": "LeBlanc",
+      "entity_type": "champion",
+      "target": "Base Stats",
+      "stat": "Attack Speed Growth",
+      "old": "2.35%",
+      "new": "1.5%",
+      "direction": "nerf",
+      "source_quote": "Attack Speed Growth: 2.35% ⇒ 1.5%"
+    },
+    {
+      "entity": "LeBlanc",
+      "entity_type": "champion",
+      "target": "W - Distortion",
+      "stat": "Damage",
+      "old": "75 / 115 / 155 / 195 / 235 (+80% AP)",
+      "new": "75 / 115 / 155 / 195 / 235 (+90% AP)",
+      "direction": "buff",
+      "source_quote": "Damage: 75 / 115 / 155 / 195 / 235 (+80% AP) ⇒ 75 / 115 / 155 / 195 / 235 (+90% AP)"
+    },
+    {
+      "entity": "LeBlanc",
+      "entity_type": "champion",
+      "target": "RW - Mimic: Distortion",
+      "stat": "Damage",
+      "old": "150 / 315 / 480 (+80% AP)",
+      "new": "150 / 315 / 480 (+90% AP)",
+      "direction": "buff",
+      "source_quote": "Damage: 150 / 315 / 480 (+80% AP) ⇒ 150 / 315 / 480 (+90% AP)"
+    },
+    {
+      "entity": "Nasus",
+      "entity_type": "champion",
+      "target": "Passive - Soul Eater",
+      "stat": "Life Steal",
+      "old": "12 / 18 / 24%",
+      "new": "10 / 15 / 20%",
+      "direction": "nerf",
+      "source_quote": "Life Steal: 12 / 18 / 24% ⇒ 10 / 15 / 20%"
+    },
+    {
+      "entity": "Nocturne",
+      "entity_type": "champion",
+      "target": "Base Stats",
+      "stat": "Armor",
+      "old": "38",
+      "new": "36",
+      "direction": "nerf",
+      "source_quote": "Armor: 38 ⇒ 36"
+    },
+    {
+      "entity": "Nocturne",
+      "entity_type": "champion",
+      "target": "Base Stats",
+      "stat": "Health",
+      "old": "655",
+      "new": "640",
+      "direction": "nerf",
+      "source_quote": "Health: 655 ⇒ 640"
+    },
+    {
+      "entity": "Qiyana",
+      "entity_type": "champion",
+      "target": "Q - Elemental Wrath",
+      "stat": "Damage",
+      "old": "70 / 100 / 130 / 160 / 190 (+85% bonus AD)",
+      "new": "80 / 110 / 140 / 170 / 200 (+90% bonus AD)",
+      "direction": "buff",
+      "source_quote": "Damage: 70 / 100 / 130 / 160 / 190 (+85% bonus AD) ⇒ 80 / 110 / 140 / 170 / 200 (+90% bonus AD)"
+    },
+    {
+      "entity": "Qiyana",
+      "entity_type": "champion",
+      "target": "Q - Elemental Wrath",
+      "stat": "Monster Damage Modifier",
+      "old": "175% against Monsters",
+      "new": "160% against Monsters",
+      "direction": "nerf",
+      "source_quote": "Monster Damage Modifier: 175% against Monsters ⇒ 160% against Monsters"
+    },
+    {
+      "entity": "Thresh",
+      "entity_type": "champion",
+      "target": "E - Flay",
+      "stat": "Active Damage",
+      "old": "75 / 120 / 165 / 210 / 255 (+70% AP)",
+      "new": "65 / 110 / 155 / 200 / 245 (+60% AP)",
+      "direction": "nerf",
+      "source_quote": "Active Damage: 75 / 120 / 165 / 210 / 255 (+70% AP) ⇒ 65 / 110 / 155 / 200 / 245 (+60% AP)"
+    },
+    {
+      "entity": "Trundle",
+      "entity_type": "champion",
+      "target": "W - Frozen Domain",
+      "stat": "Attack Speed",
+      "old": "30 / 45 / 60 / 75 / 90%",
+      "new": "30 / 50 / 70 / 90 / 110%",
+      "direction": "buff",
+      "source_quote": "Attack Speed: 30 / 45 / 60 / 75 / 90% ⇒ 30 / 50 / 70 / 90 / 110%"
+    },
+    {
+      "entity": "Vayne",
+      "entity_type": "champion",
+      "target": "Base stats",
+      "stat": "Health",
+      "old": "550 + 103/Level",
+      "new": "580 + 98/Level",
+      "direction": "adjust",
+      "source_quote": "* **Health**: 550 + 103/Level ⇒ **580 + 98/Level**"
+    },
+    {
+      "entity": "Vayne",
+      "entity_type": "champion",
+      "target": "Base stats",
+      "stat": "Health Regeneration",
+      "old": "3.5 + .55/Level",
+      "new": "4 + .5/Level",
+      "direction": "adjust",
+      "source_quote": "* **Health Regeneration**: 3.5 + .55/Level ⇒ **4 + .5/Level**"
+    },
+    {
+      "entity": "Vayne",
+      "entity_type": "champion",
+      "target": "Base stats",
+      "stat": "Attack Speed Ratio",
+      "old": ".658 + 3.3%/Level",
+      "new": ".67 + 2.8%/Level",
+      "direction": "adjust",
+      "source_quote": "* **Attack Speed Ratio**: .658 + 3.3%/Level ⇒ **.67 + 2.8%/Level**"
+    },
+    {
+      "entity": "Vayne",
+      "entity_type": "champion",
+      "target": "Q",
+      "stat": "Mana Cost",
+      "old": "30",
+      "new": "46 / 42 / 38 / 34 / 30",
+      "direction": "nerf",
+      "source_quote": "* **Mana Cost**: 30 ⇒ **46 / 42 / 38 / 34 / 30**"
+    },
+    {
+      "entity": "Vayne",
+      "entity_type": "champion",
+      "target": "W",
+      "stat": "True Damage",
+      "old": "6 / 7 / 8 / 9 / 10% Target Max HP",
+      "new": "4 / 5.5 / 7 / 8.5 / 10% Target Max HP",
+      "direction": "nerf",
+      "source_quote": "* **True Damage**: 6 / 7 / 8 / 9 / 10% Target Max HP ⇒ **4 / 5.5 / 7 / 8.5 / 10% Target Max HP**"
+    },
+    {
+      "entity": "Vayne",
+      "entity_type": "champion",
+      "target": "W",
+      "stat": "Minimum Damage",
+      "old": "50 / 65 / 80 / 95 / 110",
+      "new": "40 / 55 / 70 / 85 / 100",
+      "direction": "nerf",
+      "source_quote": "* **Minimum Damage**: 50 / 65 / 80 / 95 / 110 ⇒ **40 / 55 / 70 / 85 / 100**"
+    },
+    {
+      "entity": "Xerath",
+      "entity_type": "champion",
+      "target": "Base stats",
+      "stat": "Health",
+      "old": "596",
+      "new": "575",
+      "direction": "nerf",
+      "source_quote": "* **Health**: 596 ⇒ **575**"
+    },
+    {
+      "entity": "Xerath",
+      "entity_type": "champion",
+      "target": "Q",
+      "stat": "Damage",
+      "old": "75 / 115 / 155 / 195 / 235 (+90% AP)",
+      "new": "70 / 110 / 150 / 190 / 230 (+90% AP)",
+      "direction": "nerf",
+      "source_quote": "* **Damage**: 75 / 115 / 155 / 195 / 235 (+90% AP) ⇒ **70 / 110 / 150 / 190 / 230 (+90% AP)**"
+    },
+    {
+      "entity": "Yasuo",
+      "entity_type": "champion",
+      "target": "Passive",
+      "stat": "Critical Strike Damage Reduction",
+      "old": "-10%",
+      "new": "-5%",
+      "direction": "buff",
+      "source_quote": "* **Critical Strike Damage Reduction**: -10% ⇒ **-5%**"
+    },
+    {
+      "entity": "Yone",
+      "entity_type": "champion",
+      "target": "Passive",
+      "stat": "Critical Strike Damage Reduction",
+      "old": "-10%",
+      "new": "-5%",
+      "direction": "buff",
+      "source_quote": "* **Critical Strike Damage Reduction**: -10% ⇒ **-5%**"
+    },
+    {
+      "entity": "Stormrazor",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Attack Speed",
+      "old": "20%",
+      "new": "25%",
+      "direction": "buff",
+      "source_quote": "* **Attack Speed**: 20% ⇒ **25%**"
+    },
+    {
+      "entity": "Sundered Sky",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Health",
+      "old": "450",
+      "new": "400",
+      "direction": "nerf",
+      "source_quote": "* **Health**: 450 ⇒ **400**"
+    },
+    {
+      "entity": "Sundered Sky",
+      "entity_type": "item",
+      "target": "Item",
+      "stat": "Attack Damage",
+      "old": "45",
+      "new": "40",
+      "direction": "nerf",
+      "source_quote": "* **Attack Damage**: 45 ⇒ **40**"
+    }
+  ],
+  "warnings": [
+    "skipped sections: Patch Highlights, Classic, ARAM: Mayhem, Arena, Updated System Requirements, Bugfixes & QoL Changes, Upcoming Skins & Chromas",
+    "no stats for patch 26.16: stats skipped. To add them, create data/lol/26.17/stats.csv with columns entity,win_rate,pick_rate,ban_rate,tier"
+  ]
+}

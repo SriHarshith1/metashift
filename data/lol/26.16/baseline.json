@@ -1,0 +1,167 @@
+{
+  "stats_patch": "26.15",
+  "stats_source": "none",
+  "entities": {
+    "Azir": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Bel'Veth": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Camille": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Gwen": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Kennen": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Nasus": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Poppy": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Berserker's Greaves": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Black Cleaver": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Eclipse": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Runaan's Hurricane": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Sterak's Gage": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Sundered Sky": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Sunfire Cape": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Chainlaced Crushers": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Spellslinger's Shoes": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Tiamat": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Fleet Footwork": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Hail of Blades": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "ADC champions": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Tristana": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "JUNGLE PETS": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "SUPPORT ROLE QUEST": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    }
+  }
+}

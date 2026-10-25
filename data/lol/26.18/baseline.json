@@ -1,0 +1,90 @@
+{
+  "stats_patch": "26.17",
+  "stats_source": "none",
+  "entities": {
+    "Bard": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Cassiopeia": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Ekko": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Kassadin": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Master Yi": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Nautilus": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Seraphine": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Syndra": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Viego": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Zaahen": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Zeri": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    },
+    "Guinsoo's Rageblade": {
+      "win_rate": null,
+      "pick_rate": null,
+      "ban_rate": null,
+      "tier": null,
+      "history": []
+    }
+  }
+}
