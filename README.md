@@ -104,4 +104,6 @@ cd web && npm run dev
 
 The publish stage writes reports to `web/public/data/`. `npm run build` makes a static site in `web/dist/`. Because `vite.config.ts` uses `base: "./"` and the site uses hash routes, `web/dist/` works on GitHub Pages, Vercel or any static host with no server rules.
 
+**Live site:** https://sriharshith1.github.io/metashift/ — the `Deploy site` GitHub Actions workflow runs the web tests, builds `web/dist/` and publishes it to GitHub Pages on every push to `main` that changes `web/`. To publish a new patch, run `metashift update lol` locally, commit `data/` and `web/public/data/`, and push.
+
 Metashift isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
