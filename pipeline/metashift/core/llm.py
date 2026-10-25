@@ -1,4 +1,5 @@
 import os
+import re
 from collections.abc import Callable
 from typing import Literal, Protocol, TypeVar
 
@@ -37,6 +38,15 @@ class FakeLLM:
     def complete_json(self, prompt: str, schema: type[T]) -> T:
         self.prompts.append(prompt)
         return schema.model_validate_json(next(self._responses))
+
+
+_FENCE = re.compile(r"^\s*```(?:json)?\s*\n(.*)\n\s*```\s*$", re.DOTALL)
+
+
+def _strip_code_fence(text: str) -> str:
+    """Some cloud models wrap JSON in a ```json fence even when a format is set."""
+    match = _FENCE.match(text)
+    return match.group(1) if match else text
 
 
 def _ollama_timeout() -> float:
@@ -106,7 +116,7 @@ class OllamaClient:
                 "Raise METASHIFT_OLLAMA_TIMEOUT or use a smaller model"
             ) from err
         content = response.json()["message"]["content"]
-        return schema.model_validate_json(content)
+        return schema.model_validate_json(_strip_code_fence(content))
 
 
 class ClaudeClient:

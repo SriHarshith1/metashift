@@ -230,3 +230,13 @@ def test_ollama_unreachable_remote_host_does_not_suggest_ollama_serve():
         llm.complete_json("P", ExtractDraft)
     assert "ollama serve" not in str(err.value)
     assert "https://ollama.com" in str(err.value)
+
+
+def test_ollama_accepts_json_wrapped_in_a_code_fence():
+    fenced = '```json\n{"changes": []}\n```'
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(200, json={"message": {"content": fenced}})
+
+    llm = OllamaClient(model="m", host="http://x", transport=httpx.MockTransport(handler))
+    assert llm.complete_json("P", ExtractDraft) == ExtractDraft(changes=[])
