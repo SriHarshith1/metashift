@@ -240,3 +240,20 @@ def test_ollama_accepts_json_wrapped_in_a_code_fence():
 
     llm = OllamaClient(model="m", host="http://x", transport=httpx.MockTransport(handler))
     assert llm.complete_json("P", ExtractDraft) == ExtractDraft(changes=[])
+
+
+@pytest.mark.parametrize(
+    "error", [httpx.ReadError("reset"), httpx.RemoteProtocolError("bad response")]
+)
+def test_ollama_transport_errors_become_metashift_errors(error):
+    def boom(request):
+        raise error
+
+    llm = OllamaClient(model="m", host="https://ollama.com", transport=httpx.MockTransport(boom))
+    with pytest.raises(MetashiftError, match="https://ollama.com"):
+        llm.complete_json("P", ExtractDraft)
+
+
+def test_ollama_host_without_scheme_is_a_clear_error():
+    with pytest.raises(MetashiftError, match="OLLAMA_HOST must start with http:// or https://"):
+        OllamaClient(model="m", host="0.0.0.0:11434")

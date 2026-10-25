@@ -106,7 +106,7 @@ def test_extract_runs_one_llm_call_per_chunk_and_sums_retries(root, monkeypatch)
 
 
 def test_extract_prompt_mentions_types_and_glossary(root):
-    llm = FakeLLM([json_of()])
+    llm = FakeLLM([json_of(change("Ahri", "Q Damage: 40 ⇒ 50"))])
     run_extract(ctx(root, llm))
     prompt = llm.prompts[0]
     assert "champion, item, rune, system" in prompt
@@ -171,7 +171,7 @@ def test_extract_cache_is_per_llm_name_and_ignores_broken_files(root, monkeypatc
 
 def test_extract_prints_chunk_progress_to_stderr(root, monkeypatch, capsys):
     two_chunks(monkeypatch)
-    run_extract(ctx(root, FakeLLM([json_of(), json_of()])))
+    run_extract(ctx(root, FakeLLM([json_of(change("Ahri", "Q Damage: 40 ⇒ 50")), json_of()])))
     err = capsys.readouterr().err
     assert "extract chunk 1/2" in err and "extract chunk 2/2" in err
 
@@ -185,3 +185,9 @@ def test_extract_changes_needs_no_files(tmp_path):
     assert retries == 0
     assert warnings == ["low coverage: extracted 1 of ~2 change lines"]
     assert list(tmp_path.iterdir()) == []
+
+
+def test_extract_with_zero_changes_stops_before_writing(root):
+    with pytest.raises(MetashiftError, match="no changes extracted from data/lol/26.21/raw.md"):
+        run_extract(ctx(root, FakeLLM([json_of()])))
+    assert not (root / "data/lol/26.21/changes.json").exists()

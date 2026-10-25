@@ -75,6 +75,10 @@ class OllamaClient:
         self.timeout = timeout if timeout is not None else _ollama_timeout()
         self.model = model or os.environ.get("METASHIFT_OLLAMA_MODEL") or DEFAULT_OLLAMA_MODEL
         self.host = (host or os.environ.get("OLLAMA_HOST") or DEFAULT_OLLAMA_HOST).rstrip("/")
+        if not self.host.startswith(("http://", "https://")):
+            raise MetashiftError(
+                f"OLLAMA_HOST must start with http:// or https://, got '{self.host}'"
+            )
         self.name = f"ollama:{self.model}"
         self._transport = transport
         api_key = os.environ.get("OLLAMA_API_KEY")
@@ -114,6 +118,10 @@ class OllamaClient:
             raise MetashiftError(
                 f"Ollama timed out after {self.timeout:g}s on {self.model}. "
                 "Raise METASHIFT_OLLAMA_TIMEOUT or use a smaller model"
+            ) from err
+        except httpx.TransportError as err:
+            raise MetashiftError(
+                f"Ollama request to {self.host} failed: {type(err).__name__}: {err}"
             ) from err
         content = response.json()["message"]["content"]
         return schema.model_validate_json(_strip_code_fence(content))

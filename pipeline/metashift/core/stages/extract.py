@@ -34,14 +34,17 @@ def _cached_draft(path: Path) -> ExtractDraft | None:
         return None
 
 
+def _shown(path: Path) -> str:
+    try:
+        return path.relative_to(repo_root()).as_posix()
+    except ValueError:
+        return str(path)
+
+
 def _read_raw(ctx: StageContext) -> str:
     path = ctx.dir / "raw.md"
     if not path.exists():
-        try:
-            shown = path.relative_to(repo_root()).as_posix()
-        except ValueError:
-            shown = str(path)
-        raise MetashiftError(f"missing {shown} — run stage 'fetch' first")
+        raise MetashiftError(f"missing {_shown(path)} — run stage 'fetch' first")
     return path.read_text(encoding="utf-8")
 
 
@@ -103,6 +106,12 @@ def run_extract(ctx: StageContext) -> StageLog:
     changes, retries, warnings = extract_changes(
         raw, ctx.adapter, ctx.patch, ctx.llm, cache_dir=ctx.dir / CACHE_DIR
     )
+    if not changes:
+        raise MetashiftError(
+            f"no changes extracted from {_shown(ctx.dir / 'raw.md')}. Check the sections the "
+            "fetch stage kept (a renamed section is skipped) and the warnings: "
+            + ("; ".join(warnings) or "none")
+        )
     write_model(
         ctx.dir / "changes.json",
         ChangesFile(game=ctx.game, patch=ctx.patch, changes=changes),
